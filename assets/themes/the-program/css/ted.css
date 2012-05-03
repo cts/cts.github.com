@@ -40,3 +40,8 @@ h2 {
 .btn {
   margin-bottom: 5px;
 }
+
+div.sidebar-nav ul.nav-list li.nav-header {
+  font-size: 1em;
+  color: #565656;
+}
