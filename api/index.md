@@ -10,39 +10,34 @@ group: primary
 
 Replaces the content of `node` with `resolve(arg1)`.
 
-#### Example
+### Example
 
-Template:
-<pre class="prettyprint">
+<pre class="prettyprint example template" data-exname="ex-value">
 &lt;span id="ex-value" data-bind="value:winner"&gt;
 Atlanta Braves
 &lt;/span&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-value">
 {
   "winner": "Boston Red Sox"
 }
 </pre>
 
-Result:
+<pre class="prettyprint example result" data-exname="ex-value">
 
-<div class="result">
-</div>
+
+</pre>
 
 <div id="command-with" />
 ## with
 
 Pushes `resolve(arg1)` onto the context stack.
 
-#### Example
+### Example
 
-Template:
-
-<pre class="prettyprint linenums">
-&lt;div id="ex-with" data-bind="with:team"&gt;
+<pre class="prettyprint example template" data-exname="ex-with">
+&lt;div data-bind="with:team"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
   &lt;/span&gt; 
@@ -52,9 +47,7 @@ Template:
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint linenums">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-with">
 {
   "team": {
     "name": "Red Sox",
@@ -63,13 +56,13 @@ Data:
 }
 </pre>
 
-Result:
+<pre class="prettyprint example result" data-exname="ex-with">
 
-<div class="result">
-</div>
 
-<div id="command-loop-inner" />
-## loop-inner
+</pre>
+
+<div id="command-repeat-inner" />
+## repeat-inner
 
 *With one argument*: Treats the first child of `node` as the template to repeat for each item in `resolve(arg1)`. Removes all other children from `node`
 
@@ -77,24 +70,20 @@ Result:
 
 #### Example
 
-Template:
-
-<pre class="prettyprint linenums">
-&lt;div id="ex-with" data-bind="loop-inner:teams"&gt;
+<pre class="prettyprint example template" data-exname="ex-loopinner">
+&lt;div data-bind="repeat-inner:teams"&gt;
  &lt;li&gt; 
-  &lt;span data-bind="value:name"&gt;
-    Braves
-  &lt;/span&gt; 
   &lt;span data-bind="value:city"&gt;
-    Atlanta
+    San Francisco
   &lt;/span&gt; 
- &lt;/li&gt; 
+  &lt;span data-bind="value:name"&gt;
+    Giants
+  &lt;/span&gt; 
+  &lt;/li&gt; 
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint linenums">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-loopinner">
 {
   "teams": [
     { "name": "Red Sox",
@@ -106,10 +95,10 @@ Data:
 }
 </pre>
 
-Result: 
+<pre class="prettyprint example result" data-exname="ex-loopinner">
 
-<div class="result">
-</div>
+
+</pre>
 
 <div id="command-if-exist" />
 ## if-exist 
@@ -122,7 +111,7 @@ Makes node visible only if `resolve(arg1)` is not "falsy"
 
 Template:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div id="ex-with" data-bind="loop-inner:2,team"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
@@ -135,7 +124,7 @@ Template:
 
 Data:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 {
   "teams": [
     { "name": "Red Sox",
@@ -165,7 +154,7 @@ Makes node visible only if `resolve(arg1)` is "falsy"
 
 Template:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div id="ex-with" data-bind="loop-inner:3,team"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
@@ -181,7 +170,7 @@ Template:
 
 Data:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 {
   "teams": [
     { "name": "Red Sox",
@@ -215,7 +204,7 @@ overwrites the attribute. This default behavior may be overridden with
 
 Template:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div id="ex-with" data-bind="loop-inner:3,team"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
@@ -231,7 +220,7 @@ Template:
 
 Data:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 {
   "teams": [
     { "name": "Red Sox",
@@ -267,7 +256,7 @@ conjunction with the `data` command.
 
 Template:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div data-bind="template:#header"&gt;
 &lt;/div&gt; 
 
@@ -280,7 +269,7 @@ Template:
 
 Data:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 {
   "site": { 
     "title": "Cascading Tree Sheets"
@@ -303,7 +292,7 @@ Fetches the data from `arg1` and pushes it on the context stack. The value of `a
 
 The `data` command preceeds the `template` command in order of operations, so the following statement will first recover data from the current `node` (in the case below there isn't any represented) and then apply the template next.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div data-bind="data:.; template:#other" /&gt;
 </pre>
 
@@ -311,7 +300,7 @@ The `data` command preceeds the `template` command in order of operations, so th
 
 Template:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ">
 &lt;div data-bind="data:.; template:#wrapped" /&gt;
   &lt;h1 data-bind:"value:title"&gt; CATS &lt;/h1&gt; 
 &lt;/div&gt; 

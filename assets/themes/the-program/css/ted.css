@@ -3,3 +3,40 @@
     top:70;
     left:10;
 }
+
+textarea.example {
+  width: 80%;
+  min-height: 100px;
+}
+
+
+
+.exCtrl h4 {
+  margin-bottom: 5px;
+}
+
+.exInnerWrapper {
+}
+
+.example.wrapper {
+  margin-top: 5px;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+
+.twrapper {
+  border-top: 4px solid #ccc;
+}
+
+.rwrapper {
+  border-bottom: 4px solid #ccc;
+  padding-bottom: 10px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-bottom: 5px;
+}
