@@ -1,5 +1,7 @@
 /*
- * This is horrible, stream of thought code.
+ * Facilitate Interactive Documentation
+ *
+ * This is horrible, stream-of-thought code.
  * Just so ya know.
  * If you're looking for real software engineering,
  * See the CATS repo.
@@ -42,12 +44,36 @@ window.ExResult = function(name) {
 
 window.WrapEx = function(name) {
   var t = ExTemplate(name);
-  var repl = $("<div class='row example wrapper twrapper' data-exname='" + name + "'><div class='exCtrl span2'><h4>Template</h4><button class='templateBtn btn'>Edit</button><br /><button class='btn templateExtractBtn'>Extract from Result</button></div><div class='span7 exInnerWrapper'></div></div>");
+  var simple = (t.data()["simple"] == "yes");
+  var span1 = simple ? "span1" : "span2";
+  var span2 = simple ? "span8" : "span7";
+  var tstr = "<div class='row example wrapper twrapper' data-exname='" + name + "'><div class='exCtrl "+span1+"'>"
+  if (!simple) {
+    tstr += "<h4>Template</h4>";
+  }
+  tstr += "<button class='templateBtn btn'>Edit</button>";
+  if (!simple) {
+   tstr += "<br /><button class='btn templateExtractBtn'>Extract from Result</button>";
+  }
+  tstr += "</div><div class='"+span2+" exInnerWrapper'></div></div>";
+  var repl = $(tstr);
   t.replaceWith(repl);
   repl.find(".exInnerWrapper").append(t);
 
   var d = ExData(name);
-  var repl = $("<div class='row example wrapper dwrapper' data-exname='" + name + "'><div class='exCtrl span2'><h4>Data</h4><button class='dataBtn btn'>Edit</button><br /><button class='btn extractBtn'>Extract from Tmpl</button></div><div class='span7 exInnerWrapper'></div></div>");
+  simple = (d.data()["simple"] == "yes");
+  span1 = simple ? "span1" : "span2";
+  span2 = simple ? "span8" : "span7";
+  var dstr = "<div class='row example wrapper dwrapper' data-exname='" + name + "'><div class='exCtrl "+span1+" '>";
+  if (!simple) {
+    dstr += "<h4>Data</h4>";
+  }
+  dstr += "<button class='dataBtn btn'>Edit</button>";
+  if (! simple) {
+    dstr += "<br /><button class='btn extractBtn'>Extract from Tmpl</button>";
+  }
+  dstr += "</div><div class='"+span2+" exInnerWrapper'></div></div>";
+  var repl = $(dstr);
   d.replaceWith(repl);
   repl.find(".exInnerWrapper").append(d);
 
