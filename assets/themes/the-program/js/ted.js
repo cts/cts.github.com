@@ -134,7 +134,7 @@ window.RunExample = function(e) {
   // Make sure template is saved
   if (t[0].nodeName != "PRE") {
     window.SaveExTemplate(name); 
-    d = ExTemplate(name);
+    t = ExTemplate(name);
   }
   var d = ExData(name);
   // Make sure template is saved
