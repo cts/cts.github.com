@@ -108,8 +108,8 @@ window.ToggleTemplate = function(e) {
   var wrapper = $(e.target).parents(".wrapper");
   var name = wrapper.data()["exname"];
   var t = ExTemplate(name);
-  if (t[0].nodename == "pre") {
-    editextemplate(name);
+  if (t[0].nodeName == "PRE") {
+    EditExTemplate(name);
   } else {
     SaveExTemplate(name);
   }
