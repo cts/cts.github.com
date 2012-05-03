@@ -136,6 +136,7 @@ window.RunExample = function(e) {
     window.SaveExTemplate(name); 
     t = ExTemplate(name);
   }
+
   var d = ExData(name);
   // Make sure template is saved
   if (d[0].nodeName != "PRE") {
@@ -146,31 +147,31 @@ window.RunExample = function(e) {
   var template = $(t.text());
   var data = d.text();
 
-  console.log(data);
-
+  var container = $("<div id='CATSTEMP' style='display:none'></div>");
+  container.append(template);
+  $('body').append(container);
+  
   // Translate the data
   if (d.data()["type"] == "json") {
     var cmd = "data = " + data + ";";
 
     cmd = cmd.replace(/\n/g, " ");
-    console.log("Command:");
-    console.log(cmd);
     eval(cmd);
   }
-  console.log(data);
   // Evaluate
   var e = new CATS.Engine();
   e.render(template, data);
   var r = ExResult(name);
  
   var result = $("<div />").append(template).html();
-  console.log(result);
   result = result.replace(/</g, "&lt;");
   result = result.replace(/>/g, "&gt;");
   
   var div = $('<pre class="prettyprint example result" data-exname="' + name + '" />');
   div.html(result);
   r.replaceWith(div);
+
+  container.remove();
 
   wrapper.find("button.resultToggle").text("See Rendered");
   window.prettyPrint();

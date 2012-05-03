@@ -252,12 +252,11 @@ Replaces the template of the subtree of `node` with the subtree specified by
 To reuse the data in the subtree, while swapping out the template, us in
 conjunction with the `data` command.
 
-#### Example
+### Example
 
-Template:
-
-<pre class="prettyprint ">
+<pre class="prettyprint example template" data-exname="ex-template">
 &lt;div data-bind="template:#header"&gt;
+ (to be replaced)
 &lt;/div&gt; 
 
 &lt;div style="display:none;"&gt;
@@ -267,9 +266,7 @@ Template:
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint ">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-template">
 {
   "site": { 
     "title": "Cascading Tree Sheets"
@@ -277,10 +274,10 @@ Data:
 }
 </pre>
 
-Result: 
+<pre class="prettyprint example result" data-exname="ex-template">
 
-<div class="result">
-</div>
+
+</pre>
 
 <div id="command-data" />
 ## data
@@ -296,29 +293,33 @@ The `data` command preceeds the `template` command in order of operations, so th
 &lt;div data-bind="data:.; template:#other" /&gt;
 </pre>
 
-#### Example
+### Example
 
-Template:
-
-<pre class="prettyprint ">
-&lt;div data-bind="data:.; template:#wrapped" /&gt;
-  &lt;h1 data-bind:"value:title"&gt; CATS &lt;/h1&gt; 
+<pre class="prettyprint example template" data-exname="ex-data">
+&lt;div data-bind="data:.; template:#wrapped" &gt;
+  &lt;h1 data-bind="value:title"&gt; CATS &lt;/h1&gt; 
 &lt;/div&gt; 
 
 &lt;div style="display:none;"&gt;
   &lt;div id="wrapped"&gt;
-  ::: &lt;span data-bine="value:title"&gt;Title&lt;/span&gt; ::::
+  ::: &lt;span data-bind="value:title"&gt;Title&lt;/span&gt; ::::
   &lt;/div&gt; 
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-None needed for this example -- it's all in the DOM
-
-Result: 
-
-<div class="result">
+<div class="alert alert-block alert-info">
+  <h4 class="alert-heading">Note:</h4>
+  <p>No data needed for this example -- it's all in the DOM. So leave the data box below as it is.</p>
 </div>
+
+<pre class="prettyprint example data" data-type="json" data-exname="ex-data">
+{
+}
+</pre>
+
+<pre class="prettyprint example result" data-exname="ex-data">
+
+</pre>
+
 
 

@@ -9607,12 +9607,20 @@ var CATS = {};
       var template, templateRef;
       templateRef = args[0];
       template = this.fetchTemplate(templateRef);
-      node.html(template);
-      return [true, true];
+      return this._applyTo(node, context, args, engine, template);
     };
 
     Template.prototype.fetchTemplate = function(ref) {
       return $(ref).html();
+    };
+
+    Template.prototype._applyTo = function(node, context, args, engine, template) {
+      console.log(node.parent().html());
+      node.html(template);
+      console.log("Just resplaced TEMPLATE of node");
+      console.log(node.html());
+      console.log(node.parent().html());
+      return [true, true];
     };
 
     Template.prototype.recoverData = function(node, context, args, engine) {
@@ -9932,6 +9940,8 @@ var CATS = {};
 
     Engine.prototype._loadBasicCommandSet = function() {
       this._addCommand(new CATS.Commands.With());
+      this._addCommand(new CATS.Commands.Data());
+      this._addCommand(new CATS.Commands.Template());
       this._addCommand(new CATS.Commands.RepeatInner());
       return this._addCommand(new CATS.Commands.Value());
     };
