@@ -44,7 +44,7 @@ window.ExResult = function(name) {
 
 window.WrapEx = function(name) {
   var t = ExTemplate(name);
-  var simple = (t.data()["simple"] == "yes");
+  var simple = ((typeof t.data() != "undefined") && (t.data() != null) && (t.data()["simple"] == "yes"));
   var span1 = simple ? "span1" : "span2";
   var span2 = simple ? "span8" : "span7";
   var tstr = "<div class='row example wrapper twrapper' data-exname='" + name + "'><div class='exCtrl "+span1+"'>"
@@ -61,7 +61,7 @@ window.WrapEx = function(name) {
   repl.find(".exInnerWrapper").append(t);
 
   var d = ExData(name);
-  simple = (d.data()["simple"] == "yes");
+  simple = ((typeof d.data() != "undefined") && (d.data() != null) && (d.data()["simple"] == "yes"));
   span1 = simple ? "span1" : "span2";
   span2 = simple ? "span8" : "span7";
   var dstr = "<div class='row example wrapper dwrapper' data-exname='" + name + "'><div class='exCtrl "+span1+" '>";
