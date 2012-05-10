@@ -103,16 +103,12 @@ Pushes `resolve(arg1)` onto the context stack.
 <div id="command-if-exist" />
 ## if-exist 
 
-<p><span class="label label-important">Not yet ported from research code to CATS codebase</span></p>
-
 Makes node visible only if `resolve(arg1)` is not "falsy"
 
 #### Example
 
-Template:
-
-<pre class="prettyprint ">
-&lt;div id="ex-with" data-bind="loop-inner:2,team"&gt;
+<pre class="prettyprint example template" data-exname="ex-ifexist">
+&lt;div data-bind="repeat-inner:2,teams"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
   &lt;/span&gt; 
@@ -122,9 +118,7 @@ Template:
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint ">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-ifexist">
 {
   "teams": [
     { "name": "Red Sox",
@@ -138,24 +132,18 @@ Data:
 
 </pre>
 
-Result:
+<pre class="prettyprint example result" data-exname="ex-ifexist">
 
-<div class="result">
-</div>
+
+</pre>
 
 <div id="command-if-nexist" />
 ## if-nexist 
 
-<p><span class="label label-important">Not yet ported from research code to CATS codebase</span></p>
-
 Makes node visible only if `resolve(arg1)` is "falsy"
 
-#### Example
-
-Template:
-
-<pre class="prettyprint ">
-&lt;div id="ex-with" data-bind="loop-inner:3,team"&gt;
+<pre class="prettyprint example template" data-exname="ex-ifnexist">
+&lt;div data-bind="repeat-inner:3,teams"&gt;
   &lt;span data-bind="value:name"&gt;
     Braves
   &lt;/span&gt; 
@@ -168,9 +156,7 @@ Template:
 &lt;/div&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint ">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-ifnexist">
 {
   "teams": [
     { "name": "Red Sox",
@@ -181,64 +167,38 @@ Data:
       "city": "New York"}
   ]
 }
+</pre>
+
+<pre class="prettyprint example result" data-exname="ex-ifnexist">
+
 
 </pre>
 
-Result:
-
-<div class="result">
-</div>
-
-<div id="command-if-nexist" />
+<div id="command-attr" />
 ## attr
 
 Sets attribute `arg1` of `node` to `resolve(arg2)`. By default, this
-overwrites the attribute. This default behavior may be overridden with
-`arg3`, which has the following options:
-
-*   *(empty)* - default behavior (overwrite attribute)
-*   *append* - append to attribute
-*   *append(n)* - append to attribute with `n` preceeding
+overwrites the attribute. 
 
 #### Example
 
-Template:
-
-<pre class="prettyprint ">
-&lt;div id="ex-with" data-bind="loop-inner:3,team"&gt;
-  &lt;span data-bind="value:name"&gt;
-    Braves
-  &lt;/span&gt; 
-  &lt;span data-bind="if-exist:manager"&gt;
-    Manager &lt;span data-bind="value:manager" /&gt;
-  &lt;/span&gt; 
-  &lt;span data-bind="if-nexist:manager"&gt;
-    (No Manager)
-  &lt;/span&gt; 
-&lt;/div&gt; 
+<pre class="prettyprint example template" data-exname="ex-attr">
+  &lt;a href="#" data-bind="attr:href,link;value:name"&gt;
+    Some Link 
+  &lt;/a&gt; 
 </pre>
 
-Data:
-
-<pre class="prettyprint ">
+<pre class="prettyprint example data" data-type="json" data-exname="ex-attr">
 {
-  "teams": [
-    { "name": "Red Sox",
-      "city": "Boston",
-      "manager": "Some Manager Guy"},
-
-    { "name": "Yankees",
-      "city": "New York"}
-  ]
+  "name": "Ted",
+  "link": "http://www.edwardbenson.com"
 }
-
 </pre>
 
-Result:
+<pre class="prettyprint example result" data-exname="ex-attr">
 
-<div class="result">
-</div>
 
+</pre>
 
 
 <div id="command-template" />
