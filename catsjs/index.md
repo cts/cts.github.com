@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CATS JS
+title: Cats JS
 group: primary
 ---
 {% include JB/setup %}
