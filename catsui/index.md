@@ -9,7 +9,7 @@ group: primary
   <div class="span4">
     <h3>Use</h3>
     <p><b><i>This button is a bookmarklet.</i></b> Drag it onto your browser's toolbar</p>
-<a class="btn btn-success" href="javascript:var s=document.createElement('link');s.setAttribute('href','http://localhost:4000/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://localhost:4000/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);">CATS</a>
+<a class="btn btn-success" href="javascript:var s=document.createElement('link');s.setAttribute('href','http://webcats.github.com/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://webcats.github.com/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);">CATS</a>
   </div>
   <div class="span4">
     <h3>Contribute</h3>
@@ -17,6 +17,4 @@ group: primary
   </div>
 </div>
 
-<script>var s=document.createElement('link');s.setAttribute('href','http://localhost:4000/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://localhost:4000/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);</script>
-
-CATS JS is the Javascript implementation of CATS. 
+CATSUI is the a Bookmarklet that lets you use CATS on any website.
