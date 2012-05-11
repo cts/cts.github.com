@@ -1,0 +1,22 @@
+---
+layout: page
+title: CATS JS
+group: primary
+---
+{% include JB/setup %}
+
+<div class="row well" style="margin-top: 20px; margin-bottom:20px">
+  <div class="span4">
+    <h3>Use</h3>
+    <p><b><i>This button is a bookmarklet.</i></b> Drag it onto your browser's toolbar</p>
+<a class="btn btn-success" href="javascript:var s=document.createElement('link');s.setAttribute('href','http://localhost:4000/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://localhost:4000/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);">CATS</a>
+  </div>
+  <div class="span4">
+    <h3>Contribute</h3>
+    <a href="http://github.com/webcats/cats-ui" class="btn btn-success">Source on GitHub</a>
+  </div>
+</div>
+
+<script>var s=document.createElement('link');s.setAttribute('href','http://localhost:4000/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://localhost:4000/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);</script>
+
+CATS JS is the Javascript implementation of CATS. 
