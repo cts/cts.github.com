@@ -4,6 +4,10 @@ title: "Reddit - DScrape Example"
 group: primary
 ---
 
+Reddit is a popular link aggregator and discussion forum. This example shows
+how a CATS sheet can be used to extract the links, and their metadata, from
+the Reddit homepage. 
+
 ### Running
 
 1.   Download the [Reddit CATS Sheet](reddit.cts)
