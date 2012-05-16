@@ -44,3 +44,11 @@ div.sidebar-nav ul.nav-list li.nav-header {
   font-size: 1em;
   color: #565656;
 }
+
+li.nav-subheader {
+  font-style: italic;
+}
+
+li.nav-example {
+  margin-left: 10px;
+}
