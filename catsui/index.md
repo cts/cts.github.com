@@ -5,7 +5,8 @@ group: primary
 ---
 {% include JB/setup %}
 
-<div class="row well" style="margin-top: 20px; margin-bottom:20px">
+<div class="row" style="margin-top: 20px; margin-bottom:20px">
+  <div class="span8 well"><div class="row">
   <div class="span4">
     <h3>Use</h3>
     <p><b><i>This button is a bookmarklet.</i></b> Drag it onto your browser's toolbar</p>
@@ -15,6 +16,7 @@ group: primary
     <h3>Contribute</h3>
     <a href="http://github.com/webcats/cats-ui" class="btn btn-success">Source on GitHub</a>
   </div>
+  </div></div>
 </div>
 
 CATSUI is the a Bookmarklet that lets you use CATS on any website.
