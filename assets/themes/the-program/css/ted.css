@@ -1,15 +1,12 @@
-.sidebar-nav-fixed {
-    position:fixed;
-    top:70;
-    left:10;
-}
-
 textarea.example {
   width: 80%;
   min-height: 100px;
 }
 
-
+.download.well {
+  margin-left: 15px;
+  display: block;
+}
 
 .exCtrl h4 {
   margin-bottom: 5px;
