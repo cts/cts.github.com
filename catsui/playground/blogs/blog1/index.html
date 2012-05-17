@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html data-enter="blog" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+	<title data-value="title">Blog Title</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+
+  
+  
+  <script src="../../js/jquery.js"></script>
+    <script src="../../../bin/element-picker.js"></script>
+    <script src="../../../bin/Popover.js"></script>
+    <script src="../../../bin/Callout.js"></script>
+    <script src="../../../bin/Copy.js"></script>
+    <script src="../../../bin/CopyUI.js"></script>
+    <script src="../../../bin/Paste.js"></script>
+    <script src="../../../bin/PasteUI.js"></script>
+    <script src="../../../bin/Evaluator.js"></script>
+    <script src="../../../bin/Engine.js"></script>
+    <script src="../../../bin/ApplySheet.js"></script>
+    <script src="../../../bin/ApplySheetUI.js"></script>
+    <script src="../../../bin/Edit.js"></script>
+    <script src="../../../bin/EditUI.js"></script>
+    <script>
+    jQueryDss(function() {
+      jQueryDss.getJSON("../blog2/data.js", function(data) {
+        DSS.Engine.render(jQueryDss('html'), [data]);
+      });
+    });
+    </script>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+	<div id="logo">		
+		<h1><a data-href="url" data-value="title" href="http://www.foo.org">Blog Title</a></h1>
+		<h2 data-value="subtitle">Catchy Tagline</h2>
+	</div>
+  </div>
+<div id="container" data-repeatinner="posts">
+ <div data-id="post-{{id}}" class="post type-post status-publish format-standard hentry">
+	  <h2><a data-href="link" href="#" data-title="title" data-value="title">Some Post Title</a></h2>
+	  <div class="entry">
+		  <div class="postmetadata">
+        <span>Filed under&#58;</span>
+        <ul class="commas" data-repeatinner="categories">
+          <li><a data-href="link" data-value="name">Category 1</a></li>
+          <li><a data-href="link" data-value="name">Category 2</a></li>
+        </ul>
+        <span data-enter="author">by <span data-value="name">Author Name</span></span> on <span data-value="date">Date</span> &#124;
+        <a data-href="{{blog.link}}#comments" data-title="title">
+          <span data-value="comment_count">1</span> Comment</a>
+        <br />Tags: 
+        <ul class="commas" data-repeatinner="tags">
+          <li><a data-href="link" data-value="name">Tag 1</a></li>
+          <li><a data-href="link" data-value="name">Tag 2</a></li>
+        </ul>
+        </div><!-- postmetadata -->
+        <div data-value="body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+   </div><!-- entry -->
+ </div><!-- post -->
+ </div><!-- posts -->
+
+<div class="sidebar">
+	<ul>
+	  <li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>
+		  <ul data-repeatinner="recent_posts">
+		  <li><a data-href="link" data-title="title" data-value="title">Post</a></li>
+			</ul>
+	  </li>
+    <li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" action="http://groups.csail.mit.edu/haystack/blog/" >
+	  <div><label class="screen-reader-text" for="s">Search for:</label>
+	  <input type="text" value="" name="s" id="s" />
+	  <input type="submit" id="searchsubmit" value="Search" />
+    </div></form>
+    </form>
+  </li>
+  <li id="categories-262241751" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul data-repeatinner="categories">
+		  <li><a data-href="link" data-title="title" data-value="title">Post</a></li>
+		</ul>
+  </li>
+	</ul>
+</div>
+	<div id="footer">
+	Copyright &copy; 2008 <a data-href="url" data-value="title">Blog Name</a> &middot; Subscribe 
+					<a data-href="rss">RSS Feed</a>
+			 now<br />
+	</div>
+<div id="cle"></div>
+</div>
+
+</body>
+</html>
