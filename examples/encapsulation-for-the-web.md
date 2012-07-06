@@ -87,7 +87,7 @@ transformation necessary to coordinate with CSS2 to achieve rounded corners.
 A CTS file, attached like CSS, then declares that any element with the
 *rounded* class should be transformed using that template.
 
-<pre class="prettyprint example" data-type="html">
+<pre class="prettyprint example" data-type="css">
 .rounded {
   data: .;
   template: #rounded-template;
