@@ -2,7 +2,7 @@ _site/*
 
 Thumbs.db
 .DS_Store
-*.swp*.swp*.swp*.swp*.swp*.swp*.swp*.swp
+*.swp
 !.gitkeep
 
 .rbenv-version
