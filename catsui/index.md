@@ -20,3 +20,7 @@ group: primary
 </div>
 
 CATSUI is the a Bookmarklet that lets you use CATS on any website.
+
+<br />
+<p style="font-size:0.8em">
+<a class="btn btn-success" href="javascript:var s=document.createElement('link');s.setAttribute('href','http://webcats.github.com/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://localhost:8000/release/cts.js');document.getElementsByTagName('body')[0].appendChild(s);">Development Bookmarklet</a>, that links to localhost:8000/release/cts.js. This bookmarklet is CTS-only, not CTSUI.  </p>
