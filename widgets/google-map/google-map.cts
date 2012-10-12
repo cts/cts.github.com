@@ -1,6 +1,6 @@
 .map {
   template: http://webcats.github.com/widgets/google-map/google-map.html#map;
-  template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment_proxy.php;
+  template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php;
   data: .;
   with: map;
 }
