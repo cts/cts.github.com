@@ -78,6 +78,7 @@ h2 {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   margin-bottom: 20px;
+  display: block;
 }
 
 .roundlink {
