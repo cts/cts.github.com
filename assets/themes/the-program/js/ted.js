@@ -282,3 +282,14 @@ $(function() {
   $(".example.result").parents(".wrapper").find("button.resultBtn").click(window.RunExample);
   $(".example.result").parents(".wrapper").find("button.resultToggle").click(window.ResultToggle);
 });
+
+window.SelectPage = function(name) {
+  $.each($('.menu-primary ul li'), function(idx, elem) {
+    var e = $(elem);
+    if (e.id() == name) {
+      e.addClass("selected");
+    } else {
+      e.removeClass("selected");
+    }
+  });
+};
