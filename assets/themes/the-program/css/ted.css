@@ -117,8 +117,8 @@ h2 {
   list-style-type: none;
   list-style: none;
   font-size: 18px;
-  margin-left: none;
-  padding-left: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .menu-primary ul li {
