@@ -132,21 +132,26 @@ h2 {
   padding-left: 0;
   margin-left: 10px;
   color: #333;
-} 
+  text-decoration: none;
+  line-height: 30px;
+  text-align: middle;
+}
+
+.menu-primary ul li a:hover {
+  text-decoration: none;
+}
 
 .menu-primary ul li:hover {
   background-color: #ddd;
 } 
 
-.menu-primary ul li.selected {
-  border-left: 6px solid #DD4B39;
-} 
-
-.menu-primary ul li.selected {
+.menu-primary ul li {
   border-left: 6px solid #fff;
 } 
 
-
+.menu-primary ul li.selected {
+  border-left: 6px solid #DD4B39;
+} 
 
 .menu-primary ul li.selected a {
   color: #DD4B39;
