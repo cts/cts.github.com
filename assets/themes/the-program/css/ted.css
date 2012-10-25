@@ -116,15 +116,18 @@ h2 {
 
 .menu-primary ul {
   list-style-type: none;
-  font-size: 16px;
+  font-size: 24px;
+  margin-left: none;
+  padding-left: none;
 }
 
 .menu-primary ul li {
-  line-height: 20px;
+  line-height: 30px;
 } 
 
 .menu-primary ul li a {
   margin-left: 10px;
+  color: #333;
 } 
 
 .menu-primary ul li:hover {
