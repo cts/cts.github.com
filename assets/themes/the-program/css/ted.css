@@ -114,3 +114,28 @@ h2 {
 }
 
 
+.menu-primary ul {
+  list-style-type: none;
+  font-size: 16px;
+}
+
+.menu-primary ul li {
+  line-height: 20px;
+} 
+
+.menu-primary ul li a {
+  margin-left: 10px;
+} 
+
+.menu-primary ul li:hover {
+  background-color: #ddd;
+} 
+
+.menu-primary ul li.selected {
+  border-left-color: 3px solid #DD4B39;
+} 
+
+.menu-primary ul li.selected a {
+  color: #DD4B39;
+}
+
