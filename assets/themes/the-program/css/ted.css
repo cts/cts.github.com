@@ -116,13 +116,15 @@ h2 {
 
 .menu-primary ul {
   list-style-type: none;
-  font-size: 24px;
+  font-size: 18px;
   margin-left: none;
   padding-left: none;
 }
 
 .menu-primary ul li {
-  line-height: 30px;
+  line-height: 24px;
+  margin-left:  0;
+  padding-left: 0;
 } 
 
 .menu-primary ul li a {
