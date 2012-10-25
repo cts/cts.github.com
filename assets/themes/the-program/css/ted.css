@@ -143,6 +143,12 @@ h2 {
 
 .menu-primary ul li:hover {
   background-color: #ddd;
+  border-left: 6px solid #ddd;
+} 
+
+.menu-primary ul li.selected:hover {
+  background-color: #ddd;
+  border-left: 6px solid #DD4B39;
 } 
 
 .menu-primary ul li {
