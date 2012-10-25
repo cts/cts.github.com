@@ -139,7 +139,7 @@ h2 {
 } 
 
 .menu-primary ul li.selected {
-  border-left: 3px solid #DD4B39;
+  border-left: 6px solid #DD4B39;
 } 
 
 .menu-primary ul li.selected a {
