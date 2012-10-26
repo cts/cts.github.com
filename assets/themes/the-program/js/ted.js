@@ -291,7 +291,7 @@ window.SelectPage = function(name) {
   var selectedSubMenu = '.menu-primary ul li#' + name + ' ul';
   
   $(all).removeClass("selected");
-  $(selected).addClassClass("selected");
+  $(selected).addClass("selected");
   $(allSubMenu).hide();
   $(selectedSubMenu).show();
 };
