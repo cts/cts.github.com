@@ -167,3 +167,21 @@ h2 {
   color: #DD4B39;
 }
 
+
+a.example {
+  color: steelBlue;
+}
+
+.example:not(:nth-child(4n)) img {
+  margin-right: 13px;
+}
+
+.example img {
+  float: left;
+  margin-bottom: 13px;
+  width: 226px;
+  height: 180px;
+  border: solid 2px #CCC;
+  display: inline-block;
+  cursor: auto;
+}
