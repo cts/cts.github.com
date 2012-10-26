@@ -113,3 +113,9 @@ can add the following line:
         <td class="marker">http://treesheets.org/hotlink/coffee.png</td>
       </tr>
 
+
+<script>
+$(function() {
+  SelectPage("PageWidgetsMap");
+});
+</script>
