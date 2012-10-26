@@ -10,7 +10,7 @@ tagline:
     <a class="image" href="/widgets/google-map/">
       <img src="/images/widgets/google-map.png" />
     </a>
-    <a href="/widgets/google-map/">Google Map with Pins</a>
+    <a class="caption" href="/widgets/google-map/">Google Map with Pins</a>
   </div>
 </div>
 
