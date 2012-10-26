@@ -86,7 +86,10 @@ line to each marker containing a description, like this:
         <td class="lat">42.361335</td>
         <td class="lng">-71.089482</td>
         <td class="description">
-        Designed by Frank Ghery, the Stata Center is home to the Computer Science and Artificial Intelligence Laboratory at MIT.
+          Designed by Frank Ghery, the Stata Center is home to
+          the Computer Science and Artificial Intelligence Laboratory
+          at MIT.
+        </td>
       </tr>
 
 You can put any HTML you want inside the description. In
@@ -98,4 +101,15 @@ this:
 
 ## 5. Customize your Map: Add Special Markers
 
+If you don't like the basic pin image for your markers, you can add other
+images instead. All you need to know is the URL of the image.  For example, if
+I want to show people that there is a coffee shop inside the stata center, I
+can add the following line:
+
+      <tr>
+        <td class="title">The Stata Center</td>
+        <td class="lat">42.361335</td>
+        <td class="lng">-71.089482</td>
+        <td class="marker">http://treesheets.org/hotlink/coffee.png</td>
+      </tr>
 
