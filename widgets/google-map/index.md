@@ -6,14 +6,13 @@ tagline:
 {% include JB/setup %}
 
 <p class="intro">The Google Map Widget helps you include a simple Google Map on
-your website withoiut any JavaScript. You can add pins, and if you want, custom
-markers and popup windows.</p>
+your website without typing JavaScript. You can add pins, custom markers, and
+popup windows.</p>
 
-<p class="intro">This page guides you through the process of adding a Google
-Map Widget to your website. It consists of copying, pasting, and modifying a
-few lines of HTML.</p>
+<p class="intro">This page guides you through the process. It consists of
+copying, pasting, and modifying a few lines of HTML.</p>
 
-<p class="intro">The [result](example.html) of this tutorial is also available
+<p class="intro">The (result)[example.html] of this tutorial is also available
 for you to copy and paste.</p>
 
 ### Step 1: Link to the library
