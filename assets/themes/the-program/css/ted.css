@@ -192,3 +192,7 @@ div.widget a.caption {
   width: 226px;
   text-align: center;
 }
+
+p.intro {
+  font-size: 1.2em;
+}
