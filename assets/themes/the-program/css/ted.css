@@ -130,6 +130,12 @@ h2 {
   padding-left: 0;
 } 
 
+.menu-primary ul li li {
+  line-height: 14px;
+  margin-left:  0;
+  padding-left: 0;
+}
+
 .menu-primary ul li a {
   margin-left: 0;
   padding-left: 0;
@@ -138,6 +144,10 @@ h2 {
   text-decoration: none;
   line-height: 28px;
   text-align: middle;
+}
+
+.menu-primary ul li li a {
+  margin-left: 25px;
 }
 
 .menu-primary ul li a:hover {
