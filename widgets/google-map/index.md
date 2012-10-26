@@ -44,9 +44,9 @@ in the following HTML:
 This tells the map widget that you'd like a map there. Now edit that data to
 customize your particular preferences:
 
-   *  The center of the map
-   *  The zoom level (1 is zoomed far out and 17 is zoomed all the way in)
-   *  The size of the map on your web page
+    * The center of the map
+    * The zoom level (1 is zoomed far out and 17 is zoomed all the way in)
+    * The size of the map on your web page
 
 ## 3. Add markers to the map
 
