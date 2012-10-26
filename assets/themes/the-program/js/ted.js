@@ -284,12 +284,14 @@ $(function() {
 });
 
 window.SelectPage = function(name) {
-  $.each($('.menu-primary ul li'), function(idx, elem) {
-    var e = $(elem);
-    if (e.attr("id") == name) {
-      e.addClass("selected");
-    } else {
-      e.removeClass("selected");
-    }
-  });
+  // First set the selected / not selected on all of them
+  var all = '.menu-primary ul li div';
+  var selected = '.menu-primary ul li#' + name + ' div';
+  var allSubMenu = '.menu-primary ul li ul';
+  var selectedSubMenu = '.menu-primary ul li#' + name + ' ul';
+  
+  $(all).removeClass("selected");
+  $(selected).addClassClass("selected");
+  $(allSubMenu).hide();
+  $(selectedSubMenu).show();
 };
