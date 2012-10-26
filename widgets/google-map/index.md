@@ -29,34 +29,76 @@ these lines there. Otherwise, you can add them anywhere you can.
 
 ### 2. Request a Map
 
-Next, pick the place you want the map to actually appear on your page and add the following HTML:
+Next, pick the place you want the map to actually appear on your page and paste
+in the following HTML: 
 
     <section class="map">
+
+      <ul class="properties">
+        <li class="center-lat">42.361335</li>
+        <li class="center-lng">-71.089482</li>
+        <li class="zoom-level">15</li>
+        <li class="width">700px</li>
+        <li class="height">500px</li>
+      </ul>
+
     </section>
 
-This tells the map widget that you'd like a map there. Now we're going to fill
-in some data about the map: general map settings and specific points we'd like
-on the map.
+This tells the map widget that you'd like a map there. Now edit that data to
+customize your particular preferences:
 
-### 3. General Settings for the Map
+   *  The center of the map
+   *  The zoom level (1 is zoomed far out and 17 is zoomed all the way in)
+   *  The size of the map on your web page
 
-Copy and paste the HTML below and place it *in between* the `<section
-class="map">` and `</section>` tags you just created.
+### 3. Add markers to the map
 
-    <ul class="properties">
-      <li class="center-lat">42.361335</li>
-      <li class="center-lng">-71.089482</li>
-      <li class="zoom-level">15</li>
-      <li class="width">700px</li>
-      <li class="height">500px</li>
-    </ul>
+If you want to add markers in your map, paste the following HTML after the
+`</ul>` tag and *before* the `</section>` tag at the end:
 
-This HTML contains settings for your map: where should the map be centered?
-(The settings you see above center it on MIT in Cambridge, Massachusetts). How
-far zoomed in should the map be? (1 = Astronaut's perspective, 17 = Ant's
-perspective) And how large should the map be on your page?
+    <table class="markers">
+    
+      <tr>
+        <td class="title">The Stata Center</td>
+        <td class="lat">42.361335</td>
+        <td class="lng">-71.089482</td>
+      </tr>
 
-Modify these settings to your liking, or use the defaults you see here.
+      <tr>
+        <td class="title">Media Lab</td>
+        <td class="lat">42.360859</td>
+        <td class="lng">-71.08592</td>
+      </tr>
 
-### 4. Add points to the map
+    </table>
+
+This example shows two markers being created. You can edit, delete, or add pins
+by copying and pasting the HTML surrounded by `<tr>...</tr>`. 
+
+At this point, you've created a map with pins like the one below!
+
+![Google Map Example](/images/widgets/google-map.png)
+
+### 4. Customize your Map: Add Popup Balloons
+
+To add a popup baloon to your map, just add another
+line to each marker containing a description, like this:
+
+      <tr>
+        <td class="title">The Stata Center</td>
+        <td class="lat">42.361335</td>
+        <td class="lng">-71.089482</td>
+        <td class="description">
+        Designed by Frank Ghery, the Stata Center is home to the Computer Science and Artificial Intelligence Laboratory at MIT.
+      </tr>
+
+You can put any HTML you want inside the description. In
+the example above we've just used plain text. When the
+user clicks on the Stata Center pin now, they will see
+this:
+
+![Google Map Example](/widgets/google-map/balloon.png)
+
+### 4. Customize your Map: Add Special Markers
+
 
