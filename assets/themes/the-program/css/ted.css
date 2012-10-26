@@ -144,25 +144,25 @@ h2 {
   text-decoration: none;
 }
 
-.menu-primary ul li:hover {
+.menu-primary ul li div:hover {
   background-color: #ddd;
   border-left: 6px solid #ddd;
 } 
 
-.menu-primary ul li.selected:hover {
+.menu-primary ul div.selected:hover {
   background-color: #ddd;
   border-left: 6px solid #DD4B39;
 } 
 
-.menu-primary ul li {
+.menu-primary ul li div {
   border-left: 6px solid #fff;
 } 
 
-.menu-primary ul li.selected {
+.menu-primary ul li div.selected {
   border-left: 6px solid #DD4B39;
 } 
 
-.menu-primary ul li.selected a {
+.menu-primary ul li div.selected a {
   color: #DD4B39;
 }
 
