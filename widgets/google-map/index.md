@@ -13,7 +13,7 @@ markers and popup windows.</p>
 Map Widget to your website. It consists of copying, pasting, and modifying a
 few lines of HTML.</p>
 
-<p class="intro"The [result](example.html) of this tutorial is also available
+<p class="intro">The [result](example.html) of this tutorial is also available
 for you to copy and paste.</p>
 
 ### Step 1: Link to the library
