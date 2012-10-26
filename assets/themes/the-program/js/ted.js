@@ -283,10 +283,13 @@ $(function() {
   $(".example.result").parents(".wrapper").find("button.resultToggle").click(window.ResultToggle);
 });
 
-window.SelectPage = function(name) {
+window.SelectPage = function(name, inner) {
   // First set the selected / not selected on all of them
   var all = '.menu-primary ul li div';
   var selected = '.menu-primary ul li#' + name + ' div';
+  if (typeof inner != 'undefined') 
+    selected = '.menu-primary ul li#' + inner + ' div';
+
   var allSubMenu = '.menu-primary ul li ul';
   var selectedSubMenu = '.menu-primary ul li#' + name + ' ul';
   

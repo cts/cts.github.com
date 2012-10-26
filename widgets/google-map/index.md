@@ -116,6 +116,6 @@ can add the following line:
 
 <script>
 $(function() {
-  SelectPage("PageWidgetsMap");
+  SelectPage("PageWidgets", "PageWidgetsMap");
 });
 </script>
