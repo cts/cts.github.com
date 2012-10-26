@@ -122,7 +122,7 @@ h2 {
 }
 
 .menu-primary ul li {
-  line-height: 24px;
+  line-height: 20px;
   margin-left:  0;
   padding-left: 0;
 } 
@@ -133,7 +133,7 @@ h2 {
   margin-left: 10px;
   color: #333;
   text-decoration: none;
-  line-height: 30px;
+  line-height: 28px;
   text-align: middle;
 }
 
