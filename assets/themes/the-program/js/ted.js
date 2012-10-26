@@ -286,7 +286,7 @@ $(function() {
 window.SelectPage = function(name) {
   $.each($('.menu-primary ul li'), function(idx, elem) {
     var e = $(elem);
-    if (e.id() == name) {
+    if (e.attr("id") == name) {
       e.addClass("selected");
     } else {
       e.removeClass("selected");
