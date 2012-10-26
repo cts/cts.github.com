@@ -12,7 +12,7 @@ copy, paste, and edit a few lines of HTML.</p>
 
 <p class="intro"><a href="example.html">View the completed example</a></p>
 
-### 1. Link to the library
+## 1. Link to the library
 
 To start, you'll need to add three lines of HTML to your web page to connect
 with the Google Maps library and CTS:
@@ -24,7 +24,7 @@ with the Google Maps library and CTS:
 If you have access to the `HEAD` element of your web page, it's best to add
 these lines there. Otherwise, you can add them anywhere you can.
 
-### 2. Request a Map
+## 2. Request a Map
 
 Next, pick the place you want the map to actually appear on your page and paste
 in the following HTML: 
@@ -48,7 +48,7 @@ customize your particular preferences:
    *  The zoom level (1 is zoomed far out and 17 is zoomed all the way in)
    *  The size of the map on your web page
 
-### 3. Add markers to the map
+## 3. Add markers to the map
 
 If you want to add markers in your map, paste the following HTML after the
 `</ul>` tag and *before* the `</section>` tag at the end:
@@ -76,7 +76,7 @@ At this point, you've created a map with pins like the one below!
 
 ![Google Map Example](/images/widgets/google-map.png)
 
-### 4. Customize your Map: Add Popup Balloons
+## 4. Customize your Map: Add Popup Balloons
 
 To add a popup baloon to your map, just add another
 line to each marker containing a description, like this:
@@ -96,6 +96,6 @@ this:
 
 ![Google Map Example](/widgets/google-map/balloon.png)
 
-### 4. Customize your Map: Add Special Markers
+## 5. Customize your Map: Add Special Markers
 
 
