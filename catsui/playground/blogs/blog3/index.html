@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-enter="blog" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title data-value="title">Blog Title</title>
+  <meta name="viewport" content="width=600, initial-scale=0.5, minimum-scale=0.45" />
+  <link rel="stylesheet" type="text/css" media="screen"  href="style.css" />
+
+ <script src="../../js/jquery.js"></script>
+    <script src="../../../bin/element-picker.js"></script>
+    <script src="../../../bin/Popover.js"></script>
+    <script src="../../../bin/Callout.js"></script>
+    <script src="../../../bin/Copy.js"></script>
+    <script src="../../../bin/CopyUI.js"></script>
+    <script src="../../../bin/Paste.js"></script>
+    <script src="../../../bin/PasteUI.js"></script>
+    <script src="../../../bin/Evaluator.js"></script>
+    <script src="../../../bin/Engine.js"></script>
+    <script src="../../../bin/ApplySheet.js"></script>
+    <script src="../../../bin/ApplySheetUI.js"></script>
+    <script src="../../../bin/Edit.js"></script>
+    <script src="../../../bin/EditUI.js"></script>
+    <script>
+    jQueryDss(function() {
+      jQueryDss.getJSON("../blog3/data.js", function(data) {
+        DSS.Engine.render(jQueryDss('html'), [data]);
+      });
+    });
+</script>
+
+</head>
+<body>
+  <div id="wrapper">
+<div id="Box">
+
+  <div id="Banner" style="width: 800px; margin-bottom: -30px">
+    <table style="margin-left:170px" height="50px">
+      <tr><td valign="middle">
+          <img src="title.png" height="50px"/>
+    </td><td valign="middle" data-value="title">Blog Title</td></tr></table>
+  </div>
+
+<div id="Sidebar" style="margin-top:-40px">
+<p>By <strong data-value="author">Author Name</strong></p>
+
+<ul data-repeatinner="pages">
+<li><a data-href="link" href="#" data-value="title">Page 1</a></li>
+</ul>
+
+</div> <!-- Sidebar -->
+
+<div id="Main">
+
+<dl class="linkedlist" data-repeatinner="posts">
+  <div>  
+    <dt>
+    <a data-href="link" href="#" data-value="title">Post Title</a>&nbsp;<a class="permalink" href="#">&#9733;</a>
+    </dt>
+    <dd data-value="body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </dd>
+  </div>
+</dl>
+
+</div> <!-- article -->
+
+<hr class="ookiaks" />
+
+<div id="Footer">
+</div>
+
+</div> <!-- Main -->
+
+</div> <!-- Box -->
+</body>
+</html>

@@ -1,0 +1,82 @@
+#catsui-sidebar-wrapper {
+  width: 243px;
+  position: fixed;
+  top: 25%;
+  left: -200px;
+}
+
+#catsui-sidebar-button {
+  position: absolute;
+  top: 70px;
+  right: 0px;
+  width: 43px;
+  height: 45px;
+  cursor: pointer;
+  background-image: url('btn.png');
+  text-indent: -1000000px;
+  overflow: hidden;
+  z-index: 200000;
+  outline: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+#catsui-sidebar {
+  width: 200px;
+  left: 0px;
+  top: 0px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  position: absolute;
+  border-right: 2px solid #333;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+}
+
+#catsui-sidebar h1 {
+  text-align: left;
+  font-size: 14px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  width: 192px;
+  margin-top: 5px;
+  border-bottom: 2px solid #777;
+}
+
+#catsui-sidebar h2 {
+  text-align: left;
+  color: black;
+  display:block;
+  padding-left: 10px;
+  font-size: 12px;
+  width: 192px;
+  margin-top: 10px;
+}
+
+#catsui-sidebar ul {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+
+#catsui-sidebar ul li a {
+  display: block;
+  font-size: 12px;
+  margin: 0;
+  text-decoration: none;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #A7364A;
+  background-color: #FFF;
+}
+
+#catsui-sidebar ul li a:hover {
+  color: #FFF;
+  text-decoration: none;
+  background-color: #A7364A;
+}
+
