@@ -7,7 +7,7 @@ tagline:
 
 <p class="intro">The Google Map Widget helps you
 include a Google Map on your website with markers,
-custom images, and popup windows. All you need to do is
+custom images, and popup balloons. All you need to do is
 copy, paste, and edit a few lines of HTML.</p>
 
 <p class="intro"><a href="example.html">View the completed example</a></p>
