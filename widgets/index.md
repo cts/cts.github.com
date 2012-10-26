@@ -5,12 +5,9 @@ tagline:
 ---
 {% include JB/setup %}
 
-
-## Widgets
-
 <div class="widgets">
   <a href="/widgets/google-map/" class="example">
-    <img src="/images/widgets/google-map.png" />
+    <img src="/images/widgets/google-map.png" /><br />
     Google Map with Pins
   </a>
 </div>
