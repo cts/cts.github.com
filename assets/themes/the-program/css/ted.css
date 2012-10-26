@@ -194,5 +194,7 @@ div.widget a.caption {
 }
 
 p.intro {
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 10px;
 }
