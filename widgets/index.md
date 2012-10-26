@@ -6,12 +6,13 @@ tagline:
 {% include JB/setup %}
 
 <div class="widgets">
-  <a href="/widgets/google-map/" class="example">
-    <img src="/images/widgets/google-map.png" /><br />
-    Google Map with Pins
-  </a>
+  <div class="widget">
+    <a class="image" href="/widgets/google-map/">
+      <img src="/images/widgets/google-map.png" />
+    </a>
+    <a href="/widgets/google-map/">Google Map with Pins</a>
+  </div>
 </div>
-<br />
 
 
 <script>
