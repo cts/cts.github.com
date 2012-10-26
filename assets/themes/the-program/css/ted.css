@@ -192,3 +192,9 @@ div.widget a.caption {
   width: 226px;
   text-align: center;
 }
+
+p.intro {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
