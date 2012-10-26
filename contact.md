@@ -6,8 +6,12 @@ tagline:
 {% include JB/setup %}
 
 
-Please send ideas, comments, and winning lottery tickets to Ted Benson
-([eob@csail.mit.edu](mailto:eob@csail.mit.edu))
+Please send ideas, comments, and winning lottery tickets to [Ted
+Benson](http://www.edwardbenson.com)
+([eob@csail.mit.edu](mailto:eob@csail.mit.edu)).
+
+Or visit the [CTS Github Repository](http://www.github.com/treesheets) to file
+bug reports and contribute to the source code.
 
 <script>
 $(function() {
