@@ -27,3 +27,8 @@ website using just a few simple CATS annotations.
 
 ![DScrape Example](/images/dscrape-example.png)
 
+<script>
+$(function() {
+  SelectPage("PageScraping");
+});
+</script>
