@@ -9400,7 +9400,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQueryHcss ) {
 
 var __t;
 
-__t = function(ns, expose) {
+__t = function(ns) {
   var curr, index, part, parts, _i, _len;
   curr = null;
   parts = [].concat = ns.split(".");
@@ -9408,16 +9408,10 @@ __t = function(ns, expose) {
     part = parts[index];
     if (curr === null) {
       curr = eval(part);
-      if (expose != null) {
-        expose[part] = curr;
-      }
       continue;
     } else {
       if (curr[part] == null) {
         curr = curr[part] = {};
-        if (expose != null) {
-          expose[part] = curr;
-        }
       } else {
         curr = curr[part];
       }
@@ -9426,355 +9420,49 @@ __t = function(ns, expose) {
   return curr;
 };
 
-var CATS = {};
+var CTS = {};
 
 (function() {
-  var $;
+  var $, RulesState,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   $ = jQueryHcss;
 
-  __t('CATS').Cascade = (function() {
+  __t('CTS.Commands').Command = (function() {
 
-    Cascade.name = 'Cascade';
+    function Command() {}
 
-    function Cascade() {}
-
-    Cascade.blocks = {};
-
-    Cascade.attachSheet = function(str) {
-      var blks;
-      blks = CATS.Parser.parseBlocks(str);
-      console.log(Cascade.blocks);
-      $.extend(Cascade.blocks, blks);
-      return console.log(Cascade.blocks);
-    };
-
-    Cascade.sheetRulesForNode = function(node) {
-      var hit, key, ret;
-      ret = {};
-      hit = false;
-      for (key in Cascade.blocks) {
-        if (node.is(key)) {
-          hit = true;
-          $.extend(ret, Cascade.blocks[key]);
-        }
-      }
-      if (!hit) {
-        return null;
-      }
-      return ret;
-    };
-
-    Cascade.inlineRulesForNode = function(node) {
-      var block, data, hadSpecific, parsed, ret;
-      ret = {};
-      hadSpecific = false;
-      if (node.data != null) {
-        data = node.data();
-        if (typeof data !== "undefined") {
-          block = node.data()["bind"];
-          if (typeof block !== "undefined") {
-            hadSpecific = true;
-            parsed = CATS.Parser.parseBlock(block);
-            ret = $.extend(ret, parsed);
+    Command.prototype._resolveArgument = function(arg, node) {
+      var attribute, retval;
+      if ((arg != null) && arg.length > 0) {
+        if (arg[0] === "@") {
+          attribute = arg.substring(1);
+          retval = node.attr(attribute);
+          if (retval != null) {
+            return retval;
+          } else {
+            return null;
           }
-        }
-      }
-      if (hadSpecific) {
-        return ret;
-      } else {
-        return null;
-      }
-    };
-
-    Cascade.rulesForNode = function(node) {
-      var inlineRules, rules, sheetRules;
-      sheetRules = Cascade.sheetRulesForNode(node);
-      inlineRules = Cascade.inlineRulesForNode(node);
-      if (sheetRules === null && inlineRules === null) {
-        return null;
-      }
-      rules = {};
-      if (sheetRules !== null) {
-        $.extend(rules, sheetRules);
-      }
-      if (inlineRules !== null) {
-        $.extend(rules, inlineRules);
-      }
-      return rules;
-    };
-
-    return Cascade;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS.Commands').Attr = (function() {
-
-    Attr.name = 'Attr';
-
-    function Attr() {}
-
-    Attr.prototype.signature = function() {
-      return "attr";
-    };
-
-    Attr.prototype.applyTo = function(node, context, args, engine) {
-      var attr, keypath, value;
-      attr = args[0];
-      keypath = args[1];
-      value = context.resolve(keypath);
-      node.attr(attr, value);
-      return [true, true];
-    };
-
-    Attr.prototype.recoverData = function(node, context, args, engine) {
-      var attr, keypath, value;
-      attr = args[0];
-      keypath = args[1];
-      value = node.attr(attr);
-      context.set(keypath, value);
-      return [true, true];
-    };
-
-    Attr.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return Attr;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS.Commands').Data = (function() {
-
-    Data.name = 'Data';
-
-    function Data() {}
-
-    Data.prototype.signature = function() {
-      return "data";
-    };
-
-    Data.prototype.applyTo = function(node, context, args, engine) {
-      engine._recoverData(node, context);
-      return [true, true];
-    };
-
-    Data.prototype.recoverData = function(node, context, args, engine) {
-      return [true, true];
-    };
-
-    Data.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return Data;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS.Commands').IfExist = (function() {
-
-    IfExist.name = 'IfExist';
-
-    function IfExist() {}
-
-    IfExist.prototype.signature = function() {
-      return "if-exist";
-    };
-
-    IfExist.prototype.applyTo = function(node, context, args, engine) {
-      var data, value;
-      value = context.resolve(args[0]);
-      if (value === null) {
-        CATS.Util.hideNode(node);
-        return [false, false];
-      } else {
-        CATS.Util.showNode(node);
-        data = {};
-        data[args[0]] = value;
-        CATS.Util.stashData(node, this.signature(), data);
-        return [true, true];
-      }
-    };
-
-    IfExist.prototype.recoverData = function(node, context, args, engine) {
-      var data, k, v;
-      if (CATS.Util.nodeHidden(node)) {
-        return [false, false];
-      }
-      data = CATS.Util.getDataStash(node, this.signature());
-      for (k in data) {
-        v = data[k];
-        context.set(k, v);
-      }
-      return [true, true];
-    };
-
-    IfExist.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return IfExist;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS.Commands').IfNExist = (function() {
-
-    IfNExist.name = 'IfNExist';
-
-    function IfNExist() {}
-
-    IfNExist.prototype.signature = function() {
-      return "if-nexist";
-    };
-
-    IfNExist.prototype.applyTo = function(node, context, args, engine) {
-      var data, value;
-      value = context.resolve(args[0]);
-      if (value !== null) {
-        CATS.Util.hideNode(node);
-        data = {};
-        data[args[0]] = value;
-        CATS.Util.stashData(node, this.signature(), data);
-        return [false, false];
-      } else {
-        CATS.Util.showNode(node);
-        return [true, true];
-      }
-    };
-
-    IfNExist.prototype.recoverData = function(node, context, args, engine) {
-      var data, k, v;
-      if (CATS.Util.nodeHidden(node)) {
-        data = CATS.Util.getDataStash(node, this.signature());
-        for (k in data) {
-          v = data[k];
-          context.set(k, v);
-        }
-        return [false, false];
-      } else {
-        return [true, true];
-      }
-    };
-
-    IfNExist.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return IfNExist;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS.Commands').RepeatInner = (function() {
-
-    RepeatInner.name = 'RepeatInner';
-
-    function RepeatInner() {}
-
-    RepeatInner.prototype.signature = function() {
-      return "repeat-inner";
-    };
-
-    RepeatInner.prototype.applyTo = function(node, context, args, engine) {
-      var collection, elem, kp, n, newNode, template, templateHtml, zeroIndex, _i, _len,
-        _this = this;
-      n = 1;
-      kp = args[0];
-      if (args.length === 2) {
-        n = parseInt(args[0]);
-        kp = args[1];
-      }
-      collection = context.resolve(kp);
-      template = [];
-      $.each(node.children(), function(idx, child) {
-        if (idx < n) {
-          return template.push($(child));
         } else {
-          return $(child).remove();
+          return arg;
         }
-      });
-      if (collection.length === 0) {
-        CATS.Util.hideNode(template);
       } else {
-        templateHtml = node.html();
-        node.html("");
-        zeroIndex = 0;
-        for (_i = 0, _len = collection.length; _i < _len; _i++) {
-          elem = collection[_i];
-          context.setZeroIndex(zeroIndex);
-          newNode = $(templateHtml);
-          context.push(elem);
-          node.append(newNode);
-          console.log("repeat-inner rending");
-          console.log(newNode);
-          engine._render(newNode, context);
-          context.pop();
-          zeroIndex += 1;
-        }
+        return null;
       }
-      context.setZeroIndex(0);
-      return [false, false];
     };
 
-    RepeatInner.prototype.recoverData = function(node, context, args, engine) {
-      var addIterable, firstPush, kp, n,
-        _this = this;
-      n = 1;
-      kp = args[0];
-      if (args.length === 2) {
-        n = parseInt(args[0]);
-        kp = args[1];
-      }
-      context.set(kp, []);
-      context.pushKeypath(kp);
-      addIterable = function(c) {
-        var iterable;
-        console.log("Adding Iterable");
-        iterable = c.pop();
-        console.log(iterable);
-        c.head().push(iterable);
-        return console.log("Container is  is: " + JSON.stringify(c.head()));
-      };
-      firstPush = true;
-      $.each(node.children(), function(idx, child) {
-        console.log("Head on iteration " + idx + " is: " + JSON.stringify(context.head()));
-        if (firstPush) {
-          firstPush = false;
-          context.push({});
-        }
-        if ((idx % n === 0) && (idx !== 0)) {
-          addIterable(context);
-          context.push({});
-        }
-        return engine._recoverData($(child), context);
-      });
-      addIterable(context);
-      context.pop();
-      return [false, false];
-    };
-
-    RepeatInner.prototype.recoverTemplate = function(node, context) {
-      return [false, false];
-    };
-
-    return RepeatInner;
+    return Command;
 
   })();
 
   $ = jQueryHcss;
 
-  __t('CATS.Commands').Template = (function() {
+  __t('CTS.Commands').Template = (function(_super) {
 
-    Template.name = 'Template';
+    __extends(Template, _super);
 
     function Template() {}
 
@@ -9783,23 +9471,40 @@ var CATS = {};
     };
 
     Template.prototype.applyTo = function(node, context, args, engine) {
-      var template, templateRef;
-      templateRef = args[0];
-      template = this.fetchTemplate(templateRef);
-      return this._applyTo(node, context, args, engine, template);
-    };
-
-    Template.prototype.fetchTemplate = function(ref) {
-      return $(ref).html();
+      var defaultTargetArgs, template, templateAddress;
+      defaultTargetArgs = args["."];
+      if (defaultTargetArgs) {
+        templateAddress = this._resolveArgument(defaultTargetArgs["."], node);
+        if (templateAddress) {
+          template = engine.templates.fetch(templateAddress, defaultTargetArgs["proxy"]);
+          return this._applyTo(node, context, args, engine, template);
+        }
+      }
     };
 
     Template.prototype._applyTo = function(node, context, args, engine, template) {
-      console.log(node.parent().html());
-      node.html(template);
-      console.log("Just resplaced TEMPLATE of node");
-      console.log(node.html());
-      console.log(node.parent().html());
-      return [true, true];
+      var scripts, scriptsToReturn, templateElem,
+        _this = this;
+      CTS.Util.setLastInserted(node);
+      console.log("----- Begin Template Application ------");
+      template = template.replace(/<script>/g, "<xscript>");
+      template = template.replace(/<\/script>/g, "</xscript>");
+      templateElem = $('<div class="cts-template" />');
+      templateElem.html(template);
+      scripts = templateElem.find('xscript');
+      scriptsToReturn = [];
+      $.each(scripts, function(idx, elem) {
+        var e;
+        e = $(elem);
+        e.remove();
+        return scriptsToReturn.push(e);
+      });
+      node.html(templateElem);
+      if (scriptsToReturn.length > 0) {
+        return [true, true, scriptsToReturn];
+      } else {
+        return [true, true];
+      }
     };
 
     Template.prototype.recoverData = function(node, context, args, engine) {
@@ -9812,81 +9517,29 @@ var CATS = {};
 
     return Template;
 
-  })();
+  })(CTS.Commands.Command);
 
-  $ = jQueryHcss;
+  __t('CTS').Options = (function() {
 
-  __t('CATS.Commands').Value = (function() {
+    function Options() {}
 
-    Value.name = 'Value';
+    Options.Default = function() {};
 
-    function Value() {}
+    Options.AttrForSavedData = "ctsstash";
 
-    Value.prototype.signature = function() {
-      return "value";
-    };
+    Options.ClassForValueNode = "cts-DataValueNode";
 
-    Value.prototype.applyTo = function(node, context, args, engine) {
-      var value;
-      value = context.resolve(args[0]);
-      node.html(value);
-      if (engine.opts.DyeNodes) {
-        node.addClass(CATS.Options.ClassForValueNode);
-      }
-      return [false, false];
-    };
+    Options.ClassForInvisible = "cts-InvisibleNode";
 
-    Value.prototype.recoverData = function(node, context, args, engine) {
-      var value;
-      value = node.html();
-      context.set(args[0], value);
-      return [false, false];
-    };
+    Options.DyeNodes = true;
 
-    Value.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return Value;
+    return Options;
 
   })();
 
   $ = jQueryHcss;
 
-  __t('CATS.Commands').With = (function() {
-
-    With.name = 'With';
-
-    function With() {}
-
-    With.prototype.signature = function() {
-      return "with";
-    };
-
-    With.prototype.applyTo = function(node, context, args, engine) {
-      context.pushKeypath(args[0]);
-      return [true, true];
-    };
-
-    With.prototype.recoverData = function(node, context, args, engine) {
-      context.set(args[0], {});
-      context.pushKeypath(args[0]);
-      return [true, true];
-    };
-
-    With.prototype.recoverTemplate = function(node, context) {
-      return node.clone();
-    };
-
-    return With;
-
-  })();
-
-  $ = jQueryHcss;
-
-  __t('CATS').Context = (function() {
-
-    Context.name = 'Context';
+  __t('CTS').Context = (function() {
 
     function Context(data) {
       this.aliases = {};
@@ -9913,10 +9566,16 @@ var CATS = {};
     Context.prototype.pushKeypath = function(keypath) {
       var obj;
       obj = this.resolve(keypath);
-      return this.push(obj);
+      if ((obj != null) && obj !== null) {
+        this.push(obj);
+        return true;
+      } else {
+        return false;
+      }
     };
 
     Context.prototype.pop = function(data) {
+      console.log("Context.pop()");
       return this.stack.pop();
     };
 
@@ -9951,7 +9610,7 @@ var CATS = {};
     };
 
     Context.prototype.set = function(keypath, value) {
-      console.log("SET " + keypath + " to " + value);
+      console.log("Context.push(", keypath, ", ", value, ")");
       if (keypath === ".") {
         return this.stack[this.stack.length - 1] = value;
       } else {
@@ -10027,141 +9686,160 @@ var CATS = {};
 
   })();
 
-  $ = jQueryHcss;
+  __t('CTS').Util = (function() {
 
-  __t('CATS').Engine = (function() {
+    function Util() {}
 
-    Engine.name = 'Engine';
+    Util.lastInserted = null;
 
-    function Engine(options) {
-      this.opts = $.extend({}, CATS.Options.Default(), options);
-      this.commands = [];
-      this._loadBasicCommandSet();
-    }
-
-    Engine.prototype.render = function(node, data) {
-      var context;
-      node = node || $('html');
-      data = data || window;
-      context = new CATS.Context(data);
-      return this._render(node, context);
+    Util.getLastInserted = function() {
+      return this.lastInserted;
     };
 
-    Engine.prototype.recoverData = function(node) {
-      var context,
-        _this = this;
-      node = node || $('html');
-      context = new CATS.Context({});
-      $.each(node, function(i, e) {
-        return _this._recoverData($(e), context);
-      });
-      return context.tail();
+    Util.setLastInserted = function(node) {
+      return this.lastInserted = node;
     };
 
-    Engine.prototype._render = function(jqnode, context) {
-      var _this = this;
-      return $.each(jqnode, function(i, node) {
-        var cats, command, kid, recurse, res, _i, _j, _len, _len1, _ref, _ref1, _results;
-        node = $(node);
-        recurse = true;
-        cats = CATS.Cascade.rulesForNode(node);
-        if (cats !== null) {
-          _ref = _this.commands;
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            command = _ref[_i];
-            if (command.signature() in cats) {
-              res = command.applyTo(node, context, cats[command.signature()], _this);
-              recurse = recurse && res[1];
-              if (!res[0]) {
-                break;
-              }
-            }
-          }
+    Util.hideNode = function(node) {
+      return node.addClass(CTS.Options.ClassForInvisible);
+    };
+
+    Util.showNode = function(node) {
+      return node.removeClass(CTS.Options.ClassForInvisible);
+    };
+
+    Util.nodeHidden = function(node) {
+      return node.hasClass(CTS.Options.ClassForInvisible);
+    };
+
+    Util.stashData = function(node, command, dict) {
+      var attr, str;
+      attr = node.attr("data-" + CTS.Options.AttrForSavedData);
+      if (!(attr != null) || attr === null) {
+        attr = {};
+      }
+      attr[command] = dict;
+      str = JSON.stringify(attr);
+      str = str.replace(/\\/g, "\\\\");
+      str = str.replace(/'/g, "\\'");
+      str = str.replace(/"/g, "'");
+      return node.attr("data-" + CTS.Options.AttrForSavedData, str);
+    };
+
+    Util.getDataStash = function(node, command) {
+      var stash, str;
+      str = node.attr("data-" + CTS.Options.AttrForSavedData);
+      if (typeof str !== "undefined") {
+        str = str.replace(/([^\\])'/g, '$1"');
+        str = str.replace(/\\'/g, "'");
+        str = str.replace(/\\\\/g, "\\");
+        stash = JSON.parse(str);
+        if (command in stash) {
+          return stash[command];
+        } else {
+          return {};
         }
-        if (recurse) {
-          _ref1 = node.children();
+      } else {
+        return {};
+      }
+    };
+
+    Util.fetchRemoteStringPlain = function(url, callback, xhrParams, params) {
+      return $.ajax({
+        url: url,
+        dataType: 'text',
+        success: callback,
+        beforeSend: function(xhr, settings) {
+          var key, _results;
           _results = [];
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            kid = _ref1[_j];
-            _results.push(_this._render($(kid), context));
+          for (key in params) {
+            _results.push(xhr[key] = params[key]);
           }
           return _results;
         }
       });
     };
 
-    Engine.prototype._recoverData = function(node, context) {
-      var cats, command, kid, recurse, res, _i, _j, _len, _len1, _ref, _ref1, _results;
-      recurse = true;
-      cats = CATS.Cascade.rulesForNode(node);
-      if (cats !== null) {
-        _ref = this.commands;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          command = _ref[_i];
-          if (command.signature() in cats) {
-            res = command.recoverData(node, context, cats[command.signature()], this);
-            recurse = recurse && res[1];
-            if (!res[0]) {
-              break;
+    Util.fetchRemoteStringSameDomain = function(url, callback, xhrParams, params) {
+      var firstCallback, urlParts;
+      urlParts = url.split("#");
+      params = params || {};
+      params['url'] = urlParts[0];
+      if (urlParts.length > 1) {
+        params['id'] = urlParts[1];
+      }
+      firstCallback = function(text, status, xhr) {
+        var cb, hitNode, textNode,
+          _this = this;
+        cb = xhr._requestedCallback;
+        if (xhr._idPart) {
+          textNode = $(text);
+          hitNode = null;
+          $.each(textNode, function(idx, elem) {
+            var n, res;
+            n = $(elem);
+            if (n.is(xhr._idPart)) {
+              return hitNode = n;
+            } else {
+              res = n.find(xhr._idPart).html();
+              if (res !== null) {
+                return hitNode = res;
+              }
             }
+          });
+        }
+        return cb(text, status, xhr);
+      };
+      return $.ajax({
+        url: urlParts[0],
+        dataType: 'text',
+        success: firstCallback,
+        beforeSend: function(xhr, settings) {
+          var key;
+          for (key in xhrParams) {
+            xhr[key] = xhrParams[key];
           }
-        }
+          xhr['_requestedCallback'] = callback;
+          if (urlParts.length > 1) {
+            return xhr['_idPart'] = "#" + urlParts[1];
+          }
+        },
+        data: params
+      });
+    };
+
+    Util.fetchRemoteStringBullfrog = function(template, proxyUrl, callback, xhrParams, params) {
+      var ribbitUrl, urlParts;
+      urlParts = template.split("#");
+      params = params || {};
+      params['url'] = urlParts[0];
+      if (urlParts.length > 1) {
+        params['id'] = urlParts[1];
       }
-      if (recurse) {
-        _ref1 = node.children();
-        _results = [];
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          kid = _ref1[_j];
-          _results.push(this._recoverData($(kid), context));
-        }
-        return _results;
-      }
+      ribbitUrl = proxyUrl + "?callback=?";
+      return $.ajax({
+        url: proxyUrl,
+        dataType: 'jsonp',
+        success: callback,
+        beforeSend: function(xhr, settings) {
+          var key, _results;
+          _results = [];
+          for (key in xhrParams) {
+            _results.push(xhr[key] = xhrParams[key]);
+          }
+          return _results;
+        },
+        data: params
+      });
     };
 
-    Engine.prototype._loadBasicCommandSet = function() {
-      this._addCommand(new CATS.Commands.With());
-      this._addCommand(new CATS.Commands.Data());
-      this._addCommand(new CATS.Commands.IfExist());
-      this._addCommand(new CATS.Commands.IfNExist());
-      this._addCommand(new CATS.Commands.Attr());
-      this._addCommand(new CATS.Commands.Template());
-      this._addCommand(new CATS.Commands.RepeatInner());
-      return this._addCommand(new CATS.Commands.Value());
-    };
-
-    Engine.prototype._addCommand = function(command) {
-      return this.commands.push(command);
-    };
-
-    return Engine;
-
-  })();
-
-  __t('CATS').Options = (function() {
-
-    Options.name = 'Options';
-
-    function Options() {}
-
-    Options.Default = function() {};
-
-    Options.AttrForSavedData = "catsdatastash";
-
-    Options.ClassForValueNode = "cats-DataValueNode";
-
-    Options.ClassForInvisible = "cats-InsivibleNode";
-
-    Options.DyeNodes = true;
-
-    return Options;
+    return Util;
 
   })();
 
   $ = jQueryHcss;
 
-  __t('CATS').Parser = (function() {
-
-    Parser.name = 'Parser';
+  __t('CTS').Parser = (function() {
 
     function Parser() {}
 
@@ -10185,20 +9863,70 @@ var CATS = {};
     };
 
     Parser.parseBlock = function(block) {
-      var loc, parsedValue, property, ret, rule, rules, value, _i, _len;
+      var loc, property, ret, rule, value, _i, _len, _ref;
       ret = {};
-      rules = block.split(';');
-      for (_i = 0, _len = rules.length; _i < _len; _i++) {
-        rule = rules[_i];
-        loc = rule.indexOf(':');
-        if (loc >= 0) {
-          property = $.trim(rule.substring(0, loc));
-          value = $.trim(rule.substring(loc + 1));
-          if (property !== "" && value !== "") {
-            parsedValue = value.split(",");
-            ret[property] = parsedValue;
+      _ref = block.split(";");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        rule = _ref[_i];
+        if (rule.trim().length > 0) {
+          loc = rule.indexOf(':');
+          if (loc >= 0) {
+            property = $.trim(rule.substring(0, loc));
+            value = $.trim(rule.substring(loc + 1));
+            if (property !== "" && value !== "") {
+              property = this.parseProperty(property);
+              property["value"] = value;
+              this.foldInPropertyValue(ret, property);
+            }
           }
         }
+      }
+      return ret;
+    };
+
+    Parser.foldInPropertyValue = function(ret, pv) {
+      if (!("target" in pv)) {
+        pv["target"] = ".";
+      }
+      if (!("variant" in pv)) {
+        pv["variant"] = ".";
+      }
+      if (!(pv.property in ret)) {
+        ret[pv.property] = {};
+      }
+      if (!(pv.target in ret[pv.property])) {
+        ret[pv.property][pv.target] = {};
+      }
+      return ret[pv.property][pv.target][pv.variant] = pv.value;
+    };
+
+    Parser.parseProperty = function(prop) {
+      var firstDash, openParen, property, ret, target, variant;
+      property = null;
+      variant = null;
+      target = null;
+      if (prop.trim().length === 0) {
+        return {};
+      }
+      openParen = prop.indexOf("(");
+      if (openParen >= 0) {
+        target = prop.substring(openParen + 1, prop.length - 1);
+        prop = prop.substring(0, openParen);
+      }
+      firstDash = prop.indexOf("-");
+      if (firstDash >= 0) {
+        variant = prop.substring(firstDash + 1, prop.length);
+        prop = prop.substring(0, firstDash);
+      }
+      property = prop;
+      ret = {
+        "property": property
+      };
+      if (variant !== null) {
+        ret["variant"] = variant;
+      }
+      if (target !== null) {
+        ret["target"] = target;
       }
       return ret;
     };
@@ -10207,58 +9935,886 @@ var CATS = {};
 
   })();
 
-  __t('CATS').Util = (function() {
+  $ = jQueryHcss;
 
-    Util.name = 'Util';
+  RulesState = {
+    NONE_LOADED: 0,
+    WAIT_FOR_REMOTE: 1
+  };
 
-    function Util() {}
+  __t('CTS').Rules = (function() {
 
-    Util.hideNode = function(node) {
-      return node.addClass(CATS.Options.ClassForInvisible);
+    function Rules() {
+      this._loadLinkResponse = __bind(this._loadLinkResponse, this);
+
+      this._remoteLoadFinished = __bind(this._remoteLoadFinished, this);
+
+      this._findCtsLinks = __bind(this._findCtsLinks, this);
+
+      this._globalRulesForNode = __bind(this._globalRulesForNode, this);
+
+      this._inlineRulesForNode = __bind(this._inlineRulesForNode, this);
+
+      this._incorporateBlocks = __bind(this._incorporateBlocks, this);
+
+      this.rulesForNode = __bind(this.rulesForNode, this);
+
+      this.loadLocalElement = __bind(this.loadLocalElement, this);
+
+      this.loadLocal = __bind(this.loadLocal, this);
+
+      this.loadLinked = __bind(this.loadLinked, this);
+
+      this.load = __bind(this.load, this);
+
+      this.setCallback = __bind(this.setCallback, this);
+      this.blocks = {};
+      this.loadedUrls = [];
+      this.urlsToLoad = 0;
+      this.callback = null;
+      this.state = RulesState.NONE_LOADED;
+    }
+
+    Rules.prototype.setCallback = function(callback) {
+      return this.callback = callback;
     };
 
-    Util.showNode = function(node) {
-      return node.removeClass(CATS.Options.ClassForInvisible);
-    };
-
-    Util.nodeHidden = function(node) {
-      return node.hasClass(CATS.Options.ClassForInvisible);
-    };
-
-    Util.stashData = function(node, command, dict) {
-      var attr, str;
-      attr = node.attr("data-" + CATS.Options.AttrForSavedData);
-      if (!(attr != null) || attr === null) {
-        attr = {};
+    Rules.prototype.load = function() {
+      this.loadLinked();
+      if (this.state !== RulesState.WAIT_FOR_REMOTE) {
+        return this._remoteLoadFinished();
       }
-      attr[command] = dict;
-      str = JSON.stringify(attr);
-      str = str.replace(/\\/g, "\\\\");
-      str = str.replace(/'/g, "\\'");
-      str = str.replace(/"/g, "'");
-      return node.attr("data-" + CATS.Options.AttrForSavedData, str);
     };
 
-    Util.getDataStash = function(node, command) {
-      var stash, str;
-      str = node.attr("data-" + CATS.Options.AttrForSavedData);
-      if (typeof str !== "undefined") {
-        str = str.replace(/([^\\])'/g, '$1"');
-        str = str.replace(/\\'/g, "'");
-        str = str.replace(/\\\\/g, "\\");
-        stash = JSON.parse(str);
-        if (command in stash) {
-          return stash[command];
-        } else {
-          return {};
+    Rules.prototype.loadLinked = function() {
+      var link, links, linksToLoad, _i, _j, _len, _len1, _results;
+      links = this._findCtsLinks();
+      linksToLoad = [];
+      for (_i = 0, _len = links.length; _i < _len; _i++) {
+        link = links[_i];
+        if (__indexOf.call(this.loadedUrls, link) < 0) {
+          linksToLoad.push(link);
         }
-      } else {
-        return {};
+      }
+      this.urlsToLoad = linksToLoad.length;
+      _results = [];
+      for (_j = 0, _len1 = linksToLoad.length; _j < _len1; _j++) {
+        link = linksToLoad[_j];
+        this.state = RulesState.WAIT_FOR_REMOTE;
+        console.log("Rules: Loading remote", link);
+        _results.push(CTS.Util.fetchRemoteStringPlain(link, this._loadLinkResponse, {
+          url: link
+        }));
+      }
+      return _results;
+    };
+
+    Rules.prototype.loadLocal = function() {
+      var _this = this;
+      console.log("Rules: Loading local");
+      return $.each($('script[type="text/cts"]'), function(idx, elem) {
+        var e;
+        e = $(elem);
+        if (!e.attr("src")) {
+          return _this.loadLocalElement(e);
+        }
+      });
+    };
+
+    Rules.prototype.loadLocalElement = function(elem) {
+      var blocks, ctsText;
+      ctsText = elem.html();
+      blocks = CTS.Parser.parseBlocks(ctsText);
+      return this._incorporateBlocks(blocks);
+    };
+
+    Rules.prototype.rulesForNode = function(node) {
+      var global, inline, rules;
+      global = this._globalRulesForNode(node);
+      inline = this._inlineRulesForNode(node);
+      if (!global && !inline) {
+        return null;
+      }
+      rules = {};
+      if (global) {
+        $.extend(rules, global);
+      }
+      if (inline) {
+        $.extend(rules, inline);
+      }
+      return rules;
+    };
+
+    Rules.prototype._incorporateBlocks = function(blocks) {
+      return $.extend(this.blocks, blocks);
+    };
+
+    Rules.prototype._inlineRulesForNode = function(node) {
+      var block, data;
+      if (node.data != null) {
+        data = node.data();
+        if (data != null) {
+          block = node.data()["cts"];
+          if (block != null) {
+            block = CTS.Parser.parseBlock(block);
+            return block;
+          }
+        }
+      }
+      return null;
+    };
+
+    Rules.prototype._globalRulesForNode = function(node) {
+      var hit, key, ret;
+      ret = {};
+      hit = false;
+      for (key in this.blocks) {
+        if (node.is(key)) {
+          hit = true;
+          $.extend(ret, this.blocks[key]);
+        }
+      }
+      if (hit) {
+        return ret;
+      }
+      return null;
+    };
+
+    Rules.prototype._findCtsLinks = function() {
+      var ret,
+        _this = this;
+      ret = [];
+      $.each($('script[type="text/cts"]'), function(idx, elem) {
+        var e;
+        e = $(elem);
+        if (e.attr("src")) {
+          return ret.push(e.attr("src"));
+        }
+      });
+      return ret;
+    };
+
+    Rules.prototype._remoteLoadFinished = function() {
+      if (this.callback) {
+        return this.callback(this);
       }
     };
 
-    return Util;
+    Rules.prototype._loadLinkResponse = function(text, status, xhr) {
+      var blocks;
+      blocks = CTS.Parser.parseBlocks(text);
+      this._incorporateBlocks(blocks);
+      this.loadedUrls.push[xhr.url];
+      this.urlsToLoad = this.urlsToLoad - 1;
+      if (this.urlsToLoad === 0) {
+        return this._remoteLoadFinished();
+      }
+    };
+
+    return Rules;
 
   })();
+
+  $ = jQueryHcss;
+
+  __t('CTS.Commands').Data = (function(_super) {
+
+    __extends(Data, _super);
+
+    function Data() {}
+
+    Data.prototype.signature = function() {
+      return "data";
+    };
+
+    Data.prototype.applyTo = function(node, context, args, engine) {
+      console.log("----------------------------------- Data Rebase (BEGIN) --------");
+      engine._recoverData(node, context);
+      console.log("----------------------------------- Data Rebase (END) --------");
+      return [true, true];
+    };
+
+    Data.prototype.recoverData = function(node, context, args, engine) {
+      return [true, true];
+    };
+
+    Data.prototype.recoverTemplate = function(node, context) {
+      return node.clone();
+    };
+
+    return Data;
+
+  })(CTS.Commands.Command);
+
+  $ = jQueryHcss;
+
+  __t('CTS.Commands').If = (function(_super) {
+
+    __extends(If, _super);
+
+    function If() {}
+
+    If.prototype.signature = function() {
+      return "if";
+    };
+
+    If.prototype.applyTo = function(node, context, args, engine) {
+      var data, defaultArgs, show, value, valueKey;
+      defaultArgs = args['.'];
+      show = true;
+      data = {};
+      if ('exist' in defaultArgs) {
+        valueKey = this._resolveArgument(defaultArgs['exist'], node);
+        value = context.resolve(valueKey);
+        if (value !== null) {
+          data[valueKey] = value;
+        } else {
+          show = false;
+        }
+      }
+      if ('nexist' in defaultArgs) {
+        valueKey = this._resolveArgument(defaultArgs['nexist'], node);
+        value = context.resolve(valueKey);
+        if (value !== null) {
+          data[valueKey] = value;
+          show = false;
+        }
+      }
+      CTS.Util.stashData(node, this.signature(), data);
+      if (show) {
+        CTS.Util.showNode(node);
+        return [true, true];
+      } else {
+        CTS.Util.hideNode(node);
+        return [false, false];
+      }
+    };
+
+    If.prototype.recoverData = function(node, context, args, engine) {
+      var data, k, v;
+      data = CTS.Util.getDataStash(node, this.signature());
+      for (k in data) {
+        v = data[k];
+        context.set(k, v);
+      }
+      if (CTS.Util.nodeHidden(node)) {
+        return [false, false];
+      } else {
+        return [true, true];
+      }
+    };
+
+    If.prototype.recoverTemplate = function(node, context) {
+      return node.clone();
+    };
+
+    return If;
+
+  })(CTS.Commands.Command);
+
+  $ = jQueryHcss;
+
+  __t('CTS.Commands').Repeat = (function(_super) {
+
+    __extends(Repeat, _super);
+
+    function Repeat() {}
+
+    Repeat.prototype.signature = function() {
+      return "repeat";
+    };
+
+    Repeat.prototype.applyTo = function(node, context, args, engine) {
+      var collection, defaultArg, defaultTarget, elem, newNode, step, template, templateHtml, zeroIndex, _i, _len,
+        _this = this;
+      defaultTarget = args["."];
+      defaultArg = this._resolveArgument(defaultTarget["."], node);
+      step = 1;
+      if ("step" in defaultTarget) {
+        step = parseInt(defaultTarget["step"]);
+      }
+      collection = context.resolve(defaultArg);
+      template = [];
+      $.each(node.children(), function(idx, child) {
+        if (idx < step) {
+          return template.push($(child));
+        } else {
+          return $(child).remove();
+        }
+      });
+      if (!(collection != null) || collection.length === 0) {
+        CTS.Util.hideNode(node);
+      } else {
+        templateHtml = node.html();
+        node.html("");
+        zeroIndex = 0;
+        for (_i = 0, _len = collection.length; _i < _len; _i++) {
+          elem = collection[_i];
+          context.setZeroIndex(zeroIndex);
+          newNode = $(templateHtml);
+          context.push(elem);
+          console.log("console head (render repeat)", context.head(), newNode);
+          node.append(newNode);
+          engine._render(newNode, context);
+          context.pop();
+          zeroIndex += 1;
+        }
+      }
+      context.setZeroIndex(0);
+      return [false, false];
+    };
+
+    Repeat.prototype.recoverData = function(node, context, args, engine) {
+      var addIterable, defaultArg, defaultTarget, firstPush, step,
+        _this = this;
+      defaultTarget = args["."];
+      defaultArg = this._resolveArgument(defaultTarget["."], node);
+      console.log("Recover kp", defaultArg);
+      step = 1;
+      if (__indexOf.call(defaultTarget, "step") >= 0) {
+        step = parseInt(defaultTarget["step"]);
+      }
+      context.set(defaultArg, []);
+      context.pushKeypath(defaultArg);
+      addIterable = function(c) {
+        var iterable;
+        iterable = c.pop();
+        return c.head().push(iterable);
+      };
+      firstPush = true;
+      $.each(node.children(), function(idx, child) {
+        if (firstPush) {
+          firstPush = false;
+          context.push({});
+        }
+        if ((idx % step === 0) && (idx !== 0)) {
+          addIterable(context);
+          context.push({});
+        }
+        return engine._recoverData($(child), context);
+      });
+      addIterable(context);
+      context.pop();
+      return [false, false];
+    };
+
+    Repeat.prototype.recoverTemplate = function(node, context) {
+      return [false, false];
+    };
+
+    return Repeat;
+
+  })(CTS.Commands.Command);
+
+  __t('CTS').Templates = (function() {
+
+    function Templates() {
+      this._loadRemoteResponse = __bind(this._loadRemoteResponse, this);
+
+      this.loadRemote = __bind(this.loadRemote, this);
+
+      this._preloadResponse = __bind(this._preloadResponse, this);
+
+      this.preLoad = __bind(this.preLoad, this);
+      this.templates = {};
+      this.templateCommand = new CTS.Commands.Template();
+      this.preloadCount = 0;
+      this.preloadCallback = null;
+    }
+
+    Templates.prototype.fetch = function(name, proxy) {
+      console.log("Templates: Fetching", name);
+      return this.templates[name];
+    };
+
+    Templates.prototype.preLoad = function(rules, callback) {
+      var block, selector, template, toLoad, _i, _len, _results;
+      this.preloadCount = 0;
+      this.preloadCallback = callback;
+      toLoad = [];
+      template = this.templateCommand.signature();
+      for (selector in rules) {
+        block = rules[selector];
+        if (this.needsLoad(block)) {
+          this.preloadCount += 1;
+          toLoad.push(block);
+        }
+      }
+      if (this.preloadCount === 0) {
+        console.log("Templates: No templates to preload. Calling callback.");
+        return this.preloadCallback();
+      } else {
+        console.log("Templates: Preloading", this.preloadCount, "templates");
+        _results = [];
+        for (_i = 0, _len = toLoad.length; _i < _len; _i++) {
+          block = toLoad[_i];
+          _results.push(this.load(block, this._preloadResponse));
+        }
+        return _results;
+      }
+    };
+
+    Templates.prototype._preloadResponse = function() {
+      this.preloadCount -= 1;
+      console.log("Templates: Preload Callback", this.preloadCount);
+      if (this.preloadCount === 0 && this.preloadCallback !== null) {
+        this.preloadCallback();
+      }
+      return this.preloadCallback = null;
+    };
+
+    Templates.prototype.needsLoad = function(rules) {
+      var tBlock, tName;
+      if (rules !== null && this.templateCommand.signature() in rules) {
+        tBlock = rules[this.templateCommand.signature()];
+        tName = tBlock["."]["."];
+        if (tName in this.templates) {
+          return false;
+        } else {
+          console.log("Templates needs load because of", tName);
+          return true;
+        }
+      } else {
+        return false;
+      }
+    };
+
+    Templates.prototype.load = function(rules, callback) {
+      var tBlock, tName, tProxy;
+      if (rules !== null && this.templateCommand.signature() in rules) {
+        tBlock = rules[this.templateCommand.signature()];
+        tName = tBlock["."]["."];
+        tProxy = tBlock["."]["proxy"];
+        if (__indexOf.call(this.templates, tName) >= 0) {
+          return this.templates[tName];
+        } else {
+          if (this.isLocal(tName)) {
+            this.loadLocal(tName);
+            return callback();
+          } else {
+            return this.loadRemote(tName, tProxy, callback);
+          }
+        }
+      }
+    };
+
+    Templates.prototype.isLocal = function(tName) {
+      return tName[0] === "#";
+    };
+
+    Templates.prototype.loadLocal = function(tName) {
+      var value;
+      value = $(tName).html();
+      this.templates[tName] = value;
+      return value;
+    };
+
+    Templates.prototype.loadRemote = function(tName, proxy, callback) {
+      var save;
+      save = {
+        'tname': tName,
+        'callback': callback
+      };
+      if (proxy != null) {
+        return CTS.Util.fetchRemoteStringBullfrog(tName, proxy, this._loadRemoteResponse, save);
+      } else {
+        return CTS.Util.fetchRemoteStringSameDomain(tName, this._loadRemoteResponse, save);
+      }
+    };
+
+    Templates.prototype._loadRemoteResponse = function(text, status, xhr) {
+      var callback, tName;
+      callback = xhr.callback;
+      tName = xhr.tname;
+      console.log("Templates: Loaded remote", tName);
+      this.templates[tName] = text;
+      return callback();
+    };
+
+    return Templates;
+
+  })();
+
+  $ = jQueryHcss;
+
+  __t('CTS.Commands').Value = (function(_super) {
+
+    __extends(Value, _super);
+
+    function Value() {}
+
+    Value.prototype.signature = function() {
+      return "value";
+    };
+
+    Value.prototype.applyTo = function(node, context, args, engine) {
+      var shouldContinue, shouldRecurse, target, tup;
+      shouldContinue = false;
+      shouldRecurse = true;
+      for (target in args) {
+        tup = this._applyToTarget(node, context, args[target], engine, target);
+        shouldContinue = shouldContinue || tup[0];
+        shouldRecurse = shouldRecurse && tup[1];
+      }
+      return [shouldContinue, shouldRecurse];
+    };
+
+    Value.prototype._applyToTarget = function(node, context, args, engine, target) {
+      var argument, value;
+      argument = this._resolveArgument(args["."], node);
+      value = context.resolve(argument);
+      if (engine.opts.DyeNodes) {
+        node.addClass(CTS.Options.ClassForValueNode);
+      }
+      if (target === ".") {
+        console.log("SetValue(", argument, ",", value, ")");
+        node.html(value);
+        if ("type" in args && args["type"] === "html") {
+          return [true, true];
+        } else {
+          return [false, false];
+        }
+      } else {
+        if (target[0] === "@") {
+          node.attr(target.substring(1), value);
+        } else {
+          console.log("Error: do not understand target", target);
+        }
+        return [true, true];
+      }
+    };
+
+    Value.prototype.recoverData = function(node, context, args, engine) {
+      var shouldContinue, shouldRecurse, target, tup;
+      shouldContinue = false;
+      shouldRecurse = true;
+      for (target in args) {
+        tup = this._recoverDataFromTarget(node, context, args[target], engine, target);
+        shouldContinue = shouldContinue || tup[0];
+        shouldRecurse = shouldRecurse && tup[1];
+      }
+      return [shouldContinue, shouldRecurse];
+    };
+
+    Value.prototype._recoverDataFromTarget = function(node, context, args, engine, target) {
+      var argument, value;
+      argument = this._resolveArgument(args["."], node);
+      if (target === ".") {
+        value = node.html();
+        console.log("Recovered(", argument, ",", value, ")");
+        context.set(argument, value);
+        if ("type" in args && args["type"] === "html") {
+          return [true, true];
+        } else {
+          return [false, false];
+        }
+      } else {
+        if (target[0] === "@") {
+          value = node.attr(target.substring(1));
+        } else {
+          console.log("Error: do not understand target", target);
+        }
+        if (value != null) {
+          context.set(argument, value);
+        }
+        return [true, true];
+      }
+    };
+
+    Value.prototype.recoverTemplate = function(node, context) {
+      return node.clone();
+    };
+
+    return Value;
+
+  })(CTS.Commands.Command);
+
+  $ = jQueryHcss;
+
+  __t('CTS.Commands').With = (function(_super) {
+
+    __extends(With, _super);
+
+    function With() {}
+
+    With.prototype.signature = function() {
+      return "with";
+    };
+
+    With.prototype.applyTo = function(node, context, args, engine) {
+      var defaultTarget, defaultVariant, pop, success;
+      defaultTarget = args["."];
+      defaultVariant = this._resolveArgument(defaultTarget["."], node);
+      success = context.pushKeypath(defaultVariant);
+      if (success) {
+        console.log("With (render, success):", node.clone(), defaultVariant, " = ", JSON.stringify(context.head()));
+      } else {
+        console.log("With (render, fail):", node.clone(), defaultVariant);
+      }
+      pop = function(node, rules, context) {
+        console.log("With (render, end)", node.clone());
+        return context.pop();
+      };
+      if (success) {
+        return [true, true, null, [pop]];
+      } else {
+        return [true, true];
+      }
+    };
+
+    With.prototype.recoverData = function(node, context, args, engine) {
+      var defaultTarget, defaultVariant, pop;
+      defaultTarget = args["."];
+      defaultVariant = this._resolveArgument(defaultTarget["."], node);
+      console.log("With (recover):", node.clone(), defaultVariant);
+      context.set(defaultVariant, {});
+      context.pushKeypath(defaultVariant);
+      pop = function(node, rules, context) {
+        console.log("With (recover, end)", node.clone());
+        return context.pop();
+      };
+      return [true, true, null, [pop]];
+    };
+
+    With.prototype.recoverTemplate = function(node, context) {
+      return node.clone();
+    };
+
+    return With;
+
+  })(CTS.Commands.Command);
+
+  $ = jQueryHcss;
+
+  __t('CTS').Engine = (function() {
+
+    function Engine(options) {
+      this._recoverData = __bind(this._recoverData, this);
+
+      this._renderNodeWithRules = __bind(this._renderNodeWithRules, this);
+
+      this._render = __bind(this._render, this);
+      this.opts = $.extend({}, CTS.Options.Default(), options);
+      this.commands = [];
+      this.rules = new CTS.Rules();
+      this.templates = new CTS.Templates();
+      this._loadBasicCommandSet();
+    }
+
+    Engine.prototype.render = function(node, data) {
+      var context;
+      node = node || $('html');
+      data = data || window;
+      context = new CTS.Context(data);
+      return this._render(node, context);
+    };
+
+    Engine.prototype.recoverData = function(node) {
+      var context,
+        _this = this;
+      console.log("RECOVER", node);
+      node = node || $('html');
+      context = new CTS.Context({});
+      $.each(node, function(i, e) {
+        return _this._recoverData($(e), context);
+      });
+      return context.tail();
+    };
+
+    Engine.prototype._render = function(jqnode, context) {
+      var _this = this;
+      return $.each(jqnode, function(i, node) {
+        var rules;
+        node = $(node);
+        rules = _this.rules.rulesForNode(node);
+        if (_this.templates.needsLoad(rules)) {
+          return _this.templates.load(rules, function() {
+            return _this._renderNodeWithRules(node, rules, context);
+          });
+        } else {
+          return _this._renderNodeWithRules(node, rules, context);
+        }
+      });
+    };
+
+    Engine.prototype._renderNodeWithRules = function(node, rules, context) {
+      var command, f, functions, kid, realScript, recurse, res, script, scriptBody, scripts, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
+      recurse = true;
+      scripts = [];
+      functions = [];
+      if (rules !== null) {
+        _ref = this.commands;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          command = _ref[_i];
+          if (command.signature() in rules) {
+            res = command.applyTo(node, context, rules[command.signature()], this);
+            if (res.length > 2 && res[2] !== null) {
+              _ref1 = res[2];
+              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                script = _ref1[_j];
+                scripts.push(script);
+              }
+            }
+            if (res.length > 3 && res[3] !== null) {
+              _ref2 = res[3];
+              for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+                f = _ref2[_k];
+                functions.push(f);
+              }
+            }
+            recurse = recurse && res[1];
+            if (!res[0]) {
+              break;
+            }
+          }
+        }
+      }
+      if (recurse) {
+        _ref3 = node.children();
+        for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+          kid = _ref3[_l];
+          this._render($(kid), context);
+        }
+      }
+      for (_m = 0, _len4 = functions.length; _m < _len4; _m++) {
+        f = functions[_m];
+        f(node, rules, context);
+      }
+      _results = [];
+      for (_n = 0, _len5 = scripts.length; _n < _len5; _n++) {
+        script = scripts[_n];
+        console.log("Engine: Executing scripts");
+        scriptBody = script.html();
+        scriptBody = scriptBody.replace(/&gt;/g, ">");
+        scriptBody = scriptBody.replace(/&amp;/g, "&");
+        scriptBody = scriptBody.replace(/&lt;/g, "<");
+        scriptBody = scriptBody.replace(/<!--\[CDATA\[/g, "");
+        scriptBody = scriptBody.replace(/]]>/g, "");
+        console.log("Script", scriptBody);
+        realScript = $('<script />').html(scriptBody);
+        _results.push($('body').append(realScript));
+      }
+      return _results;
+    };
+
+    Engine.prototype._recoverData = function(jqnode, context) {
+      var _this = this;
+      return $.each(jqnode, function(i, node) {
+        var rules;
+        node = $(node);
+        rules = _this.rules.rulesForNode(node);
+        if (_this.templates.needsLoad(rules)) {
+          console.log("Engine: Recover data (needs load)", node.clone(), rules);
+          return _this.templates.load(rules, function() {
+            return _this._recoverDataWithRules(node, rules, context);
+          });
+        } else {
+          console.log("Engine: Recover data", node.clone(), rules);
+          return _this._recoverDataWithRules(node, rules, context);
+        }
+      });
+    };
+
+    Engine.prototype._recoverDataWithRules = function(node, rules, context) {
+      var command, f, functions, kid, recurse, res, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _results;
+      console.log("Engine: Recover data with rules", node.clone(), rules);
+      recurse = true;
+      functions = [];
+      if (rules !== null) {
+        _ref = this.commands;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          command = _ref[_i];
+          if (command.signature() in rules) {
+            res = command.recoverData(node, context, rules[command.signature()], this);
+            if (res.length > 3 && res[3] !== null) {
+              _ref1 = res[3];
+              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                f = _ref1[_j];
+                functions.push(f);
+              }
+            }
+            recurse = recurse && res[1];
+            if (!res[0]) {
+              break;
+            }
+          }
+        }
+      }
+      if (recurse) {
+        _ref2 = node.children();
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          kid = _ref2[_k];
+          this._recoverData($(kid), context);
+        }
+      }
+      _results = [];
+      for (_l = 0, _len3 = functions.length; _l < _len3; _l++) {
+        f = functions[_l];
+        _results.push(f(node, rules, context));
+      }
+      return _results;
+    };
+
+    Engine.prototype._loadBasicCommandSet = function() {
+      this._addCommand(new CTS.Commands.Data());
+      this._addCommand(new CTS.Commands.With());
+      this._addCommand(new CTS.Commands.If());
+      this._addCommand(new CTS.Commands.Template());
+      this._addCommand(new CTS.Commands.Repeat());
+      return this._addCommand(new CTS.Commands.Value());
+    };
+
+    Engine.prototype._addCommand = function(command) {
+      return this.commands.push(command);
+    };
+
+    return Engine;
+
+  })();
+
+  $ = jQueryHcss;
+
+  __t('CTS').Bootstrap = (function() {
+
+    function Bootstrap() {
+      this.remoteTemplatesLoaded = __bind(this.remoteTemplatesLoaded, this);
+
+      this.remoteRulesLoaded = __bind(this.remoteRulesLoaded, this);
+
+      this.loadCTS = __bind(this.loadCTS, this);
+
+      var _this = this;
+      $(function() {
+        return _this.loadCTS();
+      });
+    }
+
+    Bootstrap.prototype.loadCTS = function() {
+      CTS.engine = new CTS.Engine();
+      console.log("Bootstrap: Loading Remote Rules");
+      CTS.engine.rules.setCallback(this.remoteRulesLoaded);
+      return CTS.engine.rules.load();
+    };
+
+    Bootstrap.prototype.remoteRulesLoaded = function() {
+      console.log("Bootstrap: Done loading Remote Rules");
+      console.log("Bootstrap: Loading Local Rules");
+      CTS.engine.rules.loadLocal();
+      console.log("Bootstrap: Done loading Local Rules", CTS.engine.rules.blocks);
+      console.log("Bootstrap: Prefetching Templates");
+      return CTS.engine.templates.preLoad(CTS.engine.rules.blocks, this.remoteTemplatesLoaded);
+    };
+
+    Bootstrap.prototype.remoteTemplatesLoaded = function() {
+      console.log("Bootstrap: Done prefetching Templates");
+      console.log("Bootstrap: Rendering CTS");
+      return CTS.engine.render();
+    };
+
+    return Bootstrap;
+
+  })();
+
+  CTS.bootstrap = new CTS.Bootstrap();
 
 }).call(this);
