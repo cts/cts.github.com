@@ -7,7 +7,8 @@ tagline:
 
 The Google Map CTS Widget helps you include a simple Google Map on your website
 withoiut any JavaScript. You can add pins, and if you want, custom markers and
-popup windows. 
+popup windows. The [result](example.html) of this tutorial is also available
+for you to copy and paste.
 
 ### Step 1: Link to the library
 
