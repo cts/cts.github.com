@@ -6,15 +6,7 @@
       var widget = CTS.Util.getLastInserted();
       var tickerName = widget.find(".tickerName").first().val();
       var tickerValue = widget.find(".tickerValue").first();
-      alert("getting ticker value");
-      $.getJSON(
-        "http://finance.google.com/finance/info",
-        { "client": "ig",
-          "q": tickerName },
-        function(resp) {
-          alert("resp");
-          tickerValue.val(JSON.stringify(resp.l));
-        });
+      tickerVaue.val("FOO");
     </script>
   </section>
 </body>
