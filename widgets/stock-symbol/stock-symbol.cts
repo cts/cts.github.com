@@ -8,4 +8,3 @@
 .tickerName {
   value: tickerName;
 }
-
