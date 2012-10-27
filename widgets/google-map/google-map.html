@@ -77,8 +77,17 @@
             }
           }
 
-          console.log("Marker", markerOpts);
           var marker = new google.maps.Marker(markerOpts);
+
+          if (("description" in markerData) && (markerData["description"] != null)) {
+            var infowindow = new google.maps.InfoWindow({
+              content: markerData["description"];
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(map, marker);
+            });
+          }
+
         });
       }
   
