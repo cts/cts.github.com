@@ -1,0 +1,22 @@
+<html>
+<body>
+  <section id="stock-symbol" style="display:none"><span>
+    <span class="tickerName">AAPL</span><span class="tickerValue">800.00</span>
+    <script>
+      var widget = CTS.Util.getLastInserted();
+      var tickerName = widget.find(".tickerName").first().val();
+      var tickerValue = widget.find(".tickerValue").first();
+      $.getJSON(
+        "http://finance.google.com/finance/info",
+        { "client": "ig",
+          "q": tickerName },
+        function(resp) {
+          tickerValue.val(JSON.stringify(resp.l));
+        });
+    </script>
+  </section>
+</body>
+</html>
+
+
+
