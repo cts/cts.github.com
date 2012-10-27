@@ -64,6 +64,7 @@
             var imageUrl = markerData["image"].replace(/^\s+|\s+$/g, '');
             if (imageUrl.length > 0) {
               markerOpts["image"] = imageUrl;
+              console.log("OOOH WE GOT AN IMAGE");
             }
           }
           if (("title" in markerData) && (markerData["title"] != null)) {
