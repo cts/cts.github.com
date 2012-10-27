@@ -22,8 +22,9 @@
           <td class="title">Dummy Title</td>
           <td class="lat">Dummy Lat</td>
           <td class="lng">Dummy Lng</td>
-          <td class="image">Dummy Lng</td>
-          <td class="description">Dummy Lng</td>
+          <td class="image">IMG</td>
+          <td class="description">Desc</td>
+          <td class="description-maxwidth">200</td>
         </tr>
       </table>
     </div>
@@ -80,9 +81,15 @@
           var marker = new google.maps.Marker(markerOpts);
 
           if (("description" in markerData) && (markerData["description"] != null)) {
-            var infowindow = new google.maps.InfoWindow({
-              content: markerData["description"]
-            });
+            var infoOpts = {};
+            infoOpts["content"] = markerData["description"];
+            if (("description-maxwidth" in markerData) && (markerData["description-maxwidth"] != null)) {
+              var maxWidth = markerData["description-maxwidth"].replace(/^\s+|\s+$/g, '');
+              if (maxWidth.length > 0) {
+                infoOpts["maxWidth"] = parseInt(maxWidth);
+              }
+            }
+            var infowindow = new google.maps.InfoWindow(infoOpts);
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.open(map, marker);
             });

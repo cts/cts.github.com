@@ -49,6 +49,10 @@
   value: description;
 }
 
+.map table.markers td.description-maxwidth {
+  value: description-maxwidth;
+}
+
 .map table.markers td.lng {
   value: lng;
 }
