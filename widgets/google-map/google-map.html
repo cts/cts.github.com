@@ -61,6 +61,7 @@
           };
   
           if (("image" in markerData) && (markerData["image"] != null)) {
+            console.log("There is an image");
             var imageUrl = markerData["image"].replace(/^\s+|\s+$/g, '');
             if (imageUrl.length > 0) {
               markerOpts["image"] = imageUrl;
