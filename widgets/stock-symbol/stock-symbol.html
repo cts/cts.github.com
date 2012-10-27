@@ -1,13 +1,49 @@
 <html>
+<head>
+  <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
+</head>
 <body>
   <section id="ticker" style="display:none"><span>
     <span class="tickerName">AAPL</span><span class="tickerValue">800.00</span>
     <script>
       var widget = CTS.Util.getLastInserted();
-      var tickerName = widget.find(".tickerName").first().val();
+      var tickerName = widget.find(".tickerName").first().html();
       var tickerValue = widget.find(".tickerValue").first();
-      tickerVaue.val("FOO");
-    </script>
+      console.log(tickerName);
+      jQueryHcss.getJSON(
+        "http://query.yahooapis.com/v1/public/yql?callback=?",
+        { "format": "json",
+          "env": "http://datatables.org/alltables.env",
+          "q": "select * from yahoo.finance.quotes where symbol in ('" + tickerName + "')"},
+        function(resp) {
+          if (typeof resp.query != "undefined") {
+            if ((typeof resp.query.results != "undefined") && (resp.query.results != null)) {
+              if (typeof resp.query.results.quote != "undefined") {
+                var ask = resp.query.results.quote.Ask;
+                var change = resp.query.results.quote.Change;
+                var changeInt = parseInt(change);
+                var up = changeInt > 0;
+                var even = changeInt == 0;
+                var str = "$" + ask + ", ";
+                if (!even) {
+                  if (up) {
+                    str = str + "&#x25b2;";
+                  } else {
+                    str = str + "&#x25bc;";
+                  }
+                } else {
+                  str = str + "&bull;";
+                }
+                str = str + " " + change;
+                tickerValue.html(str);
+              }
+            }
+          }
+          console.log(resp);
+
+        });
+      </script>
+    </span>
   </section>
 </body>
 </html>
