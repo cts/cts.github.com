@@ -24,14 +24,16 @@
                 var str = "$" + ask + ", ";
                 if (!even) {
                   if (up) {
-                    str = str + '<' + 'span style="font-size: 0.8em; color: green;">&#x25b2;<' + '/span>';
+                    str = str + ' <' + 'span style="font-size: 0.8em; color: green;">&#x25b2;<' + '/span>';
+                    str = str + ' <' + 'span style="color: green;">' + change + '<' + '/span>';
                   } else {
-                    str = str + '<' + 'span style="font-size: 0.8em; color: red;">&#x25bc;<' + '/span>';
+                    str = str + ' <' + 'span style="font-size: 0.8em; color: red;">&#x25bc;<' + '/span>';
+                    str = str + ' <' + 'span style="color: red;">' + change + '<' + '/span>';
                   }
                 } else {
                   str = str + "&bull;";
+                  str = str + " " + change;
                 }
-                str = str + " " + change;
                 tickerValue.html(str);
               }
             }
