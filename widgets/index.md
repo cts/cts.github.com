@@ -5,6 +5,9 @@ tagline:
 ---
 {% include JB/setup %}
 
+<p class="intro">CTS lets you easily embed widgets into your web pages -- no
+programming skills necessary.</p>
+
 <div class="widgets">
   <div class="widget">
     <a class="image" href="/widgets/google-map/">
