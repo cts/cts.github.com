@@ -31,4 +31,7 @@ For example, if I type the sentence:
 
 It will be rendered like this:
 
-<p style="padding-top: 10px; padding-bottom: 10px; margin-left: 10px; padding-left: 10px; border-left: 3px solid #ccc">Today Google (GOOG $740.00 <span style="font-size: 0.8em; color: green;">&#x25b2;</span><span style="color: green;">4.33</span>) announced the new Nexus 7.</p>
+<p style="padding-top: 10px; padding-bottom: 10px; margin-left: 10px;
+padding-left: 10px; border-left: 3px solid #ccc">Today Google (GOOG $740.88
+<span style="color: green;">&#x25b2;</span><span
+style="color: green;">4.33</span>) announced the new Nexus 7.</p>
