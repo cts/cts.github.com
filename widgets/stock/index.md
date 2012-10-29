@@ -15,7 +15,7 @@ the style of popular online finance reporting.</p>
 Add the CTS library and widget link to your web page:
 
     <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://www.treeshets.org/widgets/stock-symbol/stock-symbol.cts">
+    <script type="text/cts" src="http://www.treeshets.org/widgets/stock/stock.cts">
     </script>
 
 It's best to add this to the `HEAD` element, but anywhere will work.
