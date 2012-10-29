@@ -196,7 +196,7 @@ div.widget img {
 div.widget a.caption {
   float: none;
   font-size: 16px;
-  width: 226px;
+  width: 226px !important;
   text-align: center;
 }
 
