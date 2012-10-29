@@ -35,3 +35,9 @@ It will be rendered like this:
 padding-left: 10px; border-left: 3px solid #ccc">Today Google (GOOG $740.88
 <span style="color: green;">&#x25b2;</span><span
 style="color: green;">4.33</span>) announced the new Nexus 7.</p>
+
+<script>
+$(function() {
+  SelectPage("PageWidgets", "PageWidgetsStock");
+});
+</script>
