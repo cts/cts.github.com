@@ -21,12 +21,3 @@ It's best to add this to the `HEAD` element, but anywhere will work.
 
 ## 2. Request a Stock Quote
 
-Anywhere in your web page, when you enclose a `span` of text with the class
-`ticker` that contains a stock symbol, it will be replaced by the stock quote.
-
-For example, if I type the sentence:
-
-    <p>Today Google (<span class="ticker">GOOG</span>) announced the
-       new Nexus 7.</p>
-
-It will be rendered like this:
