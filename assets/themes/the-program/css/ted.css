@@ -194,6 +194,7 @@ div.widget img {
 }
 
 div.widget a.caption {
+  width: 100%;
   float: none;
   font-size: 16px;
   width: 226px;
