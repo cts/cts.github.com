@@ -15,7 +15,8 @@ the style of popular online finance reporting.</p>
 Add the CTS library and widget link to your web page:
 
     <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://www.treeshets.org/hotlink/stock-symbol/stock-symbol.cts"></script>
+    <script type="text/cts" src="http://www.treeshets.org/widgets/stock-symbol/stock-symbol.cts">
+    </script>
 
 It's best to add this to the `HEAD` element, but anywhere will work.
 
@@ -26,8 +27,7 @@ Anywhere in your web page, when you enclose a `span` of text with the class
 
 For example, if I type the sentence:
 
-    <p>Today Google (<span class="ticker">GOOG</span>) announced the
-    new Nexus 7.</p>
+    <p>Today Google (<span class="ticker">GOOG</span>) announced the new Nexus 7.</p>
 
 It will be rendered like this:
 

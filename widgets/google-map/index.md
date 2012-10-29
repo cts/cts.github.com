@@ -20,7 +20,7 @@ Add the CTS library, Google Maps library, and widget link to your web page:
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://www.treesheets.org/hotlink/google-map/google-map.cts"></script>
+    <script type="text/cts" src="http://www.treesheets.org/widgets/google-map/google-map.cts"></script>
 
 It's best to add this to the `HEAD` element, but anywhere will work.
 
