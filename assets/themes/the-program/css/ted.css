@@ -180,6 +180,7 @@ div.widget a {
 div.widget {
   margin-right: 13px;
   width: 226px;
+  float: left;
 }
 
 div.widget img {
@@ -204,3 +205,4 @@ p.intro {
   line-height: 24px;
   margin-bottom: 10px;
 }
+
