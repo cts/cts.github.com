@@ -5,6 +5,8 @@ tagline:
 ---
 {% include JB/setup %}
 
+<img src="banner.png" />
+
 <p class="intro">The Google Map Widget helps you
 include a Google Map on your website with markers,
 custom images, and popup balloons. All you need to do is
