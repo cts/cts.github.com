@@ -9582,7 +9582,7 @@ var CTS = {};
 
     Context.prototype.pop = function(data) {
       var foo = this.stack.pop();
-      if (!((typeof foo == "object") && ("Infinity" in foo))) {
+      if (!((typeof this.head() == "object") && ("Infinity" in this.head()))) {
         console.log(foo);
         console.log(this.stack[this.stack.length - 1]);
         console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: ", JSON.stringify(foo));
