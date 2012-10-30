@@ -28,7 +28,7 @@
       var dataElem = widget.find(".cts-data").first();
       var chartElem = widget.find(".thechart").first()[0];
       var allData = CTS.engine.recoverData(dataElem);
-      var width = 200;
+      var width = 600;
       var height = 200;
 
       var data = [];
@@ -66,14 +66,11 @@
                 .domain(data)
                 .rangeBands([0, data.length * barheight]);
 
-      height = barheight * data.length = gutter_w;
-      console.log("HEIGHT", height);
-
       var container = d3.select(chartElem)
                     .append("svg")
                     .attr("class", "chart")
                     .attr("width", width + gutter_h)
-                    .attr("height", height)
+                    .attr("height", barheight * data.length + gutter_w)
                     .style("shape-rendering", "crispEdges")
                     .style("margin", "1px")
                     .style("padding", "3px")
