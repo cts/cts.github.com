@@ -9560,7 +9560,9 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
-      console.log("Context.push(", data, "), current head: ", JSON.stringify(this.stack[this.stack.length - 1]));
+      if (data != window) {
+        console.log("Context.push(", data, "), current head: ", JSON.stringify(this.stack[this.stack.length - 1]));
+      }
       return this.stack.push(data);
     };
 
@@ -9568,7 +9570,9 @@ var CTS = {};
       var obj;
       obj = this.resolve(keypath);
       if ((obj != null) && obj !== null) {
-      console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", JSON.stringify(obj));
+        if (data != window) {
+          console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", JSON.stringify(obj));
+        }
         this.push(obj);
         return true;
       } else {
