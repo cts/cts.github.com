@@ -9577,7 +9577,7 @@ var CTS = {};
     };
 
     Context.prototype.pop = function(data) {
-      console.log("Context.pop()");
+      console.log("Context.pop()", this.stack[this.stack.length - 1]);
       return this.stack.pop();
     };
 
