@@ -35,22 +35,19 @@
 
       var data = [];
       console.log("allData", dataElem, allData);
-      if ("barchart" in allData) {
-        var chartData = allData.barchart;
-        if ("series" in allData) {
-          var series = allData.series;
-          if (series.length > 0) {
-            console.log("series", series);
-            if ("elements" in series[0]) {
-              console.log("series 0", series[0]);
-              var elements = serie.elements;
-              if (elements.length > 0) {
-                if (isNaN(parseInt(elements[0]))) {
-                  elements.shift();
-                }
-                for (var i = 0; i < elements.length; i++) {
-                  data.push(parseInt(elements[i]));
-                }
+      if ("series" in allData) {
+        var series = allData.series;
+        if (series.length > 0) {
+          console.log("series", series);
+          if ("elements" in series[0]) {
+            console.log("series 0", series[0]);
+            var elements = serie.elements;
+            if (elements.length > 0) {
+              if (isNaN(parseInt(elements[0]))) {
+                elements.shift();
+              }
+              for (var i = 0; i < elements.length; i++) {
+                data.push(parseInt(elements[i]));
               }
             }
           }
