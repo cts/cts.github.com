@@ -1,89 +1,32 @@
 <html>
+<head>
+  <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
+  <script type="text/cts" src="http://www.treesheets.org/widgets/barchart/barchart.cts"></script>
+</head>
+<body>
+
+<html>
   <head>
     <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
   </head>
   <body>
-    <script>
-      var data = [4, 8, 15, 16, 23, 42];
-      var width = 420;
-      var barheight = 20;
-      var gutter_h = 10;
-      var gutter_w = 15;
+  
+    <p>Here is a barchart:</p>
 
-      var x = d3.scale.linear()
-                .domain([0, d3.max(data)])
-                .range([0, width]);
+    <div class="barchart">
+      <table class="series">
+        <tr>
+          <td>Speed of a Mockingbird</td>
+          <td>5</td>
+          <td>10</td>
+          <td>15</td>
+          <td>20</td>
+          <td>25</td>
+          <td>30</td>
+          <td>35</td>
+        </tr>
+      </table>
+    </div>
 
-      var y = d3.scale.ordinal()
-                .domain(data)
-                .rangeBands([0, data.length * barheight]);
-
-      var container = d3.select("body")
-                    .append("svg")
-                    .attr("class", "chart")
-                    .attr("width", width + gutter_h)
-                    .attr("height", barheight * data.length + gutter_w)
-                    .style("shape-rendering", "crispEdges")
-                    .style("margin", "1px")
-                    .style("padding", "3px")
-                    .style("font", "10px sans-serif");
-
-      var chart = container.append("g").attr("transform", "translate(10,15)");
-
-      // Draw Axis
-      // --------------------------------------------------------------
-
-      // The g element in SVG is a container element, like div in HTML.
-
-      chart.selectAll("line")
-           .data(x.ticks(10))
-           .enter().append("line")
-                   .attr("x1", x)
-                   .attr("x2", x)
-                   .attr("y1", 0)
-                   .attr("y2", 120)
-                   .style("stroke", "#ccc");
-
-      chart.append("g").selectAll(".rule")
-           .data(x.ticks(10))
-           .enter().append("text")
-                   .attr("class", "rule")
-                   .attr("x", x)
-                   .attr("y", 0)
-                   .attr("dy", -3)
-                   .attr("text-anchor", "middle")
-                   .text(String);
-
-      // Draw bars
-      // --------------------------------------------------------------
-
-      chart.selectAll("rect")
-           .data(data)
-           .enter().append("rect")
-                   .attr("y", y)
-                   .attr("width", x)
-                   .attr("height", y.rangeBand())
-                   .attr("style", "stroke: white; fill: steelblue;");
-
-      // Draw labels
-      // --------------------------------------------------------------
-
-      chart.append("g").selectAll("text")
-           .data(data)
-           .enter().append("text")
-                   .attr("x", x)
-                   .attr("y", function(d) { return y(d) + y.rangeBand() / 2; })
-                   .attr("dx", -3) // padding-right
-                   .attr("dy", ".35em") // vertical-align: middle
-                   .attr("text-anchor", "end") // text-align: right
-                   .attr("fill", "white") // text-align: right
-                   .text(String);
-
-      chart.append("line")
-           .attr("y1", 0)
-           .attr("y2", 120)
-           .style("stroke", "#000");
-                  
-    </script>
   </body>
 </html>
