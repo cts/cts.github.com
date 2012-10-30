@@ -9617,7 +9617,7 @@ var CTS = {};
     };
 
     Context.prototype.set = function(keypath, value) {
-      console.log("Context.set(", keypath, ", ", value, ")");
+      console.log("Context.set(", keypath, ", ", JSON.stringify(value), ")");
       if (keypath === ".") {
         return this.stack[this.stack.length - 1] = value;
       } else {
