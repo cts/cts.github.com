@@ -5,6 +5,8 @@ tagline:
 ---
 {% include JB/setup %}
 
+<img class="widget-banner" src="banner.png" />
+
 <p class="intro">The Google Map Widget helps you
 include a Google Map on your website with markers,
 custom images, and popup balloons. All you need to do is
@@ -14,15 +16,13 @@ copy, paste, and edit a few lines of HTML.</p>
 
 ## 1. Link to the library
 
-To start, you'll need to add three lines of HTML to your web page to connect
-with the Google Maps library and CTS:
+Add the CTS library, Google Maps library, and widget link to your web page:
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="http://treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://treeshets.org/hotlink/google-map/google-map.cts"></script>
+    <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
+    <script type="text/cts" src="http://www.treesheets.org/widgets/google-map/google-map.cts"></script>
 
-If you have access to the `HEAD` element of your web page, it's best to add
-these lines there. Otherwise, you can add them anywhere you can.
+It's best to add this to the `HEAD` element, but anywhere will work.
 
 ## 2. Request a Map
 

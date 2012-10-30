@@ -178,13 +178,14 @@ div.widget a {
 }
 
 div.widget {
-  margin-right: 13px;
+  margin-right: 20px;
   width: 226px;
+  float: left;
 }
 
 div.widget img {
   float: left;
-  margin-bottom: 13px;
+  margin-bottom: 8px;
   width: 226px;
   height: 180px;
   border: solid 2px #CCC;
@@ -192,15 +193,20 @@ div.widget img {
   cursor: auto;
 }
 
-div.widget a.caption {
+div.widgets div.widget a.caption {
   float: none;
+  display: block;
   font-size: 16px;
-  width: 226px;
   text-align: center;
+  width: 226px;
 }
 
 p.intro {
   font-size: 20px;
   line-height: 24px;
   margin-bottom: 10px;
+}
+
+img.widget-banner {
+  margin-bottom: 15px;
 }
