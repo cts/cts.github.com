@@ -44,7 +44,7 @@
       var series = s;
 
       if (series.length > 0) {
-        if ("elements" in series[0]) {
+        if ((typeof series[0] != "undefined") && ("elements" in series[0])) {
           console.log("series 0", series[0]);
           var elements = serie.elements;
           if (elements.length > 0) {
@@ -58,6 +58,8 @@
         }
       }
 
+      console.log("series", s, JSON.stringify(s));
+      
       var barheight = 20;
       var gutter_h = 10;
       var gutter_w = 15;
@@ -140,6 +142,9 @@
            .attr("y1", 0)
            .attr("y2", 120)
            .style("stroke", "#000");
+
+
+      console.log("series", s, JSON.stringify(s));
          </script>
        </div>
   </body>
