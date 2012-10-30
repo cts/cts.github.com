@@ -9560,16 +9560,15 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
-      console.log("Context push", data, "onto ", this.stack[this.stack.length - 1]);
+      console.log("Context.push(", data, "), current head: ", this.stack[this.stack.length - 1]);
       return this.stack.push(data);
     };
 
     Context.prototype.pushKeypath = function(keypath) {
-      console.log("PUSH KEYPATH", keypath);
       var obj;
       obj = this.resolve(keypath);
-      console.log("RESOLVED:", obj);
       if ((obj != null) && obj !== null) {
+      console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", obj);
         this.push(obj);
         return true;
       } else {
@@ -9578,7 +9577,7 @@ var CTS = {};
     };
 
     Context.prototype.pop = function(data) {
-      console.log("Context.pop()", this.stack[this.stack.length - 1]);
+      console.log("Context.pop() -> Current Head:", this.stack[this.stack.length - 1]);
       return this.stack.pop();
     };
 
@@ -9614,7 +9613,7 @@ var CTS = {};
     };
 
     Context.prototype.set = function(keypath, value) {
-      console.log("Context.push(", keypath, ", ", value, ")");
+      console.log("Context.set(", keypath, ", ", value, ")");
       if (keypath === ".") {
         return this.stack[this.stack.length - 1] = value;
       } else {
