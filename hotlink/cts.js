@@ -9582,13 +9582,15 @@ var CTS = {};
 
     Context.prototype.pop = function(data) {
       var foo = this.stack.pop();
+      var foo_str = "window";
+      var head_str = "window";
       if (!((typeof this.head() == "object") && ("Infinity" in this.head()))) {
-        console.log(foo);
-        console.log(this.stack[this.stack.length - 1]);
-        console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: ", JSON.stringify(foo));
-      } else {
-        console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: window");
+        head_str = JSON.stringify(this.head());
       }
+      if (!((typeof foo == "object") && ("Infinity" in foo))) {
+        foo_str =  JSON.stringify(foo);
+      }
+      console.log("Context.pop() ", this.stack.length, " -> Current Head:", head_str, " New Head: ", foo_str);
       return foo;
     };
 
