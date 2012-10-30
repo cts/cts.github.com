@@ -9584,6 +9584,7 @@ var CTS = {};
       var foo = this.stack.pop();
       if (foo != window) {
         console.log(foo);
+        console.log(this.stack[this.stack.length - 1]);
         console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: ", JSON.stringify(foo));
       } else {
         console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: window");
