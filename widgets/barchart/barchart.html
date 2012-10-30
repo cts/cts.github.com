@@ -29,16 +29,18 @@
       console.log(widget.clone());
       var dataElem = widget.find(".cts-data").first();
       var chartElem = widget.find(".thechart").first()[0];
-      var allData = CTS.engine.recoverData(dataElem);
       var width = 600;
       var height = 200;
-
       var data = [];
+
+      var allData = CTS.engine.recoverData(dataElem);
       console.log("allData", dataElem, JSON.stringify(allData));
+      console.log("allData", dataElem, JSON.stringify(allData.series));
+
       if ("series" in allData) {
         var series = allData["series"];
+        console.log("series", series);
         if (series.length > 0) {
-          console.log("series", series);
           if ("elements" in series[0]) {
             console.log("series 0", series[0]);
             var elements = serie.elements;
