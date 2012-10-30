@@ -25,6 +25,8 @@
 
     <script>
       var widget = CTS.Util.getLastInserted();
+      console.log("Beginning Widget JS ---------------");
+      console.log(wiget.clone());
       var dataElem = widget.find(".cts-data").first();
       var chartElem = widget.find(".thechart").first()[0];
       var allData = CTS.engine.recoverData(dataElem);
