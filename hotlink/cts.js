@@ -9560,7 +9560,7 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
-      if (this.head() != window) {
+      if (!("Infinity" in this.head())) {
         console.log("Context.push(", data, "), current head: ", JSON.stringify(this.stack[this.stack.length - 1]));
       }
       return this.stack.push(data);
@@ -9570,7 +9570,7 @@ var CTS = {};
       var obj;
       obj = this.resolve(keypath);
       if ((obj != null) && obj !== null) {
-        if (obj != window) {
+        if (!("Infinity" in obj)) {
           console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", JSON.stringify(obj));
         }
         this.push(obj);
@@ -9582,7 +9582,7 @@ var CTS = {};
 
     Context.prototype.pop = function(data) {
       var foo = this.stack.pop();
-      if (foo != window) {
+      if (!("Infinity" in foo)) {
         console.log(foo);
         console.log(this.stack[this.stack.length - 1]);
         console.log("Context.pop() ", this.stack.length, " -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: ", JSON.stringify(foo));
