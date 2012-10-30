@@ -10550,6 +10550,8 @@ var CTS = {};
         console.log("With (render, success):", node.clone(), defaultVariant, " = ", JSON.stringify(context.head()));
       } else {
         console.log("With (render, fail):", node.clone(), defaultVariant);
+        console.log("def var", defaultVariant);
+        console.log("context", context);
       }
       pop = function(node, rules, context) {
         console.log("With (render, end)", node.clone());
