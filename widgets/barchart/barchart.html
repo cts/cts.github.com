@@ -23,14 +23,14 @@
       var allData = CTS.engine.recoverData(dataElem);
 
       var data = [];
+      console.log("allData", allData);
 
       if ("barchart" in allData) {
         var chartData = allData.barchart;
         if ("series" in chartData) {
           var series = chartData.series;
           if (series.length > 0) {
-            var serie = series[0];
-            if ("elements" in serie) {
+            if ("elements" in series[0]) {
               var elements = serie.elements;
               if (elements.length > 0) {
                 if (isNaN(parseInt(elements[0]))) {
