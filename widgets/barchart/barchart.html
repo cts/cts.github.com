@@ -36,7 +36,7 @@
       var data = [];
       console.log("allData", dataElem, JSON.stringify(allData));
       if ("series" in allData) {
-        var series = allData.series;
+        var series = allData["series"];
         if (series.length > 0) {
           console.log("series", series);
           if ("elements" in series[0]) {
