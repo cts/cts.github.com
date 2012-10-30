@@ -9,6 +9,10 @@
     <div class="thechart"></div>
   
     <div class="cts-data">
+      <table data-cts="with: properties;">
+        <tr><td>width</td><td data-cts="value: width"></td></tr>
+        <tr><td>height</td><td data-cts="value: height"></td></tr>
+      </table>
       <table data-cts="repeat: series;">
         <tr data-cts="repeat: elements;">
           <td data-cts="value: .;">Apples</td>
@@ -24,6 +28,8 @@
       var dataElem = widget.find(".cts-data").first();
       var chartElem = widget.find(".thechart").first()[0];
       var allData = CTS.engine.recoverData(dataElem);
+      var width = 200;
+      var height = 200;
 
       var data = [];
       console.log("allData", allData);
@@ -48,7 +54,6 @@
         }
       }
 
-      var width = 420;
       var barheight = 20;
       var gutter_h = 10;
       var gutter_w = 15;
@@ -61,11 +66,14 @@
                 .domain(data)
                 .rangeBands([0, data.length * barheight]);
 
+      height = barheight * data.length = gutter_w;
+      console.log("HEIGHT", height);
+
       var container = d3.select(chartElem)
                     .append("svg")
                     .attr("class", "chart")
                     .attr("width", width + gutter_h)
-                    .attr("height", barheight * data.length + gutter_w)
+                    .attr("height", height)
                     .style("shape-rendering", "crispEdges")
                     .style("margin", "1px")
                     .style("padding", "3px")

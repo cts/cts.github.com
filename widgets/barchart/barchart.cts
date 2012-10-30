@@ -16,3 +16,15 @@ table.series tbody tr {
 table.series tbody tr td {
   value: .;
 }
+
+table.properties {
+  with: properties;
+}
+
+table.properties td.height {
+  value: height;
+}
+
+table.properties td.width {
+  value: width;
+}
