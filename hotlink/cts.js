@@ -9564,8 +9564,10 @@ var CTS = {};
     };
 
     Context.prototype.pushKeypath = function(keypath) {
+      console.log("PUSH KEYPATH", keypath);
       var obj;
       obj = this.resolve(keypath);
+      console.log("RESOLVED:", obj);
       if ((obj != null) && obj !== null) {
         this.push(obj);
         return true;
@@ -9593,6 +9595,7 @@ var CTS = {};
     Context.prototype.resolve = function(keypath) {
       var kp, tryAliases;
       kp = keypath.replace(/^\s+/g, "");
+      console.log("FIXED KP", kp);
       if (kp === '.') {
         return this.stack[this.stack.length - 1];
       } else {
@@ -9631,6 +9634,7 @@ var CTS = {};
     };
 
     Context.prototype._resolveParsedKeypath = function(kp, tryAliases) {
+      console.log("REsolving parsed keypath", kp);
       var attempt;
       if (tryAliases) {
         attempt = this._resolveParsedKeypathAgainst(kp, this.aliases);
@@ -9649,6 +9653,7 @@ var CTS = {};
       }
       ptr = obj;
       for (_i = 0, _len = kp.length; _i < _len; _i++) {
+        console.log("9656 RESOLVING AGAINST", _i);
         key = kp[_i];
         if (typeof ptr === "object" && key in ptr) {
           ptr = ptr[key];
