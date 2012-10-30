@@ -43,7 +43,7 @@
               var elements = serie.elements;
               if (elements.length > 0) {
                 if (isNaN(parseInt(elements[0]))) {
-                  elements.shift()
+                  elements.shift();
                 }
                 for (var i = 0; i < elements.length; i++) {
                   data.push(parseInt(elements[i]));
