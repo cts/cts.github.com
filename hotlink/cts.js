@@ -9581,8 +9581,13 @@ var CTS = {};
     };
 
     Context.prototype.pop = function(data) {
-      console.log("Context.pop() -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]));
-      return this.stack.pop();
+      var foo = this.stack.pop();
+      if (foo != window) {
+        console.log("Context.pop() -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: ", JSON.stringify(foo));
+      } else {
+        console.log("Context.pop() -> Current Head:", JSON.stringify(this.stack[this.stack.length - 1]), " New Head: window");
+      }
+      return foo;
     };
 
     Context.prototype.alias = function(dataKeypath, aliasedKeypath) {
