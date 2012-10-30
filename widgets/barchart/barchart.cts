@@ -5,14 +5,14 @@
   with: barchart;
 }
 
-table.series {
+table.series tbody {
   repeat: series;
 }
 
-table.series tr {
+table.series tbody tr {
   repeat: elements;
 }
 
-table.series tr td {
+table.series tbody tr td {
   value: .;
 }
