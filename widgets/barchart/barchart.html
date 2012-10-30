@@ -58,7 +58,10 @@
       var gutter_h = 10;
       var gutter_w = 15;
       height = barheight * data.length + gutter_w;
+
       console.log("HEIGHT", height);
+      console.log("datalength", data.length);
+      console.log(data);
 
       var x = d3.scale.linear()
                 .domain([0, d3.max(data)])
