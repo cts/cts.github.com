@@ -9560,7 +9560,7 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
-      if (data != window) {
+      if (this.head() != window) {
         console.log("Context.push(", data, "), current head: ", JSON.stringify(this.stack[this.stack.length - 1]));
       }
       return this.stack.push(data);
@@ -9570,7 +9570,7 @@ var CTS = {};
       var obj;
       obj = this.resolve(keypath);
       if ((obj != null) && obj !== null) {
-        if (data != window) {
+        if (obj != window) {
           console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", JSON.stringify(obj));
         }
         this.push(obj);
