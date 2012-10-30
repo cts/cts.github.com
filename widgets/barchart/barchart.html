@@ -34,8 +34,9 @@
       var height = 200;
 
       var data = [];
-      console.log("allData", allData);
-
+      console.log("allData", dataElem, allData);
+      if ("barchart" in allData) {
+        var chartData = allData.barchart;
         if ("series" in allData) {
           var series = allData.series;
           if (series.length > 0) {
@@ -54,6 +55,7 @@
             }
           }
         }
+      }
 
       var barheight = 20;
       var gutter_h = 10;
