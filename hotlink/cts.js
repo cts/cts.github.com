@@ -9560,6 +9560,7 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
+      console.log("Context push", data, "onto ", stack[stack.length - 1]);
       return this.stack.push(data);
     };
 
