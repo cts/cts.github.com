@@ -37,10 +37,10 @@
         CTS.engine.recoverData(dataElem)
       );
       
-      console.log("allData", dataElem, JSON.stringify(allData));
-      console.log("allData", dataElem, JSON.stringify(allData.series));
-      var series = allData.series;
-      console.log("series", series);
+      console.log("allData", JSON.stringify(allData));
+      console.log("allData", JSON.stringify(allData.series));
+      var s = allData.series;
+      console.log("series", series, JSON.stringify(s);
 
       if (series.length > 0) {
         if ("elements" in series[0]) {
