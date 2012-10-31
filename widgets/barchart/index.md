@@ -5,6 +5,8 @@ tagline:
 ---
 {% include JB/setup %}
 
+<img class="widget-banner" src="banner.png" />
+
 <p class="intro">The Bar Chart Widget transforms an ordinary HTML table into a
 <a href="http://d3js.org/">D3-powered</a> bar chart.</p>
 
@@ -39,7 +41,7 @@ in the following HTML:
 The `barchart` class tells the chart widget that you'd like that table turned
 into a chart. When you render your page, you should see the following:
 
-TODO: Insert Image
+![Bar Chart Example](example1.png)
 
 ## 3. Customize the Chart
 
