@@ -9726,7 +9726,6 @@ var CTS = {};
       var justscripts, noscripts, script, scripts, _i, _len;
       noscripts = document.createElement('div');
       noscripts.innerHTML = htmlString;
-      debugger;
       justscripts = document.createElement('div');
       scripts = noscripts.getElementsByTagName('script');
       for (_i = 0, _len = scripts.length; _i < _len; _i++) {
@@ -10689,11 +10688,6 @@ var CTS = {};
       }
       if (scripts) {
         console.log("scripts before replace", scripts);
-        scripts = scripts.replace(/&gt;/g, ">");
-        scripts = scripts.replace(/&amp;/g, "&");
-        scripts = scripts.replace(/&lt;/g, "<");
-        scripts = scripts.replace(/<!--\[CDATA\[/g, "");
-        scripts = scripts.replace(/]]>/g, "");
         console.log("Scripts after replace", scripts);
         return $('body').append(scripts);
       }
