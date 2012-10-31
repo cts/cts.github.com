@@ -9723,13 +9723,14 @@ var CTS = {};
     };
 
     Util.stripScriptTags = function(htmlString) {
-      var justscripts, noscripts, script, scripts;
+      var justscripts, noscripts, script, scripts, _i, _len;
       noscripts = document.createElement('div');
       noscripts.innerHTML = htmlString;
       debugger;
       justscripts = document.createElement('div');
       scripts = noscripts.getElementsByTagName('script');
-      for (script in scripts) {
+      for (_i = 0, _len = scripts.length; _i < _len; _i++) {
+        script = scripts[_i];
         script.parentNode.removeChild(script);
         justscripts.addChild(script);
       }
