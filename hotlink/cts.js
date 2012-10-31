@@ -9483,24 +9483,20 @@ var CTS = {};
     };
 
     Template.prototype._applyTo = function(node, context, args, engine, template) {
-      var scripts, scriptsToReturn, templateElem,
-        _this = this;
+      var scriptsToReturn, templateElem, templateNoScript, templateScript, tup;
       CTS.Util.setLastInserted(node);
       console.log("----- Begin Template Application ------");
-      template = template.replace(/<script>/g, "<xscript>");
-      template = template.replace(/<\/script>/g, "</xscript>");
+      tup = CTS.Util.stripScriptTags(template);
+      templateNoScript = tup[0];
+      templateScript = tup[1];
       templateElem = $('<div class="cts-template" />');
-      templateElem.html(template);
-      scripts = templateElem.find('xscript');
-      scriptsToReturn = [];
-      $.each(scripts, function(idx, elem) {
-        var e;
-        e = $(elem);
-        e.remove();
-        return scriptsToReturn.push(e);
-      });
+      templateElem.html(templateNoScript);
+      scriptsToReturn = null;
+      if (templateScript.length > 0) {
+        scriptsToReturn = templateScript;
+      }
       node.html(templateElem);
-      if (scriptsToReturn.length > 0) {
+      if (scriptsToReturn) {
         return [false, true, scriptsToReturn];
       } else {
         return [false, true];
@@ -9560,9 +9556,6 @@ var CTS = {};
     };
 
     Context.prototype.push = function(data) {
-      if (!((typeof this.head() == "object") && ("Infinity" in this.head()))) {
-        console.log("Context.push(", data, "), current head: ", JSON.stringify(this.stack[this.stack.length - 1]));
-      }
       return this.stack.push(data);
     };
 
@@ -9570,9 +9563,6 @@ var CTS = {};
       var obj;
       obj = this.resolve(keypath);
       if ((obj != null) && obj !== null) {
-        if (!((typeof obj == "object") && ("Infinity" in obj))) {
-          console.log("Context.pushKeypath(", keypath, ") -> Resolved to: ", JSON.stringify(obj));
-        }
         this.push(obj);
         return true;
       } else {
@@ -9581,17 +9571,8 @@ var CTS = {};
     };
 
     Context.prototype.pop = function(data) {
-      var foo = this.stack.pop();
-      var foo_str = "window";
-      var head_str = "window";
-      if (!((typeof this.head() == "object") && ("Infinity" in this.head()))) {
-        head_str = JSON.stringify(this.head());
-      }
-      if (!((typeof foo == "object") && ("Infinity" in foo))) {
-        foo_str =  JSON.stringify(foo);
-      }
-      console.log("Context.pop() ", this.stack.length, " -> Current Head:", head_str, " New Head: ", foo_str);
-      return foo;
+      console.log("Context.pop()");
+      return this.stack.pop();
     };
 
     Context.prototype.alias = function(dataKeypath, aliasedKeypath) {
@@ -9608,7 +9589,6 @@ var CTS = {};
     Context.prototype.resolve = function(keypath) {
       var kp, tryAliases;
       kp = keypath.replace(/^\s+/g, "");
-      console.log("FIXED KP", kp);
       if (kp === '.') {
         return this.stack[this.stack.length - 1];
       } else {
@@ -9626,7 +9606,7 @@ var CTS = {};
     };
 
     Context.prototype.set = function(keypath, value) {
-      console.log("Context.set(", keypath, ", ", JSON.stringify(value), ")");
+      console.log("Context.push(", keypath, ", ", value, ")");
       if (keypath === ".") {
         return this.stack[this.stack.length - 1] = value;
       } else {
@@ -9647,7 +9627,6 @@ var CTS = {};
     };
 
     Context.prototype._resolveParsedKeypath = function(kp, tryAliases) {
-      console.log("REsolving parsed keypath", kp);
       var attempt;
       if (tryAliases) {
         attempt = this._resolveParsedKeypathAgainst(kp, this.aliases);
@@ -9666,7 +9645,6 @@ var CTS = {};
       }
       ptr = obj;
       for (_i = 0, _len = kp.length; _i < _len; _i++) {
-        console.log("9656 RESOLVING AGAINST", _i);
         key = kp[_i];
         if (typeof ptr === "object" && key in ptr) {
           ptr = ptr[key];
@@ -9742,6 +9720,19 @@ var CTS = {};
       str = str.replace(/'/g, "\\'");
       str = str.replace(/"/g, "'");
       return node.attr("data-" + CTS.Options.AttrForSavedData, str);
+    };
+
+    Util.stripScriptTags = function(htmlString) {
+      var justscripts, noscripts, script, scripts;
+      noscripts = document.createElement('div');
+      noscripts.innerHTML = htmlString;
+      justscripts = document.createElement('div');
+      scripts = noscripts.getElementsByTagName('script');
+      for (script in scripts) {
+        noscripts.parentNode.removeChild(script);
+        justscripts.addChild(script);
+      }
+      return [noscripts.innerHTML, justscripts.innerHTML];
     };
 
     Util.getDataStash = function(node, command) {
@@ -10568,8 +10559,6 @@ var CTS = {};
         console.log("With (render, success):", node.clone(), defaultVariant, " = ", JSON.stringify(context.head()));
       } else {
         console.log("With (render, fail):", node.clone(), defaultVariant);
-        console.log("def var", defaultVariant);
-        console.log("context", context);
       }
       pop = function(node, rules, context) {
         console.log("With (render, end)", node.clone());
@@ -10658,9 +10647,9 @@ var CTS = {};
     };
 
     Engine.prototype._renderNodeWithRules = function(node, rules, context) {
-      var command, f, functions, kid, realScript, recurse, res, script, scriptBody, scripts, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
+      var command, f, functions, kid, recurse, res, scripts, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2;
       recurse = true;
-      scripts = [];
+      scripts = null;
       functions = [];
       if (rules !== null) {
         _ref = this.commands;
@@ -10669,16 +10658,12 @@ var CTS = {};
           if (command.signature() in rules) {
             res = command.applyTo(node, context, rules[command.signature()], this);
             if (res.length > 2 && res[2] !== null) {
-              _ref1 = res[2];
-              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-                script = _ref1[_j];
-                scripts.push(script);
-              }
+              scripts = res[2];
             }
             if (res.length > 3 && res[3] !== null) {
-              _ref2 = res[3];
-              for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-                f = _ref2[_k];
+              _ref1 = res[3];
+              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                f = _ref1[_j];
                 functions.push(f);
               }
             }
@@ -10690,32 +10675,26 @@ var CTS = {};
         }
       }
       if (recurse) {
-        _ref3 = node.children();
-        for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-          kid = _ref3[_l];
+        _ref2 = node.children();
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          kid = _ref2[_k];
           this._render($(kid), context);
         }
       }
-      for (_m = 0, _len4 = functions.length; _m < _len4; _m++) {
-        f = functions[_m];
+      for (_l = 0, _len3 = functions.length; _l < _len3; _l++) {
+        f = functions[_l];
         f(node, rules, context);
       }
-      _results = [];
-      for (_n = 0, _len5 = scripts.length; _n < _len5; _n++) {
-        script = scripts[_n];
-        console.log("Engine: Executing scripts");
-        scriptBody = script.html();
-        console.log("Script before", scriptBody);
-        scriptBody = scriptBody.replace(/&gt;/g, ">");
-        scriptBody = scriptBody.replace(/&amp;/g, "&");
-        scriptBody = scriptBody.replace(/&lt;/g, "<");
-        scriptBody = scriptBody.replace(/<!--\[CDATA\[/g, "");
-        scriptBody = scriptBody.replace(/]]>/g, "");
-        console.log("Script", scriptBody);
-        realScript = $('<script />').html(scriptBody);
-        _results.push($('body').append(realScript));
+      if (scripts) {
+        console.log("scripts before replace", scripts);
+        scripts = scripts.replace(/&gt;/g, ">");
+        scripts = scripts.replace(/&amp;/g, "&");
+        scripts = scripts.replace(/&lt;/g, "<");
+        scripts = scripts.replace(/<!--\[CDATA\[/g, "");
+        scripts = scripts.replace(/]]>/g, "");
+        console.log("Scripts after replace", scripts);
+        return $('body').append(scripts);
       }
-      return _results;
     };
 
     Engine.prototype._recoverData = function(jqnode, context) {
