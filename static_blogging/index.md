@@ -26,12 +26,12 @@ way to merge two static HTML pages into each other in the browser:
   <li>
     <p><b>A mockup</b>, which shows how you want your blog to <i>look</i>.</p>
     <p>Most people would call the CTS mockup a template, which it is. But CTS
-templates don't need to have dummy values `{{like_this}}`. A CTS template is
+templates don't need to have dummy values <tt>{{like_this}}</tt>. A CTS template is
 just an ordinary HTML page, attached to a CTS sheet that annotates which
 regions of the page should be bound to your data.</p>
   </li>
   <li>
-    <p><b>An <b>"only type the important stuff"</b> page, which contains simplified HTML that describes your content and nothing more.</p>
+    <p>An <b>"only type the important stuff"</b> page, which contains simplified HTML that describes your content and nothing more.</p>
   </li>
 </ul>
 
