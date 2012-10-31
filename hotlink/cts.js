@@ -10688,6 +10688,8 @@ var CTS = {};
       }
       if (scripts) {
         console.log("scripts before replace", scripts);
+        scripts = scripts.replace(/<!--\[CDATA\[/g, "");
+        scripts = scripts.replace(/]]>/g, "");
         console.log("Scripts after replace", scripts);
         return $('body').append(scripts);
       }
