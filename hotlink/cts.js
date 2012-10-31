@@ -9732,7 +9732,7 @@ var CTS = {};
       for (_i = 0, _len = scripts.length; _i < _len; _i++) {
         script = scripts[_i];
         script.parentNode.removeChild(script);
-        justscripts.addChild(script);
+        justscripts.appendChild(script);
       }
       return [noscripts.innerHTML, justscripts.innerHTML];
     };
