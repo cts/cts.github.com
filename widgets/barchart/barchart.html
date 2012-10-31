@@ -41,17 +41,18 @@
       console.log("allData", JSON.stringify(allData.series));
       var s = allData.series;
       console.log("series", s, JSON.stringify(s));
+
       console.log("series1", s, JSON.stringify(s));
       var series = s;
+      if (series.length > 0) {
+        console.log("creater than 0");
+      }
+
       console.log("series2", s, JSON.stringify(s));
       console.log(s.length);
       console.log("series3", s, JSON.stringify(s));
       console.log("series4", series, JSON.stringify(series));
       
-      if (series.length > 0) {
-        console.log("creater than 0");
-      }
-
       console.log("series4a", series, JSON.stringify(series));
       if (series.length > 0) {
         console.log("series5", series, JSON.stringify(series));
