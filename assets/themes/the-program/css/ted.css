@@ -178,7 +178,8 @@ div.widget a {
 }
 
 div.widget {
-  margin-right: 8px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   width: 226px;
   float: left;
 }

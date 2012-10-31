@@ -25,16 +25,16 @@ It's best to add this to the `HEAD` element, but anywhere will work.
 Next, pick the place you want the map to actually appear on your page and paste
 in the following HTML: 
 
-   <div class="barchart">
-      <table class="series">
-        <tr>
-          <td>Values</td>
-          <td>5</td>
-          <td>10</td>
-          <td>15</td>
-        </tr>
-      </table>
-    </div>
+    <div class="barchart">
+       <table class="series">
+         <tr>
+           <td>Values</td>
+           <td>5</td>
+           <td>10</td>
+           <td>15</td>
+         </tr>
+       </table>
+     </div>
 
 The `barchart` class tells the chart widget that you'd like that table turned
 into a chart. When you render your page, you should see the following:
