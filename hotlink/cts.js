@@ -10807,7 +10807,7 @@ var CTS = {};
     Bootstrap.prototype.remoteTemplatesLoaded = function() {
       console.log("Bootstrap: Done prefetching Templates");
       console.log("Bootstrap: Rendering CTS");
-      //return CTS.engine.render();
+      return CTS.engine.render();
     };
 
     return Bootstrap;
