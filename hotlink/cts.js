@@ -10704,6 +10704,7 @@ var CTS = {};
       for (_n = 0, _len5 = scripts.length; _n < _len5; _n++) {
         script = scripts[_n];
         console.log("Engine: Executing scripts");
+        console.log("Script before", scriptBody);
         scriptBody = script.html();
         scriptBody = scriptBody.replace(/&gt;/g, ">");
         scriptBody = scriptBody.replace(/&amp;/g, "&");
