@@ -1,0 +1,72 @@
+<html>
+<body>
+  <section id="usa"><div>
+
+    <!-- This is the visible section of the CTS template -->
+
+    <div class="themap"></div>
+
+    <!-- This is the data section, insivible but present in the DOM -->
+
+    <div class="usadata" style="display:none;" >
+      <ul class="properties">
+        <li class="width"></li>
+        <li class="height"></li>
+      </ul>
+      <table class="states" style="display:none;">
+        <tr><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <!-- This is a script that will execute upon DOM insert -->
+
+  <script>
+    var RenderChoropleth = function(widget) {
+      console.log("------ WIDGET Render JavaScript -------");
+      var dataElem = widget.find(".usadata");
+      var mapElem = widget.find(".themap").first()[0];
+      var data = CTS.engine.recoverData(dataElem);
+      console.log("WIDGET: Recovered Data", data);
+
+      var stateMappings = new Object();
+
+      if ("states" in data) {
+        window.console.log("HERE ARE THE STATES");
+        jQueryHcss.each(data["states"], function(i, stateData) {
+        var stateData = data["states"][i];
+        stateMappings[stateData["state"]] = stateData["value"];
+        });
+      }
+      var path = d3.geo.path();
+     
+      var svg = d3.select(".themap")
+        .append("svg");
+
+      var states = svg.append("g")
+       .attr("id", "states")
+       .attr("class", "Blues");
+
+
+      d3.json("us-states.json", function(json) {
+        states.selectAll("path")
+          .data(json.features)
+        .enter().append("path")
+         .attr("d", path)
+         .attr("class", quantize);
+       });
+
+     function quantize(d) {
+       return "q" + Math.min(8, ~~(stateMappings[d.properties.name] * 9 / 12)) + "-9";
+      }
+    };
+    
+    // First, get the data
+    var widget = CTS.Util.getLastInserted();
+    if (widget) {
+      RenderChoropleth(widget);
+    }
+  </script>
+
+  </div></section>
+</body>
+</html>

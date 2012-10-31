@@ -37,6 +37,14 @@ programming skills necessary.</p>
     <a class="caption" href="/widgets/bubblechart/">Bubble Chart</a>
   </div>
 
+  <div class="widget">
+    <a class="image" href="/widgets/choropleth/">
+      <img src="/images/widgets/choropleth.png" />
+    </a>
+    <a class="caption" href="/widgets/choropleth/">Choropleth</a>
+  </div>
+
+
 
 </div>
 
