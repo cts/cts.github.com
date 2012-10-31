@@ -12,6 +12,14 @@ tagline:
 
 <p class="intro"><a href="example.html">View the completed example</a></p>
 
+
+<div class="wordcloud">
+All of this text will become the wordcloud source.
+</div>
+
+
+
+
 ## 1. Link to the library
 
 Add the CTS library, D3 library, and widget link to your web page:
