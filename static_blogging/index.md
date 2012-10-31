@@ -26,14 +26,36 @@ way to merge two static HTML pages into each other in the browser:
   <li>
     <p><b>A mockup</b>, which shows how you want your blog to <i>look</i>.</p>
     <p>Most people would call the CTS mockup a template, which it is. But CTS
-templates don't need to have dummy values <tt>{{like_this}}</tt>. A CTS template is
-just an ordinary HTML page, attached to a CTS sheet that annotates which
+templates don't need to have variables and dummy values. A CTS template is
+just an ordinary HTML page, alone with a CTS sheet that annotates which
 regions of the page should be bound to your data.</p>
   </li>
   <li>
-    <p>An <b>"only type the important stuff"</b> page, which contains simplified HTML that describes your content and nothing more.</p>
+    <p><b>An "only type the important stuff" page</b>, which contains just the content you want to edit.</p>
+    <p>This "<i>OTIS</i>" page is written in the style of the early web: barebones HTML used just to mark document sections and paragraphs. All content and no fluff, letting you easily focus on the task of writing and editing. In the browser, CTS will project this content into the mockup.</p>
   </li>
 </ul>
+
+## Example
+
+Here is an example you can download and use.
+
+<div class="row" style="margin-top: 20px; margin-bottom:20px">
+  <div class="span8 well">
+    <div class="row">
+      <div class="span4">
+        <h3>Download</h3>
+        <p>TODO: add download link</p>
+      </div>
+      <div class="span4">
+        <h3>Contribute</h3>
+        <a href="http://github.com/cts/static-blog-starter" class="btn btn-success">Source on GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script>
 $(function() {
