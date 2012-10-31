@@ -15,12 +15,22 @@ programming skills necessary.</p>
     </a>
     <a class="caption" href="/widgets/google-map/">Google Map with Pins</a>
   </div>
+
   <div class="widget">
     <a class="image" href="/widgets/stock/">
       <img src="/images/widgets/stock-symbol.png" />
     </a>
     <a class="caption" href="/widgets/stock/">Inline Stock Quotes</a>
   </div>
+
+  <div class="widget">
+    <a class="image" href="/widgets/barchart/">
+      <img src="/images/widgets/barchart.png" />
+    </a>
+    <a class="caption" href="/widgets/barchart/">Simple Bar Chart</a>
+  </div>
+
+
 </div>
 
 
