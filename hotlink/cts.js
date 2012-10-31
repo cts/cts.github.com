@@ -9729,7 +9729,7 @@ var CTS = {};
       justscripts = document.createElement('div');
       scripts = noscripts.getElementsByTagName('script');
       for (script in scripts) {
-        noscripts.parentNode.removeChild(script);
+        script.parentNode.removeChild(script);
         justscripts.addChild(script);
       }
       return [noscripts.innerHTML, justscripts.innerHTML];
