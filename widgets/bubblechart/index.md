@@ -28,23 +28,35 @@ Next, pick the place you want the map to actually appear on your page and paste
 in the following HTML: 
 
     <div class="bubblechart">
-       <table class="series">
-         <tr><td>California</td><td>1911822</td></tr>
-         <tr><td>Texas</td><td>1158194</td></tr>
-         <tr><td>New York</td><td>1078161</td></tr>
-         <tr><td>Florida</td><td>734727</td></tr>
-         <tr><td>Illinois</td><td>627952</td></tr>
-         <tr><td>Pennsylvania</td><td>549565</td></tr>
-         <tr><td>New Jersey</td><td>480614</td></tr>
-       </table>
+      <ul class="bubblechains">
+        <li>
+          <span>States</span>
+          <table>
+            <tr><td>California</td><td>1911822</td></tr>
+            <tr><td>Texas</td><td>1158194</td></tr>
+            <tr><td>New York</td><td>1078161</td></tr>
+            <tr><td>Florida</td><td>734727</td></tr>
+          </table>
+        </li>
+        <li>
+          <span>Countries</span>
+          <table>
+            <tr><td>USA</td><td>14620000</td></tr>
+            <tr><td>China</td><td>5879100</td></tr>
+            <tr><td>Japan</td><td>5391000</td></tr>
+            <tr><td>Germany</td><td>3306000</td></tr>
+          </table>
+        </li>
+      </ul>
      </div>
 
-The `bubble` class tells the chart widget that you'd like that table turned
-into a bubble chart. When you render your page, you should see the following:
+The `bubblechart` class tells the chart widget that you'd like that table
+turned into a bubble chart. When you render your page, you should see the
+following (we've added a few more data points):
 
 ![Bubble Chart Example](example1.png)
 
-In the example's case, this is the Gross Domestid Product for several states in
+In the example's case, this is the Gross Domestic Product for several states in
 America.
 
 ## 3. Customize the Chart
