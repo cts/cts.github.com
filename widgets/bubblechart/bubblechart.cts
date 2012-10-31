@@ -1,4 +1,4 @@
-.barchart {
+.bubblechart {
   template: http://www.treesheets.org/widgets/bubblechart/bubblechart.html#chart;
   template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php;
   data: .;
