@@ -9726,6 +9726,7 @@ var CTS = {};
       var justscripts, noscripts, script, scripts;
       noscripts = document.createElement('div');
       noscripts.innerHTML = htmlString;
+      debugger;
       justscripts = document.createElement('div');
       scripts = noscripts.getElementsByTagName('script');
       for (script in scripts) {
