@@ -6,7 +6,7 @@ tagline:
 {% include JB/setup %}
 
 <p class="intro">The Bar Chart Widget transforms an ordinary HTML table into a
-<a href="http://d3js.org/">D3-powered</a> bar chart.
+<a href="http://d3js.org/">D3-powered</a> bar chart.</p>
 
 <p class="intro"><a href="example.html">View the completed example</a></p>
 
@@ -24,7 +24,6 @@ It's best to add this to the `HEAD` element, but anywhere will work.
 
 Next, pick the place you want the map to actually appear on your page and paste
 in the following HTML: 
-
 
    <div class="barchart">
       <table class="series">
