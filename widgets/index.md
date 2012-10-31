@@ -30,6 +30,13 @@ programming skills necessary.</p>
     <a class="caption" href="/widgets/barchart/">Simple Bar Chart</a>
   </div>
 
+  <div class="widget">
+    <a class="image" href="/widgets/bubblechart/">
+      <img src="/images/widgets/bubblechart.png" />
+    </a>
+    <a class="caption" href="/widgets/bubblechart/">Bubble Chart</a>
+  </div>
+
 
 </div>
 

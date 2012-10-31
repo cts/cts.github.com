@@ -47,6 +47,11 @@ into a chart. When you render your page, you should see the following:
 
 TODO
 
+### Credits
+
+Thanks to the [Bar Chart
+Demo](http://mbostock.github.com/d3/tutorial/bar-1.html) on the D3 website 
+
 <script>
 $(function() {
   SelectPage("PageWidgets", "PageWidgetsBarchart");
