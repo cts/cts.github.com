@@ -70,6 +70,18 @@
 
       console.log("S2 After: ", JSON.stringify(s2));
 
+      var s3 = jQueryHcss.extend(true, [], s1);
+
+      console.log("S3 Before: ", JSON.stringify(s3));
+      
+      if (s3.length > 0) {
+        console.log("len(s3) > 0");
+      }
+
+      console.log("S3 After: ", JSON.stringify(s3));
+
+
+
 
       console.log("series4a", series, JSON.stringify(series));
       if (series.length > 0) {
