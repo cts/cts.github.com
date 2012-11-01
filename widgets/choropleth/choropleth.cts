@@ -22,7 +22,7 @@
   repeat: states;
 }
 
-.usa-choropleth table.states tbody td:nth-child(1) {
+.usa-choropleth table.states tbody td:first-child {
   value: state;
 }
 
@@ -30,6 +30,6 @@
   value: value;
 }
 
-.usa-choropleth table.states tbody td:nth-child(3) {
+.usa-choropleth table.states tbody td:last-child {
   value: description;
 }
