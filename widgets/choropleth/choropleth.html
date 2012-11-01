@@ -109,9 +109,11 @@
 
      // Returns q#-9 where # is in [0,9].
      // This is the color code.
+     console.log("CVALUES", values);
      var colorScale = d3.scale.ordinal()
                       .domain(values)
                       .rangeBands([0, 9]);
+      console.log("EX:", colorScale(55103));
 
      function quantize(d) {
        return "q" + colorScale(stateMappings[d.properties.name]) + "-9";
