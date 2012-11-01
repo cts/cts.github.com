@@ -40,7 +40,7 @@
       // Returns q#-9 where # is in [0,8].
       // This is the color code.
       var colorScale = d3.scale.linear()
-                      .domain(values)
+                      .domain([d3.min(values), d3.max(values)])
                       .rangeRound([0, 8]);
 
       function quantize(d) {
