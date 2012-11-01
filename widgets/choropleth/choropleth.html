@@ -27,11 +27,13 @@
       var data = CTS.engine.recoverData(dataElem);
 
       var stateMappings = new Object();
+      var values = [];
 
       if ("states" in data) {
         jQueryHcss.each(data["states"], function(i, stateData) {
         var stateData = data["states"][i];
         stateMappings[stateData["state"]] = stateData["value"];
+        values.push(parseInt(stateData["value"]));
         });
       }
       var path = d3.geo.path();
@@ -105,8 +107,14 @@
                     .attr("d", path)
                     .attr("class", quantize);
 
+     // Returns q#-9 where # is in [0,9].
+     // This is the color code.
+     var colorScale = d3.scale.ordinal()
+                      .domain(values)
+                      .rangeBands([0, 9]);
+
      function quantize(d) {
-       return "q" + Math.min(8, ~~(stateMappings[d.properties.name] * 9 / 12)) + "-9";
+       return "q" + colorScale(stateMappings[d.properties.name]) + "-9";
       }
     };
     
