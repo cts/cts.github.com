@@ -19,6 +19,16 @@ a{text-decoration:none;}
 #main p a.btn:active{background-position:0px -76px;}
 #main p a.lnk{color:#5f9aae;text-decoration:underline;font-weight:700;}#main p a.lnk:hover{text-decoration:none;}
 
+#smsForm{position:absolute;display:none;z-index:1000;width:250px;height:190px;padding:45px 60px;background:url(/images/landing/bg-sms.png) no-repeat 0px 0px;}
+#smsForm p{text-align:center;color:#565753;line-height:22px;margin-bottom:20px;}
+#smsForm .note{color:#bdbdbb;}
+#smsForm p a{color:#5f9aae;text-decoration:underline;font-weight:700;}#smsForm p a:hover{text-decoration:none;}
+#smsForm .input-wrap{position:relative;margin-bottom:20px;}
+#smsForm input{height:38px;width:180px;padding-left:20px;padding-right:50px;font-size:16px;color:#bdbdbb;border:1px solid #8dd4eb;-webkit-border-radius:20px;-moz-border-radius:20px;border-radius:20px;-webkit-box-shadow: 0 0 6px #8dd4eb;-moz-box-shadow: 0 0 6px #8dd4eb;box-shadow: 0 0 6px #8dd4eb;}
+#smsForm input:focus{outline:none;color:#565753;}
+#smsForm div.submit{position:absolute;right:4px;top:5px;width:32px;height:32px;cursor:pointer;background:url(/images/landing/bg-sms-input.png) no-repeat 0px 0px;}
+#smsForm .confirm img{display:block;margin:10px auto 20px auto;}
+
 #fog{position:absolute;top:0px;left:0px;z-index:50;display:none;background-color:rgba(0,0,0,0.2);}
 
 #social{position:absolute;bottom:28px;right:28px;z-index:10;}#social ul{zoom:1;}#social ul:before,#social ul:after{display:table;content:"";}
