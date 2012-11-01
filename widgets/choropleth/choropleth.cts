@@ -1,6 +1,6 @@
 .usa-choropleth {
-  template: http://localhost:8000/demos/choropleth/Choropleth.html#usa;
-  template-proxy: http://localhost:9999/fragment;
+  template: http://www.treesheets.org/widgets/choropleth/choropleth.html#usa;
+  template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php;
   data: .;
   with: choropleth;
 }

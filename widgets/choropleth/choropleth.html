@@ -22,16 +22,13 @@
 
   <script>
     var RenderChoropleth = function(widget) {
-      console.log("------ WIDGET Render JavaScript -------");
       var dataElem = widget.find(".usadata");
       var mapElem = widget.find(".themap").first()[0];
       var data = CTS.engine.recoverData(dataElem);
-      console.log("WIDGET: Recovered Data", data);
 
       var stateMappings = new Object();
 
       if ("states" in data) {
-        window.console.log("HERE ARE THE STATES");
         jQueryHcss.each(data["states"], function(i, stateData) {
         var stateData = data["states"][i];
         stateMappings[stateData["state"]] = stateData["value"];
