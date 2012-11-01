@@ -9723,13 +9723,13 @@ var CTS = {};
     };
 
     Util.stripScriptTags = function(htmlString) {
-      var justscripts, noscripts, script, scripts, _i, _len;
+      var justscripts, noscripts, script, scripts;
       noscripts = document.createElement('div');
       noscripts.innerHTML = htmlString;
       justscripts = document.createElement('div');
       scripts = noscripts.getElementsByTagName('script');
-      for (_i = 0, _len = scripts.length; _i < _len; _i++) {
-        script = scripts[_i];
+      while (scripts.length > 0) {
+        script = scripts[0];
         script.parentNode.removeChild(script);
         justscripts.appendChild(script);
       }

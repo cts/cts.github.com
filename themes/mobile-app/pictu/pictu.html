@@ -1,13 +1,26 @@
 <!doctype html>
 <html lang="en-us">
-  <head>
+  <head id="head">
     <meta charset="utf-8">
     <title data-cts="value: title">Piictu &lt;3</title>
     <link href="http://www.treesheets.org/themes/mobile-app/pictu/pictu.css" type="text/css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://www.treesheets.org/themes/mobile-app/pictu/pictu.js"></script>
+    <style>
+      #screenshot {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        height: 300px;
+        width: 100px;
+        z-index: 100;
+        background: url(screenshot.jpeg);
+        -webkit-transform: perspective(500px) rotateY(-20deg) rotateZ(100deg);
+        bac
+      }
+    </style>
   </head>
-  <body>
+  <body id="body">
     <section id="main">
       <header>
         <section>
@@ -25,6 +38,8 @@
     </section>
 
     <div id="fog"></div>
+
+    <div id="screenshot"></div>
 
     <section id="social">
       <nav>
