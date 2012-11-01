@@ -39,12 +39,10 @@
 
       // Returns q#-9 where # is in [0,8].
       // This is the color code.
-      console.log("CVALUES", values);
-      var colorScale = d3.scale.ordinal()
+      var colorScale = d3.scale.linear()
                       .domain(values)
-                      .rangeBands([0, 8]);
+                      .rangeRound([0, 8]);
 
-      console.log("TED", colorScale(55103));
       function quantize(d) {
         return "q" + colorScale(stateMappings[d.properties.name]) + "-9";
       }
