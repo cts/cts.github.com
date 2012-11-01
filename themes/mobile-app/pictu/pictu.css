@@ -1,0 +1,33 @@
+.hide{display:none;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body{line-height:1;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+body{background-color:#ffffff;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;}body.small-screen #main{margin-top:60px;}
+body.big-screen #main{margin-top:120px;}
+a{text-decoration:none;}
+#main>header{margin:0 auto;}
+#main>header,#main section{width:980px;}
+#main{position:relative;overflow:hidden;min-height:580px;min-width:980px;}#main img.bg{position:absolute;top:50px;z-index:1;-ms-interpolation-mode:bicubic;image-rendering:optimizeQuality;image-rendering:-webkit-optimize-quality;}
+#main section{position:absolute;z-index:2;}
+#main h1{position:absolute;left:40px;background:url(http://www.treesheets.org/themes/mobile-app/pictu/logo.png) no-repeat 0px 0px;width:90px;height:90px;}
+#main h2{padding:75px 10px 0px 605px;line-height:38px;font-size:35px;font-weight:300;font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;color:#565753;}
+#main p{padding:35px 55px 0px 595px;text-align:center;color:#a5a2a1;font-size:17px;}#main p a.btn{display:block;margin:0px auto;background:url(http://www.treesheets.org/themes/mobile-app/pictu/btn-download.png) no-repeat 0px 0px;width:330px;height:84px;}#main p a.btn:hover{background-position:0px -154px;}
+#main p a.btn:active{background-position:0px -76px;}
+#main p a.lnk{color:#5f9aae;text-decoration:underline;font-weight:700;}#main p a.lnk:hover{text-decoration:none;}
+
+#fog{position:absolute;top:0px;left:0px;z-index:50;display:none;background-color:rgba(0,0,0,0.2);}
+
+#social{position:absolute;bottom:28px;right:28px;z-index:10;}#social ul{zoom:1;}#social ul:before,#social ul:after{display:table;content:"";}
+#social ul:after{clear:both;}
+#social li{float:left;}
+#social a{display:block;margin-left:20px;width:50px;height:60px;}#social a.tw:hover,#social a.fb:hover{background-position:0px -60px;}
+#social a:active{background-position:0px -60px;}
+#social a.tw{background:url(http://www.treesheets.org/themes/mobile-app/pictu/ico-twitter.png) no-repeat 0px 0px;}
+#social a.fb{background:url(http://www.treesheets.org/themes/mobile-app/pictu/ico-facebook.png) no-repeat 0px 0px;}
+#footer{position:absolute;left:40px;bottom:40px;z-index:10;}
+#footer li{color:#a5a2a1;display:inline;margin-right:20px;font-size: 13px;}#footer li a{color:#a5a2a1;font-weight:bold;}#footer li a:hover{color:#5f9aae;}
+@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait){#main h1{left:70px;} #main h2{padding-left:575px;padding-top:85px;} #main p{padding-left:545px;}}@media only screen and (min-device-width:481px) and (max-device-width:1024px) and (orientation:landscape){#main h2{padding-left:595px;} #main p{padding-left:585px;}}

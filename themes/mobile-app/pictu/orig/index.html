@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+    <meta charset="utf-8">
+
+    <meta name="description" content="A fun and simple way to talk &amp; play with piics. Now available for iPhone in the App Store.">
+    <meta name="author" content="(c) Piictu, Inc. All rights reserved.">
+    <title>Piictu &lt;3</title>
+    <link href="/stylesheets/landing/landing.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/javascripts/landing/landing.js"></script>
+    <script>
+      $(document).ready(function(){
+        var FADE_DURATION = 200,
+            CONFIRM_DELAY = 3500;
+
+        var $frm = $('#smsForm'),
+            $fog = $('#fog'),
+            $lnk = $('#lnkShowSmsForm'),
+            $ipt = $frm.find('input[type="text"]'),
+            $win = $(window),
+            $doc = $(document);
+
+        var setupSMSForm = function(){
+          // set fog size
+          $fog.width($win.width()).height($doc.height());
+
+          // set smsForm position
+          var pos = $lnk.offset();
+          $frm.css({'top': pos.top + 60, 'left': pos.left - 165});
+        };
+
+        var postSMS = function(){
+          $.post('/download_sms', {phone: $ipt.val(), cnt: $frm.find('input[name="cnt"]').val()});
+
+          $frm.find('.form').hide();
+          $frm.find('.confirm').show();
+
+          $fog.delay(CONFIRM_DELAY).fadeOut(FADE_DURATION);
+          $frm.delay(CONFIRM_DELAY).fadeOut(FADE_DURATION, function(){
+            $('#downloadNote').fadeIn(FADE_DURATION);
+          });
+        };
+
+        setupSMSForm();
+        $win.bind('resize orientationchange', setupSMSForm);
+
+        $lnk.click(function(evt){
+          evt.preventDefault();
+
+          $frm.find('.form').show();
+          $frm.find('.confirm').hide();
+
+          $('#downloadNote').fadeOut(FADE_DURATION);
+          $fog.fadeIn(FADE_DURATION);
+          $frm.fadeIn(FADE_DURATION);
+        });
+
+        $fog.click(function(){
+          $('#downloadNote').fadeIn(FADE_DURATION);
+          $fog.fadeOut(FADE_DURATION);
+          $frm.fadeOut(FADE_DURATION);
+        });
+
+        $frm.find('div.submit').click(function(){
+          postSMS();
+        });
+
+        $ipt
+          .data('watermark', $ipt.val())
+          .bind('focus click', function(){
+            if ($frm.find('input[name="cnt"]').length == 0)
+              $frm.append('<input type="hidden" name="cnt" value="' + new Date().getTime() + '" />');
+
+            if ($ipt.val() == $ipt.data('watermark'))
+              $ipt.val('');
+          })
+          .blur(function(){
+            if ($ipt.val().length == 0)
+              $ipt.val($ipt.data('watermark'));
+          })
+          .keydown(function(evt){
+            if (evt.keyCode == 13)
+              postSMS();
+          });
+      });
+    </script>
+  </head>
+
+  <body>
+    <section id="main">
+      <header>
+        <section>
+          <h1><span class="hide">Piictu</span></h1>
+          <h2>Reply &amp; get replies,<br />talk through photos!</h2>
+          <p>
+            <a id="lnkShowSmsForm" class="btn" href="#" title="Get the free App"><span class="hide">Get the free App</span></a>
+            <span id="downloadNote">Available for your <a href="/download" class="lnk" title="Get the free App">iPhone</a></span>
+          </p>
+        </section>
+      </header>
+
+      <img class="bg" src="/images/landing/bg-iphone.jpg" alt="" width="1280" height="793" />
+    </section>
+
+    <section id="smsForm">
+      <section class="form">
+        <p>
+          Enter your phone number and we'll
+          send you a download link.
+          <br>
+          <span class="note">(in most countries)</span>
+        </p>
+        <div class="input-wrap">
+          <input type="text" value="+1 xxx xxx xxx" name="phone" />
+          <div class="submit"></div>
+        </div>
+        <p class="note">
+          Or continue to the <a href="/download" title="Get the free App">App Store</a>.
+        </p>
+      </section>
+      <section class="confirm hide">
+        <img src="/images/landing/ico-confirm.png" />
+        <p>
+          Gotcha, an SMS with download link was sent to your phone!
+        </p>
+      </section>
+    </section>
+    <div id="fog"></div>
+
+    <section id="social">
+      <nav>
+        <ul>
+          <li><a class="tw" href="http://twitter.com/piictu" title="Piictu on Twitter" target="_blank"><span class="hide">Piictu on Twitter</span></a></li>
+          <li><a class="fb" href="http://www.facebook.com/piictu" title="Piictu on Facebook" target="_blank"><span class="hide">Piictu on Facebook</span></a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section id="footer">
+      <ul>
+        <li><a href="http://blog.piictu.com/" title="Read our Blog">Blog</a></li>
+        <li><a href="http://help.piictu.com/" title="Need help?">Help</a></li>
+        <li><a href="/about" title="About us">About</a></li>
+        <li><a href="http://nytm.org/made/" title="Internet Made in New York City">Made in NYC</a></li>
+        <li>&copy; Piictu Inc.</li>
+      </ul>
+    </section>
+
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19854811-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+  <script type="text/javascript">if (!NREUMQ.f) { NREUMQ.f=function() {
+NREUMQ.push(["load",new Date().getTime()]);
+var e=document.createElement("script");
+e.type="text/javascript";e.async=true;e.src="https://d1ros97qkrwjf5.cloudfront.net/42/eum/rum.js";
+document.body.appendChild(e);
+if(NREUMQ.a)NREUMQ.a();
+};
+NREUMQ.a=window.onload;window.onload=NREUMQ.f;
+};
+NREUMQ.push(["nrfj","beacon-1.newrelic.com","a1ed8aee12",415265,"J19bR0MMVAhQFE1cWglVGlpfB10c",0,1,new Date().getTime(),"","","","",""])</script></body>
+</html>
