@@ -29,17 +29,6 @@
       var stateMappings = new Object();
       var values = [];
 
-      // Returns q#-9 where # is in [0,8].
-      // This is the color code.
-      var colorScale = d3.scale.ordinal()
-                      .domain(values)
-                      .rangeBands([0, 8]);
-
-      function quantize(d) {
-        return "q" + colorScale(stateMappings[d.properties.name]) + "-9";
-      }
-
-
       if ("states" in data) {
         jQueryHcss.each(data["states"], function(i, stateData) {
         var stateData = data["states"][i];
@@ -47,6 +36,19 @@
         values.push(parseInt(stateData["value"]));
         });
       }
+
+      // Returns q#-9 where # is in [0,8].
+      // This is the color code.
+      console.log("CVALUES", values);
+      var colorScale = d3.scale.ordinal()
+                      .domain(values)
+                      .rangeBands([0, 8]);
+
+      console.log("TED", colorScale(55103));
+      function quantize(d) {
+        return "q" + colorScale(stateMappings[d.properties.name]) + "-9";
+      }
+
       var path = d3.geo.path();
      
       var svg = d3.select(".themap")
