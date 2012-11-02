@@ -51,7 +51,7 @@ Here is a table with IFrames of the three possibilities:
 <table>
  <tr>
    <td>Bootstrap Version</td>
-   <td>1</td>
+   <td style="width: 40px;" >1</td>
    <td rowspan="2">
      <iframe src="bootstrap-v1-v1.html" style="width: 500px; height: 70px; border: 1px solid #444; margin: 15;">
      </iframe>
