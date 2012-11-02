@@ -17,7 +17,7 @@ To use this form layout, form author must do two things:
 
 With [Version 1 of
 Bootstrap](https://github.com/twitter/bootstrap/blob/1905a992d9cc8f1160930edad6ec5d52eaf06d85/docs/index.html),
-the HTML code to produce the above screen grab was [see example page](bootstrap-v1-v1.html):
+the HTML code to produce the above screen grab was:
 
     <form>
       <fieldset>
@@ -31,7 +31,7 @@ the HTML code to produce the above screen grab was [see example page](bootstrap-
     </form>
 
 But with Version 2, both the required HTML structure and the required CSS
-classes changed to the following [see example page](bootstrap-v2-v2.html):
+classes changed to the following:
 
     <form class="form-horizontal">
       <div class="control-group">
@@ -44,8 +44,45 @@ classes changed to the following [see example page](bootstrap-v2-v2.html):
 
 Anyone who updated their CSS and Javascript hotlinks to Twitter without also
 searching and fixing *every form* in their web code would see a misrendered
-form, like the following [see example page](bootstrap-v1-v2.html):
+form, like the following:
 
+Here is a table with IFrames of the three possibilities:
+
+<table>
+ <tr>
+   <td>Bootstrap Version</td>
+   <td>1</td>
+   <td rowspan="2">
+     <iframe src="bootstrap-v1-v1.html" style="width: 300px; height: 100px;" />
+   </td>
+ </tr>
+ <tr>
+   <td>HTML Style</td>
+   <td>1</td>
+ </tr>
+ <tr>
+   <td>Bootstrap Version</td>
+   <td>2</td>
+   <td rowspan="2">
+     <iframe src="bootstrap-v2-v2.html" style="width: 300px; height: 100px;" />
+   </td>
+ </tr>
+ <tr>
+   <td>HTML Style</td>
+   <td>2</td>
+ </tr>
+ <tr>
+   <td>Bootstrap Version</td>
+   <td style="background-color: #FA5858">2</td>
+   <td rowspan="2">
+     <iframe src="bootstrap-v1-v2.html" style="width: 300px; height: 100px;" />
+   </td>
+ </tr>
+ <tr>
+   <td>HTML Style</td>
+   <td style="background-color: #FA5858">1</td>
+ </tr>
+</table>
 
 
 
