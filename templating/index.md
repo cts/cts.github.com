@@ -5,7 +5,7 @@ tagline:
 ---
 {% include JB/setup %}
 
-<images src="/images/dancing-cat.gif" />
+<image src="/images/dancing-cat.gif" />
 
 ..Coming Soon!
 
