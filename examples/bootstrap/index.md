@@ -46,8 +46,6 @@ Anyone developer who updated their CSS links without also searching and fixing
 *every form* in their web code would see a misrendered form, like the
 following:
 
-Here is a table with IFrames of the three possibilities:
-
 <table>
  <tr>
    <td>Bootstrap Version</td>
