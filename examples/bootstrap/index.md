@@ -42,9 +42,9 @@ classes changed to the following:
       </div>
     </form>
 
-Anyone who updated their CSS and Javascript hotlinks to Twitter without also
-searching and fixing *every form* in their web code would see a misrendered
-form, like the following:
+Anyone developer who updated their CSS links without also searching and fixing
+*every form* in their web code would see a misrendered form, like the
+following:
 
 Here is a table with IFrames of the three possibilities:
 
