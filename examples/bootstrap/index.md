@@ -53,7 +53,8 @@ Here is a table with IFrames of the three possibilities:
    <td>Bootstrap Version</td>
    <td>1</td>
    <td rowspan="2">
-     <iframe src="bootstrap-v1-v1.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;"></iframe>
+     <iframe src="bootstrap-v1-v1.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;">
+     </iframe>
    </td>
  </tr>
  <tr>
@@ -64,7 +65,8 @@ Here is a table with IFrames of the three possibilities:
    <td>Bootstrap Version</td>
    <td>2</td>
    <td rowspan="2">
-     <iframe src="bootstrap-v2-v2.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;"></iframe>
+     <iframe src="bootstrap-v2-v2.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;">
+     </iframe>
    </td>
  </tr>
  <tr>
@@ -75,7 +77,8 @@ Here is a table with IFrames of the three possibilities:
    <td>Bootstrap Version</td>
    <td style="background-color: #FA5858">2</td>
    <td rowspan="2">
-     <iframe src="bootstrap-v1-v2.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;"></iframe>
+     <iframe src="bootstrap-v1-v2.html" style="width: 300px; height: 100px; border: 1px solid #444; margin: 15;">
+     </iframe>
    </td>
  </tr>
  <tr>
