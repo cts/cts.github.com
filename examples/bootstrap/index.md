@@ -1,3 +1,8 @@
+---
+layout: page
+title: Twitter Bootstrap and Broken Encapsulation
+group: primary
+---
 
 One nice feature of Bootstrap is a set of form layouts for different size
 screens and visual styles. For example, the "Horizontal" variant of this layout
@@ -40,6 +45,7 @@ classes changed to the following [see example page](bootstrap-v2-v2.html):
 Anyone who updated their CSS and Javascript hotlinks to Twitter without also
 searching and fixing *every form* in their web code would see a misrendered
 form, like the following [see example page](bootstrap-v1-v2.html):
+
 
 
 
