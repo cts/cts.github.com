@@ -85,6 +85,6 @@ following:
  </tr>
 </table>
 
-<p align="center"><i>(These are IFRAME elements, rendered live in your browser.)</i></p>
+<p align="center"><i>These are IFRAME elements, rendered live in your browser.</i></p>
 
 
