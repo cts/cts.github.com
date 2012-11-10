@@ -1,0 +1,43 @@
+
+    body {behavior: url(scripts/csshover.htc);}
+div#nav { font-family: Verdana, Arial, Helvetica, sans-serif; height:25px; background-image:url(images/menu_bg.gif); background-repeat:repeat-x; background-color:#bc934b;}
+  div#nav img {border:0px;}
+  ul.lv1_menu { padding:0; margin:0; border:0;	padding-left:35px; /* first menu item positioned at 35px from the left */ }
+	img.more{ margin-left:4px;}
+
+	li.lv1_item {position: relative; list-style: none; margin: 0; float: left; line-height: 1em; white-space:nowrap; height:25px; }
+	li.lv1_item:hover {background-image:url(images/menu_item_hover_bg.gif); background-repeat:repeat-x;}
+
+		a.lv1_link,
+		a.lv1_link:visited { display:block; color:#fff; padding: 3px 15px; font-size:13px; width:0.1em; text-decoration: none; }
+		html>body a.lv1_link,
+		html>body a.lv1_link:visited {width: auto;}
+
+li.lv1_item:hover ul.lv2_menu {display:block;}
+
+ul.lv2_menu {margin: 0; padding: 0; border:solid 1px #b5ac9f; border-top:none;}
+ul.lv2_menu {top: 25px; left: 0px;}
+ul.lv2_menu {position: absolute;  display: none;}
+
+	li.lv2_item {position: relative; list-style: none; margin: 0; line-height: 1em; clear:both;}
+
+		a.lv2_link,
+		a.lv2_link:visited,
+		span.lv2_link, /* special case for courses, where one of the courses has no website */
+		a.lv2_link_separator_above,
+		a.lv2_link_separator_above:visited {font-size:13px; color:#8a5e20; display: block; background-color:#f9f5f0; padding: 7px 15px 5px 15px; margin: 0px; text-decoration: none; width: 250px;}
+
+		a.lv2_link_separator_above {border-top: 1px solid #b5ac9f;}
+
+		a.lv2_link:hover, a.lv2_link_separator_above:hover {background: #efdfca;}
+
+span.former{ font-size: 11px; color:#666; font-family:Arial, Helvetica, sans-serif; padding-right: 4px; font-style: italic;}
+span.comment{ font-size: 12px; color:#666; font-family:Arial, Helvetica, sans-serif;}
+
+span.course_no{ display:block; font-weight: bold; font-size: 12px;}
+span.course_date{ display:block; font-size: 12px; }
+span.course_name{ display:block;  white-space:normal; font-size: 12px; color:#666; padding: 2px 0px 0px 0px;}
+
+span.inside_link { font-style:italic; padding: 0px 3px; text-decoration: underline; }
+span.inside_link:hover, span.inside_link_over { color:#fff; background-color:#e0c3a0; }
+
