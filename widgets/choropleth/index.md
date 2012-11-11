@@ -31,7 +31,6 @@ the 50 states.
     <div class="usa-choropleth">
       <ul class="properties">
         <li class="width">600</li>
-        <li class="height">400</li>
       </ul>
     
       <table class="states">

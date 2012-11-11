@@ -11,7 +11,6 @@
     <div class="usadata" style="display:none;" >
       <ul class="properties">
         <li class="width"></li>
-        <li class="height"></li>
       </ul>
       <table class="states" style="display:none;">
         <tr><td></td><td></td><td></td></tr>
@@ -25,6 +24,7 @@
       var dataElem = widget.find(".usadata");
       var mapElem = widget.find(".themap").first()[0];
       var data = CTS.engine.recoverData(dataElem);
+      var aspectRatio = 500.0/960;
 
       var stateMappings = new Object();
       var values = [];
@@ -36,7 +36,16 @@
         values.push(parseInt(stateData["value"]));
         });
       }
-
+      var ratio = 1.0;
+      var width = 960;
+      var height = 500;
+      if ("properties" in data) {
+        if ("width" in data["properties"]) {
+          width = parseInt(data["properties"]["width"]);
+          ratio = width/960;
+          height = ratio*height; 
+        }
+      }
       // Returns q#-9 where # is in [0,8].
       // This is the color code.
       var colorScale = d3.scale.linear()
@@ -50,11 +59,14 @@
       var path = d3.geo.path();
      
       var svg = d3.select(".themap")
-        .append("svg");
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
       var states = svg.append("g")
        .attr("id", "states")
-       .attr("class", "Blues");
+       .attr("class", "Blues")
+       .attr("transform", "scale(" + ratio + ")");
 
       // The syntax highlighter in your browser isn't going to be happy about this..
       var json = {"type":"FeatureCollection","features":[

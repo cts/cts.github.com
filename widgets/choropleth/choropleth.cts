@@ -9,11 +9,6 @@
   with: properties;
 }
 
-
-.usa-choropleth .height {
-  value: height;
-}
-
 .usa-choropleth .width {
   value: width;
 }
