@@ -11148,7 +11148,7 @@ var CTS = {};
 
   if (CTS.autoload) {
     console.log("CTS Autoload");
-    CTS.Bootatrsp.Go();
+    CTS.Bootatrap.Go();
   }
 
 }).call(this);
