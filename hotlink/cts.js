@@ -9798,7 +9798,7 @@ var CTS = {};
     };
 
     Template.prototype._applyTo = function(node, context, args, engine, template) {
-      var scriptsToReturn, templateElem, templateElemWrapper, templateNoScript, templateScript, tup;
+      var scriptsToReturn, templateElem, templateNoScript, templateScript, tup;
       CTS.Util.setLastInserted(node);
       console.log("----- Begin Template Application ------");
       tup = CTS.Util.stripScriptTags(template);
@@ -9806,12 +9806,11 @@ var CTS = {};
       templateScript = tup[1];
       templateElem = $('<div class="cts-template" />');
       templateElem.html(templateNoScript);
-      templateElemWrapper = $('<div />');
-      templateElemWrapper.html(templateElem);
       scriptsToReturn = null;
       if (templateScript.length > 0) {
         scriptsToReturn = templateScript;
       }
+      console.log("Scripts to return", scriptsToReturn, templateNoScript);
       node.html(templateElem);
       if (scriptsToReturn) {
         return [false, true, scriptsToReturn];
@@ -10045,8 +10044,8 @@ var CTS = {};
       scripts = noscripts.getElementsByTagName('script');
       while (scripts.length > 0) {
         script = scripts[0];
-        justscripts.appendChild(script);
         script.parentNode.removeChild(script);
+        justscripts.appendChild(script);
       }
       return [noscripts.innerHTML, justscripts.innerHTML];
     };
@@ -11148,7 +11147,7 @@ var CTS = {};
 
   if (CTS.autoload) {
     console.log("CTS Autoload");
-    CTS.Bootatrsp.Go();
+    CTS.Bootstrap.Go();
   }
 
 }).call(this);
