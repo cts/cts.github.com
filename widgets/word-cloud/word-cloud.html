@@ -27,31 +27,35 @@
       var dataElem = widget.find(".worddata");
       var data = CTS.engine.recoverData(dataElem);
       console.log("WIDGET: Recovered Data", data);
+      var width = 600;
+      var height = 500;
+      if ("width" in data) {
+        width = parseInt(data["width"]);
+      }
+      if ("height" in data) {
+        height = parseInt(data["height"]);
+      }
+      var w = new Array();
+      var g = new Array();
+     
       if ("important" in data) {
-        var width = 600;
-        var height = 500;
-        if ("width" in data) {
-          width = parseInt(data["width"]);
-        }
-        if ("height" in data) {
-          height = parseInt(data["height"]);
-        }
-        console.log("here are the words: " + data["words"]);
-        var smallWords = data["words"].split(" ");
         var bigWords = data["important"].split(" ");
-        var w = new Array();
-        var g = new Array();
         for (var i in bigWords) {
           w.push(bigWords[i]);
           g.push(2);
         }
+      }
+      if ("words" in data) {
+        var smallWords = data["words"].split(" ");
         for (var j in smallWords) {
           w.push(smallWords[j]);
           g.push(1);
         }
-        var colors = ["#000000", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];
-        d3.layout.cloud().size([width, height])
-          .words(d3.zip(w, g).map(function(d) {
+      }
+        
+      var colors = ["#000000", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];
+      d3.layout.cloud().size([width, height])
+        .words(d3.zip(w, g).map(function(d) {
              return {text: d[0], size: d[1]==1? (10 + Math.random() * 30): 40+Math.random()*30};
            }))
            .rotate(function() { return Math.random() * 180-90; })
@@ -75,8 +79,7 @@
               return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
             .text(function(d) { return d.text; });
-         }
-       }
+        }
   </script>
 
   </div></section>
