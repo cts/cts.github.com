@@ -11,7 +11,7 @@
     <!-- This is the data section, insivible but present in the DOM -->
 
     <div class="worddata" style="display:none;" >
-      <div class="important-words"></div>
+      <div class="important"></div>
       <div class="words"></div>
       <ul class="properties">
         <li class="width"></li>
@@ -39,8 +39,8 @@
       var w = new Array();
       var g = new Array();
      
-      if ("important-words" in data) {
-        var bigWords = data["important-words"].split(" ");
+      if ("important" in data) {
+        var bigWords = data["important"].split(" ");
         for (var i in bigWords) {
           w.push(bigWords[i]);
           g.push(2);
