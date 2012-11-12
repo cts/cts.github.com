@@ -10,7 +10,7 @@
 }
 
 .wordcloud .important-words {
-   value: important;
+   value: important-words;
 }
 
 .wordcloud .width {

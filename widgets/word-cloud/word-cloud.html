@@ -25,6 +25,7 @@
       var widget = CTS.Util.getLastInserted();
       console.log("------ WIDGET Render JavaScript -------");
       var dataElem = widget.find(".worddata");
+      var cloudElem = widget.find(".thewordcloud").first()[0];
       var data = CTS.engine.recoverData(dataElem);
       console.log("WIDGET: Recovered Data", data);
       var width = 600;
@@ -38,8 +39,8 @@
       var w = new Array();
       var g = new Array();
      
-      if ("important" in data) {
-        var bigWords = data["important"].split(" ");
+      if ("important-words" in data) {
+        var bigWords = data["important-words"].split(" ");
         for (var i in bigWords) {
           w.push(bigWords[i]);
           g.push(2);
