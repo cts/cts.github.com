@@ -2,7 +2,7 @@
   template: http://www.treesheets.org/widgets/word-cloud/word-cloud.html#cloud;
   template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php;
   data: .;
-  with: WordCloud;
+  with: wordcloud;
 }
 
 .wordcloud .words {
