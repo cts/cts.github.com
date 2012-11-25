@@ -5,12 +5,16 @@
   with: word-cloud-thing;
 }
 
-.wordcloud .words {
-   value: words;
+.wordcloud .big {
+   value: big;
 }
 
-.wordcloud .important {
-   value: important;
+.wordcloud .medium {
+   value: medium;
+}
+
+.wordcloud .small {
+  value: small;
 }
 
 .wordcloud .properties {

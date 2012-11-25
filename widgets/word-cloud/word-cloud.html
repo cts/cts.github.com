@@ -11,17 +11,19 @@
     <!-- This is the data section, insivible but present in the DOM -->
 
     <div class="worddata" style="display:none;"> 
-      <div class="words" style="display:none;"></div>
-      <div class="important" style=display:none;"></div>
+      <div class="big" style="display:none;">Big words</div>
+      <div class="medium" style=display:none;">Medium Words</div>
+      <div class="small" style=display:none;">small Words</div>
+
       <ul class="properties">
-        <li class="width"></li>
-        <li class="height"></li>
+        <li class="width">300</li>
+        <li class="height">300</li>
       </ul>
     </div>
 
     <!-- This is a script that will execute upon DOM insert -->
 
-  <script>
+  <script type="application/javascript;version=1.7">
       var widget = CTS.Util.getLastInserted();
       console.log("------ WIDGET Render JavaScript -------");
       var dataElem = widget.find(".worddata");
@@ -39,28 +41,49 @@
           height = parseInt(properties["height"]);
         }
       }
-      var w = new Array();
-      var g = new Array();
-     
-      if ("important" in data) {
-        var bigWords = data["important"].split(" ");
-        for (var i in bigWords) {
-          w.push(bigWords[i]);
-          g.push(2);
+      var area = width*height;
+      var allWords = new Array();
+      var sizes = new Array();
+      // This will be used to determine the size fonts
+      var bigWords = [];
+      var mediumWords = [];
+      var smallWords = [];
+      if ("big" in data) {
+        bigWords = data["big"].split(" ");
+      }
+      if ("medium" in data) {
+        mediumWords = data["medium"].split(" ");
+      }
+      if ("small" in data) {
+        smallWords = data["small"].split(" ");
+      }
+      // Asume we want medium words to be .7 times the size of big words, and small words .3 times the size of big words
+       // Lets assume that a standard word is 4 times as long as it is tall equation to find average font size so words 
+       //take up the area is numBig*4x^2+numMed*4*(.7x)^2+numSmall*4*(.3x)^2= 4(numBig+numMed*.7*.7+numSmall*.3*.3)x^2 = area/2 ,where x is the font size.
+      var largeFont = Math.sqrt(area/(3*(bigWords.length+mediumWords.length*.5*.5+smallWords.length*.3*.3)));
+      for (var i in bigWords) {
+        if (bigWords[i]!="") {
+          allWords.push(bigWords[i]);
+          sizes.push(largeFont-.2*largeFont + Math.random()*.4*largeFont);
         }
       }
-      if ("words" in data) {
-        var smallWords = data["words"].split(" ");
-        for (var j in smallWords) {
-          w.push(smallWords[j]);
-          g.push(1);
+      for (var j in mediumWords) {
+        if (mediumWords[j]!="") {
+          allWords.push(mediumWords[j]);
+          sizes.push(largeFont*.5-.2*largeFont*.5 + Math.random()*.4*largeFont*.5);
         }
       }
-        
+      for (var h in smallWords) {
+        if (smallWords[h]!="") {
+         allWords.push(smallWords[h]);
+         sizes.push(largeFont*.3-.2*largeFont*.3 + Math.random()*.4*largeFont*.3);
+        }
+      }
+      var numberShown = 0;
       var colors = ["#000000", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];
       d3.layout.cloud().size([width, height])
-        .words(d3.zip(w, g).map(function(d) {
-             return {text: d[0], size: d[1]==1? (10 + Math.random() * 30): 40+Math.random()*30};
+        .words(d3.zip(allWords, sizes).map(function(d) {
+             return {text: d[0], size: d[1]};
            }))
            .rotate(function() { return Math.random() * 180-90; })
            .fontSize(function(d) { return d.size; })
@@ -76,14 +99,15 @@
             .selectAll("text")
             .data(words, function(d){return d;})
             .enter().append("text")
-            .style("font-size", function(d) { return d.size + "px"; })
+            .style("font-size", function(d) {numberShown++; return d.size + "px"; })
             .style("fill",function() { return colors[Math.floor(Math.random() * (7))];})
             .attr("text-anchor", "middle")
             .attr("transform", function(d) {
               return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
             .text(function(d) { return d.text; });
-        }
+            console.log("actual shown: " + numberShown + "actual Words: " + allWords.length);
+            }
   </script>
 
   </div></section>
