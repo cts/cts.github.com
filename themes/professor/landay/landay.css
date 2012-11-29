@@ -1,0 +1,239 @@
+BODY {
+  margin: 0em;
+}
+
+div.landay {
+  background: white;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0em;
+}
+
+div.landay H1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay H2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay H3 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay H4 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay .address {
+	font-size: small;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay .caption {
+  font-size: smaller;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div.landay a.activeTabLink {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+div.landay a:hover.activeTabLink {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+div.landay a.inactiveTabLink {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  background: #cccccc;
+  text-decoration: none;
+}
+
+div.landay a:hover.inactiveTabLink {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: #000000;
+  text-decoration: underline;
+}
+
+
+div.landay .project {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+/* ----------------------------------------------------------------------*/
+
+div.landay .homeColor {
+  background: #9933CC;
+}
+
+div.landay a.home {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  background: #cccccc;
+  text-decoration: none;
+}
+
+div.landay a:hover.home {
+  color: #ffffff;
+  background: #cc0000;
+  text-decoration: underline;
+}
+
+div.landay a.homeActive {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: #9933CC;
+  text-decoration: none;
+}
+
+div.landay a:hover.homeActive {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------*/
+
+div.landay .researchColor {
+  background: #000099;
+}
+
+div.landay a.research {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  background: #cccccc;
+  text-decoration: none;
+}
+
+div.landay a:hover.research {
+  color: #ffffff;
+  background: #000099;
+  text-decoration: underline;
+}
+
+div.landay a.researchActive {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: #000099;
+  text-decoration: none;
+}
+
+div.landay a:hover.researchActive {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------*/
+
+div.landay .pubsColor {
+  background: #009900;
+}
+
+div.landay a.pubs {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  background: #cccccc;
+  text-decoration: none;
+}
+
+div.landay a:hover.pubs {
+  color: #ffffff;
+  background: #009900;
+  text-decoration: underline;
+}
+
+div.landay a.pubsActive {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: #009900;
+  text-decoration: none;
+}
+
+div.landay a:hover.pubsActive {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------*/
+
+div.landay .teachingColor {
+  background: #ff9933;
+}
+
+div.landay a.teaching {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  background: #cccccc;
+  text-decoration: none;
+}
+
+div.landay a:hover.teaching {
+  color: #ffffff;
+  background: #ff9933;
+  text-decoration: underline;
+}
+
+div.landay a.teachingActive {
+  display: block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background: #ff9933;
+  text-decoration: none;
+}
+
+div.landay a:hover.teachingActive {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------*/
+
+div.landay .content {
+   margin: 0.125in;
+}
+div.landay .Heading {
+}
+div.landay .MyHeading {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+div.landay .title-affiliation {
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+	font-size: medium;
+}
+
+div.landay .style2 {font-family: Georgia, "Times New Roman", Times, serif}
+div.landay .style3 {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif}
+

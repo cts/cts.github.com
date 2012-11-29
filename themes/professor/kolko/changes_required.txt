@@ -1,0 +1,6 @@
+span email
+div background
+div bio
+div project container
+div pub container
+span nick

@@ -1,0 +1,12 @@
+.kargerAddress a {
+  border: 0 !important;
+  text-decoration: underline !important;
+  line-height: normal !important;
+  display: inline !important;
+  width: auto !important;
+  border-bottom: none !important;
+  font-weight: normal !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
