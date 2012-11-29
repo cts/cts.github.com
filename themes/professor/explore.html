@@ -18,9 +18,9 @@
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><a class="themer" data-page="karger" data-role="data" href="#">David Karger</a></li>
-          <li><a class="themer" data-page="myers" data-role="data" href="#">Brad Myers </a></li>
+          <li><a class="themer" data-page="yardi" data-role="data" href="#">Sarita Yardi</a></li>
+          <li><a class="themer" data-page="landay" data-role="data" href="#">James Landay</a></li>
           <li><a class="themer" data-page="kolko" data-role="data" href="#">Beth Kolko</a></li>
-          <li><a class="themer" data-page="bernstein" data-role="data" href="#">Michael Bernstein</a></li>
         </ul>
       </li>
       <li><a href="#">as</a></li>
@@ -31,9 +31,9 @@
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><a class="themer" data-page="karger" data-role="theme" href="#">David Karger</a></li>
-          <li><a class="themer" data-page="myers" data-role="theme" href="#">Brad Myers </a></li>
+          <li><a class="themer" data-page="yardi" data-role="theme" href="#">Sarita Yardi</a></li>
+          <li><a class="themer" data-page="landay" data-role="theme" href="#">James Landay</a></li>
           <li><a class="themer" data-page="kolko" data-role="theme" href="#">Beth Kolko</a></li>
-          <li><a class="themer" data-page="bernstein" data-role="theme" href="#">Michael Bernstein</a></li>
         </ul>
       </li>
     </ul>
@@ -43,7 +43,8 @@
 </iframe>
 <script>
 
-window.iframeLoaded = function() {
+document.getElementById('frame').onload = function() {
+  console.log("Iframe Loaded", $('#frame').attr('src'));
   var dataElem = $("#dataLabel");
   var themeElem = $("#themeLabel");
   var dataDir = dataElem.attr("data-page");
@@ -57,13 +58,13 @@ window.iframeLoaded = function() {
   var e = doc.createElement('script');
   e.setAttribute('type', 'text/cts');
 
-  //var bodyClause = "body { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#body; }";
-  //var headClause = "head { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#head; }";
+var bodyClause = "body { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#body; }";
+  var headClause = "head { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#head; }";
 
-  var bodyClause = "body { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#body; }";
-  var headClause = "head { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#head; }";
+  //var bodyClause = "body { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#body; }";
+  //var headClause = "head { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#head; }";
 
-  e.innerHTML = bodyClause + headClause;    
+  e.innerHTML = bodyClause; //+ headClause;    
   
   doc.getElementsByTagName('head')[0].appendChild(e);
 
@@ -71,12 +72,13 @@ window.iframeLoaded = function() {
   var win = window.parent.frames[0].window;
   win.CTS.bootstrap = new win.CTS.Bootstrap();
 
-  //    window.parent.frames[0].window.CTS.bootstrap =
-  //     new window.parent.frames[0].window.CTS.Bootstrap();
+  // window.parent.frames[0].window.CTS.bootstrap =
+  // new window.parent.frames[0].window.CTS.Bootstrap();
   iframeContainer.show();
 }
 
 window.retarget = function() {
+  console.log("Retargeting");
   var dataElem = $("#dataLabel");
   var themeElem = $("#themeLabel");
   var dataDir = dataElem.attr("data-page");
