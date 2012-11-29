@@ -11,10 +11,18 @@
     <!-- This is the data section, insivible but present in the DOM -->
 
     <div class="worddata" style="display:none;"> 
-      <div class="big" style="display:none;">Big words</div>
-      <div class="medium" style=display:none;">Medium Words</div>
-      <div class="small" style=display:none;">small Words</div>
-
+      <div class="big" style="display:none;">
+        <div class="big-words"> Big words</div>
+        <div class="big-color"> Fake color </div>
+      <div>
+      <div class="medium" style="display:none;">
+        <div class="medium-words"> Medium words</div>
+        <div class="medium-color"> Fake color </div>
+      <div>
+      <div class="small" style="display:none;">
+        <div class="small-words"> Small words</div>
+        <div class="small-color"> Fake color </div>
+      <div>
       <ul class="properties">
         <li class="width">300</li>
         <li class="height">300</li>
@@ -49,14 +57,14 @@
       var bigWords = [];
       var mediumWords = [];
       var smallWords = [];
-      if ("big" in data) {
-        bigWords = data["big"].split(" ");
+      if ("big-words" in data) {
+        bigWords = data["big-words"].split(" ");
       }
-      if ("medium" in data) {
-        mediumWords = data["medium"].split(" ");
+      if ("medium-words" in data) {
+        mediumWords = data["medium-words"].split(" ");
       }
-      if ("small" in data) {
-        smallWords = data["small"].split(" ");
+      if ("small-words" in data) {
+        smallWords = data["small-words"].split(" ");
       }
       function generateColors(color) {
           var primary = (6+Math.floor(Math.random()*5))*25;
@@ -91,21 +99,33 @@
         if (bigWords[i]!="") {
           allWords.push(bigWords[i]);
           sizes.push(largeFont-.2*largeFont + Math.random()*.4*largeFont);
-          cols.push(generateColors("blues"));
+          var bColor = "";
+          if ("big-color" in data) {
+            bColor = data["big-color"];
+          }
+          cols.push(generateColors(bColor));
         }
       }
       for (var j in mediumWords) {
         if (mediumWords[j]!="") {
           allWords.push(mediumWords[j]);
           sizes.push(largeFont*.5-.2*largeFont*.5 + Math.random()*.4*largeFont*.5);
-          cols.push(generateColors("reds"));
+          var mColor = "";
+          if ("medium-color" in data) {
+            mColor = data["medium-color"];
+          }
+          cols.push(generateColors(mColor));
         }
       }
       for (var h in smallWords) {
         if (smallWords[h]!="") {
          allWords.push(smallWords[h]);
          sizes.push(largeFont*.3-.2*largeFont*.3 + Math.random()*.4*largeFont*.3);
-         cols.push(generateColors("yellows"));
+         var sColor = "";
+         if ("small-color" in data) {
+            sColor = data["small-color"];
+          }
+          cols.push(generateColors(sColor));
         }
       }
       console.log("colors: " + cols);
