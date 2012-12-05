@@ -211,3 +211,13 @@ p.intro {
 img.widget-banner {
   margin-bottom: 15px;
 }
+
+.threecolumn {
+  text-align: justify;
+  -moz-column-count: 3;
+  -moz-column-gap: 1.5em;
+  -moz-column-rule: 1px solid #c4c8cc;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1.5em;
+  -webkit-column-rule: 1px solid #c4c8cc;
+}
