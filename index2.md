@@ -22,25 +22,21 @@ tagline:
     environments" (<a
     href="http://www.w3.org/standards/webdesign/htmlcss.html">W3C</a>).  But
     significant parts of a modern web page's design cannot be described by CSS,
-    and are instead defined by "presentational" HTML interleaved with "content"
-    HTML.</p>
+    and are instead defined by <b>design HTML</b> interleaved with <b>content
+    HTML</b>.</p>
 
-    <p>This presentational HTML is stylistic scaffolding, often interleaved
-    with Javascript.  It provides anchor points for CSS and controls
-    block-level layout beyond CSS's capabilities. As an example, consider the
-    mass of HTML nodes, each holding image fragments, that was needed to place
-    content inside a rounded rectangle before CSS3 introduced a single
-    instruction for doing so.</p>
+    <p>This design HTML is stylistic scaffolding, often interleaved with
+    Javascript.  It provides anchor points for CSS and controls block-level
+    layout beyond CSS's capabilities.  As an example, consider the mass of HTML
+    nodes, each holding image fragments, that was needed to place content
+    inside a rounded rectangle before CSS3 introduced a single instruction for
+    doing so.</p>
+
+    <p>Unlike CSS styles, <b>design HTML</b> cannot be separated from content
+    HTML. This makes HTML documents harder to create, maintain, reuse, and
+    tailor. <i>We need a platform-level language to support encapsulation and
+    resuse of HTML structure just like we have one for HTML style.</i></p>
     
-    <p>Unlike CSS styles, these masses of presentational HTML cannot be
-    separated from content HTML, which makes HTML documents harder to create,
-    maintain, reuse, and tailor. When an author inspects HTML source, she finds
-    large blobs of presentational HTML wrapping (and often obfuscating)
-    meaningful content. To resuse markup, she must copy the entire blob, then
-    replace pieces of content with her own.  This might work for replicating an
-    exemplar layout once, but what happens if an author wants to use the same
-    layout repeatedly on many instances---for example, to nicely format each
-    publication in a large list?  The labor becomes substantial.</p>
   </div>
 </div>
 
