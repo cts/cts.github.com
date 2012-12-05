@@ -31,11 +31,11 @@ tagline:
     inside a rounded rectangle before CSS3 introduced a single instruction for
     doing so.</p>
 
-    <p>Unlike CSS styles, <b>design HTML</b> cannot be separated from content
-    HTML. This makes HTML documents harder to create, maintain, reuse, and
-    tailor. Template langauges address symptoms of this problem, but not the
-    root. <i>We need a platform-level language to support encapsulation and
-    resuse of HTML structure just like we have one for HTML style.</i></p>
+    <p>Unlike CSS styles, design HTML cannot be separated from content HTML.
+    This makes HTML documents harder to create, maintain, reuse, and tailor.
+    Template langauges address symptoms of this problem, but not the root.
+    <i>We need a platform-level language to support encapsulation and resuse of
+    HTML structure just like we have one for HTML style.</i></p>
     
   </div>
 </div>
