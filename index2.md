@@ -8,7 +8,7 @@ tagline:
 
 <div class="row">
   <div class="span9">
-    <h2>You Deserve Better Tools</h2>
+    <h2>A Next Step for Encapsulation</h2>
   </div>
 </div>
 
@@ -16,24 +16,16 @@ tagline:
   <div class="span9 threecolumn">
     
     <p>CSS took an important step towards separating the content of an HTML
-    document from its presentation. This practice "makes it easier to maintain
-    sites, share style sheets across pages, and tailor pages to different
-    environments" (<a
-    href="http://www.w3.org/standards/webdesign/htmlcss.html">W3C</a>).  But
-    significant parts of web page design cannot be described by CSS, and are
-    instead defined by <b>design HTML</b> interleaved with <b>content
-    HTML</b>.</p>
+    document from its presentation. But significant parts of web page's design
+    cannot be described by CSS, and are instead defined by <b>design HTML</b>
+    interleaved with <b>content HTML</b>.</p>
 
-    <p>This design HTML is stylistic scaffolding, often interleaved with
-    Javascript.  It provides anchor points for CSS and controls block-level
-    layout beyond CSS's capabilities.  As an example, consider the mass of HTML
-    nodes, each holding image fragments, that was needed to place content
-    inside a rounded rectangle before CSS3 introduced a single instruction for
-    doing so.</p>
+    <p>This Design HTML is stylistic scaffolding. It provides anchor points for
+    CSS and controls block-level layout beyond CSS's capabilities. But unlike
+    CSS, it cannot be separated from content HTML. This makes web documents
+    harder to create, maintain, and reuse.</p>
 
-    <p>Unlike CSS styles, design HTML cannot be separated from content HTML.
-    This makes HTML documents harder to create, maintain, reuse, and tailor.
-    Template langauges address symptoms of this problem, but not the root.
+    <p>Template langauges address symptoms of this problem, but not the root.
     <i>We need a platform-level language to support encapsulation and resuse of
     HTML structure just like we have one for HTML style.</i></p>
     
