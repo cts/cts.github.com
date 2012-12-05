@@ -8,7 +8,7 @@ tagline:
 
 <div class="row">
   <div class="span9">
-    <h2>A Next Step for Encapsulation</h2>
+    <h2>We need better Encapsulation</h2>
   </div>
 </div>
 
@@ -32,12 +32,29 @@ tagline:
   </div>
 </div>
 
-<img src="/images/recycle.png" style="margin:25px 0px 25px 50px;" />
+<div class="row">
+  <img src="/images/recycle.png" style="margin:25px autopx 25px autopx; width: 300px;" />
+</div>
 
-Cascading Tree Sheets (CATS) are a new way to describe how data and HTML
-structure interact on the web. This includes templating and much more.
+<div class="row">
+  <h2>Enabling Content Resue</h2>
+</div>
 
-This site, and the code, are both a bit volatile at the moment.
+<div class="span9 threecolumn">
+  <p>Cascading Tree Sheets (CTS) is a light-weight language for describing the
+  presentational parts of page design that CSS cannot represent. CTS looks just
+  like CSS, but it describes the way HTML fragments should bind with, and
+  replace, other HTML fragments.</p>
+
+  <p>Tree Sheets are attached externally, like CSS. This means your web
+  templates are actually fully-functioning mockups. A tree sheet transforms the
+  mockup into a page with custom content.</p>
+
+  <p>When used to map just fragments of a page, CTS can enable rich widget
+  invocation from just a simple HTML table or list. This provides a generic
+  platform on which widget authors can offer functionality without requireing
+  knowledge of Javascript.</p>
+</div>
 
 <script>
 $(function() {
