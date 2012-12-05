@@ -1,6 +1,156 @@
----
-theme :
-  name : the-program
----
 {% include JB/setup %}
-{% include themes/the-program/default.html %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	  <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lossless, declarative templates for the web">
+   <meta name="author" content="Ted Benson">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+
+    <link href='{{ ASSET_PATH}}/css/bootstrap.css' rel="stylesheet" media="all">
+    <link href='{{ ASSET_PATH}}/css/prettify.css' rel="stylesheet" media="all">
+    <link href='{{ ASSET_PATH}}/css/ted.css' rel="stylesheet" media="all">
+    
+    <script src="{{ ASSET_PATH}}/js/jquery.js"></script> 
+    <script src="{{ ASSET_PATH}}/js/bootstrap.js"></script> 
+    <script src="{{ ASSET_PATH}}/js/ted.js"></script> 
+    <script src="{{ ASSET_PATH}}/js/cats.js"></script> 
+    <script src="{{ ASSET_PATH}}/js/prettify.js"></script> 
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <link href="http://feeds.feedburner.com/{{ site.author.feedbaname }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
+</head>
+
+<body>
+  
+  <div id="page" class="container-fluid">
+
+  <div class="row header">
+  </div>
+  <div class="row">
+    <div class="span3 sidebar-width" id="leftCol">
+      <div class="sidebar-nav-fixed">
+        <a href="http://www.treesheets.org/"><img src="{{ ASSET_PATH}}/img/cats.png" /></a>
+        <span class="tagline">CTS is a new kind of web template.</span>
+        <div id="dllinks">
+        <a class="roundlink" href="http://www.treesheets.org/hotlink/cts.js">Download JS</a>
+        <a class="roundlink" href="javascript:var s=document.createElement('link');s.setAttribute('href','http://www.treesheets.org/catsui/hotlink/catsui.css');s.setAttribute('rel','stylesheet');s.setAttribute('type','text/css');document.getElementsByTagName('body')[0].appendChild(s);;var s=document.createElement('script');s.setAttribute('src','http://www.treesheets.org/catsui/hotlink/catsui.js');document.getElementsByTagName('body')[0].appendChild(s);">Bookmarklet</a>
+        </div>
+        <div class="menu-primary">
+          <ul>
+            <li id="PageHome">
+              <div><a href="/index.html">Home</a></div>
+            </li>
+            <li id="PageTemplate">
+              <div><a href="/templating/">Templating</a></div>
+            </li>
+            <li id="PageWidgets">
+              <div><a href="/widgets/">Widgets</a></div>
+              <ul>
+                <li id="PageWidgetsMap">
+                  <div><a href="/widgets/google-map">Google Map</a></div>
+                </li>
+                <li id="PageWidgetsStock">
+                  <div><a href="/widgets/stock">Stock Quote</a></div>
+                </li>
+                <li id="PageWidgetsBarchart">
+                  <div><a href="/widgets/barchart">Bar Chart</a></div>
+                </li>
+                <li id="PageWidgetsBubblechart">
+                  <div><a href="/widgets/bubblechart">Bubble Chart</a></div>
+                </li>
+                <li id="PageWidgetsChoropleth">
+                  <div><a href="/widgets/choropleth">Choropleth</a></div>
+                </li>
+              </ul>
+            </li>
+            <li id="StaticBlogging">
+              <div><a href="/static_blogging/">Static Blogging</a></div>
+            </li>
+            <li id="PageScraping">
+              <div><a href="/dscrape/">Web Scraping</a></div>
+            </li>
+            <li id="PageContact">
+              <div><a href="/contact.html">Contact</a></div>
+            </li>
+          </ul>
+        </div>
+
+       <!-- 
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Main</li>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Templating</li>
+          <li><a href="/catsjs/index.html">Cats JS</a></li>
+          <li class="nav-subheader">Examples</li>
+          <li class="nav-example"><a href="/examples/html-as-data.html">HTML as Data</a></li>
+        </ul>
+      </div>
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Scraping</li>
+          <li><a href="/dscrape/index.html">DScrape</a></li>
+          <li class="nav-subheader">Examples</li>
+          <li class="nav-example"><a href="/dscrape/examples/reddit.html">Reddit</a></li>
+          <li class="nav-example"><a href="/dscrape/examples/happiness.html">Buying Happiness</a></li>
+          <li class="nav-example"><a href="/dscrape/examples/tedsblog.html">A Blog Index</a></li>
+        </ul>
+      </div>
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Goodies</li>
+          <li><a href="/catsui/index.html">CATS UI</a></li>
+          <li class="nav-subheader">Playground</li>
+          <li class="nav-example"><a href="/catsui/playground/blogs/blog1/index.html">Blog 1</a></li>
+          <li class="nav-example"><a href="/catsui/playground/blogs/blog2/index.html">Blog 2</a></li>
+          <li class="nav-example"><a href="/catsui/playground/blogs/blog3/index.html">Blog 3</a></li>
+        </ul>
+      </div>
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">API Reference</li>
+          <li><a href="/api/index.html#command-value">value</a></li>
+          <li><a href="/api/index.html#command-with">with</a></li>
+          <li><a href="/api/index.html#command-repeat-inner">repeat-inner</a></li>
+          <li><a href="/api/index.html#command-if-exist">if-exist</a></li>
+          <li><a href="/api/index.html#command-if-nexist">if-nexist</a></li>
+          <li><a href="/api/index.html#command-attr">attr</a></li>
+          <li><a href="/api/index.html#command-template">template</a></li>
+          <li><a href="/api/index.html#command-data">data</a></li>
+        </ul>
+      </div>
+      -->
+    </div>
+    </div><!-- / span2 -->
+    
+    <div class="span9 span-fixed-sidebar">
+{{ content }}
+    </div>
+  </div><!-- row for main body -->
+
+  <div id="footer" class="row">
+  </div>
+
+</div><!-- div container -->
+  {% include JB/analytics %}
+</body>
+</html>
