@@ -42,7 +42,8 @@ tagline:
   <h2>Enabling Content Resue</h2>
 </div>
 
-<div class="span9 threecolumn">
+<div class="row">
+  <div class="span9 threecolumn">
   <p>Cascading Tree Sheets (CTS) is a light-weight language for describing the
   presentational parts of page design that CSS cannot represent. CTS looks just
   like CSS, but it describes the way HTML fragments should bind with, and
@@ -56,6 +57,7 @@ tagline:
   invocation from just a simple HTML table or list. This provides a generic
   platform on which widget authors can offer functionality without requireing
   knowledge of Javascript.</p>
+</div>
 </div>
 
 <script>
