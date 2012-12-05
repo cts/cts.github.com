@@ -33,7 +33,9 @@ tagline:
 </div>
 
 <div class="row">
-  <img src="/images/recycle.png" style="margin:25px autopx 25px autopx; width: 300px;" />
+  <p align="center">
+    <img src="/images/recycle.png" style="width: 500px;" />
+  </p>
 </div>
 
 <div class="row">
