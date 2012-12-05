@@ -15,13 +15,15 @@ tagline:
 
 <div class="row">
   <div class="span9 threecolumn">
+
     <p>CSS took an important step towards separating the content of an HTML
     document from its presentation. This practice "makes it easier to maintain
     sites, share style sheets across pages, and tailor pages to different
-    environments" ([W3C](http://www.w3.org/standards/webdesign/htmlcss.html)).
-    But significant parts of a modern web page's design cannot be described by
-    CSS, and are instead defined by "presentational" HTML interleaved with
-    "content" HTML.</p>
+    environments" (<a
+    href="http://www.w3.org/standards/webdesign/htmlcss.html">W3C</a>).  But
+    significant parts of a modern web page's design cannot be described by CSS,
+    and are instead defined by "presentational" HTML interleaved with "content"
+    HTML.</p>
 
     <p>This presentational HTML is stylistic scaffolding, often interleaved
     with Javascript.  It provides anchor points for CSS and controls
