@@ -34,12 +34,14 @@ tagline:
 
 <div class="row">
   <p align="center">
-    <img src="/images/recycle.png" style="width: 500px;" />
+    <img src="/images/recycle.png" style="margin-top: 25px; margin-bottom: 25px; width: 450px;" />
   </p>
 </div>
 
 <div class="row">
-  <h2>Enabling Content Resue</h2>
+  <div class="span9">
+    <h2>Enabling Content Resue</h2>
+  </div>
 </div>
 
 <div class="row">
