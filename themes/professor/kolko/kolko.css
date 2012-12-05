@@ -1,0 +1,960 @@
+/* Modified 12/4/07 by Susumu */
+/* CSS references:
+    http://www.w3.org/TR/REC-CSS2/propidx.html
+    http://www.webreview.com/style/index.shtml
+    DHTML reference at     http://msdn.microsoft.com/workshop/author/dhtml/reference/properties.asp */
+
+/*********** Overrides for common tags ************/
+
+div.kolko {
+  margin: 0px;
+  color: #5A5A5A; 
+  background-color: #F1F0F2;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', verdana, arial, sans-serif;
+  font-size: 13px; /* xxx */
+}
+
+
+div.kolko tr, div.kolko table, div.kolko li { margin: 0; padding: 0;}
+
+div.kolko ul, div.kolko ol, div.kolko td { padding: 10px; margin: 0;}
+
+div.kolko p {
+  margin: 0px;
+  margin-bottom: .8em;
+  line-height: 150%;
+  /*font-size: 110%;*/
+}
+
+/*********** Hypertext link styles ************/
+
+div.kolko .fl {float: left;}
+div.kolko .fr { float: right;}
+div.kolko .cl { clear:both;}
+div.kolko .hide {display:none;}
+
+div.kolko ul.naked > li,
+div.kolko li.naked { list-style: none }
+
+div.kolko a {
+  text-decoration: none;
+}
+
+div.kolko a:hover {
+  text-decoration: underline;
+}
+
+div.kolko a:link {
+  /*  color: #2828bd; */
+  color: #863DB1;
+}
+
+div.kolko a:visited {
+/*  color: #af5234; */
+  color: #863DB1;
+}
+
+div.kolko a:active {
+/*  color: #000000; */
+  color: #863DB1;
+}
+
+div.kolko a.biglink {
+  color: #442C56;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', verdana, arial, sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  text-align: normal;
+}
+
+div.kolko a.conference {
+  color: #ffffff;
+}
+
+div.kolko a.darklink {
+  color: #392952;
+  text-decoration: underline;
+}
+
+/*********** Main header styles ************/
+
+div.kolko #header {
+  width: 100%;
+  padding: 5px 0 5px 0;
+  background-color: #392952;
+}
+
+div.kolko #header_logo {
+  margin: 5px 0 -3px 30px;
+  width: 90px;
+}
+
+div.kolko #header_title {
+  position: absolute;
+/*  top: 25px;
+  left: 160px;*/
+  top: 15px;
+  left: 190px;
+  font-size: 16px;
+  color: #ffffff;
+  /*display:none;*/
+}
+
+div.kolko #header_subtitle {
+  position: absolute;
+  /*top: 30px;
+  left: 145px;*/
+  top: 35px;
+  left: 190px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+div.kolko #footer {
+  width: 100%;
+  background-color: #392952;
+  margin-top: 35px;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  height: 30px;
+  text-align: center;
+  color: #eeeeee;
+  font-size: 10px;
+  font-family: 'Verdana';
+}
+
+/*********** Content styles ************/
+
+div.kolko #left_content_column {
+  width: 128px;
+  background-color: /*#fff*/#cac8cc;
+  padding: 10px;
+}
+
+div.kolko #left_content_column a:hover {
+	text-decoration: none;
+}
+
+div.kolko div.maincontent {
+  position: relative;
+  /* padding: 30px 0px 20px 90px; */
+  margin: 10px 50px 0px 30px;
+  min-width: 700px;
+  height: 100%;
+  max-width: 800px;
+}
+
+div.kolko td#main_content_column {
+	height: 100%;
+	margin: 15px;
+	padding: 10px;
+	/*border-left: 3px solid #eaeaea;
+	border-right: 3px solid #eaeaea;*/
+}
+
+div.kolko td#main_content_column, div.kolko td#left_content_column {
+  padding-top: 25px;
+}
+
+div.kolko div.navmenu_item.active {
+/*	background-color: #C4A9EF;*/
+}
+div.kolko div.navmenu_item:hover {
+/*	background-color: #F0E9FB;*/
+	
+}
+
+div.kolko div.navmenu_item_secondary.active,
+div.kolko div.navmenu_item_secondary:hover {
+/*	background-color: #ddd;*/
+}
+div.kolko #id_honeypot {
+	display: none;
+}
+
+div.kolko .submit-post {
+	font-size: 135%;
+	padding: 5px;
+	
+}
+
+div.kolko .comments_title {
+	width: 100%;
+	font-size: 130%;
+	/*border-top: 3px solid #eaeaea;
+	border-bottom: 3px solid #eaeaea;*/
+	
+}
+
+div.kolko div.navmenu_item, div.kolko div.navmenu_item_secondary { 
+  font-size: 16px;
+  vertical-align: top;
+  text-align: right;
+  margin: 4px;
+  padding: 10px;
+  width: 100px;
+  /*width: 125px;  this width is for when we include "recorded talks" in the menu*/
+  /*font-weight: bold;*/
+  background-color: /*#fff*/ #392952;
+  color: /*#392952*//*#cdbc7d*/#ffffff;
+}
+
+div.kolko div.navmenu_item_secondary { 
+  background-color: /*#fff*/#444055;
+  /*color: #777;*/
+}
+
+
+div.kolko div.navmenu_item_secondary2 { 
+  font-size: 14px;
+  vertical-align: top;
+  text-align: right;
+  margin: 4px;
+  padding: 3px 10px;
+  width: 100px;
+/*   float: right; */
+  /*font-weight: bold;*/
+  /*text-decoration: underline;*/
+  color: #392952;
+  color: #210C40;
+/*   border: #392952 solid; */
+/*   border-width: 0px 0 0 7px; */
+}
+
+
+div.kolko #right_content_column {
+  background-color: #FCFCFC;/*#FBFAFC;*//*#FaFaFa;*/
+  width: 200px;
+  vertical-align: top;
+  padding: 10px;
+}
+
+div.kolko .small {
+  font-size: small;
+  vertical-align: top
+}
+
+div.kolko .iconsize { 
+  width: 120px;
+}
+
+
+
+/*********** Index page styles ************/
+
+div.kolko .news_item ul, div.kolko .news_item ol {
+	padding: 0 0 10px 40px;
+	
+}
+/** Headline text for the recent news **/
+div.kolko p.newsheader {
+  margin: 20px 0px 5px 0px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+div.kolko div.subheader {
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  background-color: #444444;
+  border: #999999 solid;
+  border-width:  0px 40px 0px 0px;
+  width: 85%;
+  padding: 10px;
+  padding-left: 40px;
+
+  color: #392952;
+  text-align: left;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+div.kolko div.subsubheader { 
+  margin: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+div.kolko div.dash {
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+  border-color: #F1F0F2;
+}
+
+div.kolko div.dark {
+  background-color: #442C56;/*#392952;*/
+  color: #eeeeee;
+}
+
+div.kolko .big_block {
+	text-align:center;
+	margin: auto;
+	font-size: 150%;
+	border: 3px solid #392952;
+	color: #333;
+	background-color: #f0e9fb;
+	padding: 15px;
+	width: 250px;
+	margin-bottom: 20px;
+}
+div.kolko #downloadsbox {
+  color: #392952;
+  margin-top: 50px;
+  /*width: 600px;*/
+  padding: 0px;
+}
+
+/* Used for "Featured in Blah Conference" listings */
+div.kolko span.featured_at { color: #aaaaaa; } /* The green words "Featured At" */
+
+div.kolko span.featured_at_location {
+  color: #aaaaaa; /* The green words "Featured At" */
+  text-align: right;
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+div.kolko .pub_icon_size_large {
+  width: 120px;
+}
+
+div.kolko .pub_icon_size_small {
+  width: 60px;
+}
+
+/*********** ITR styles ************/
+
+div.kolko a.itr {
+  color: #777777;
+  font-weight: bold;
+}
+
+div.kolko img.itr {
+  padding: 0px;
+  margin: -3px;
+  margin-bottom: 0px;
+  width: 106px;  height: 150px;
+  float: left;
+  border: none;
+}
+
+div.kolko div.itr { 
+  width: 106px;
+  float: left;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  color: #444444;
+}
+
+div.kolko div.itrtext { 
+  position: relative;
+  left: 20px;
+  float: left;
+}
+
+/*********** Admissions styles ************/
+
+/** The left offset needs to be fixed not to be hardcoded **/
+div.kolko span.deadline { 
+  white-space: nowrap;
+  position: absolute;
+  left: 380px;
+  color: #555555;
+}
+
+div.kolko span.deadline2 { 
+  color: #000000;
+  font-weight: bold;
+}
+
+/*********** Miscelaneous styles ************/
+
+div.kolko .caption {
+  font-family: verdana;
+  font-size: x-small
+}
+
+div.kolko .lightpurple {
+  color: #863DB1;
+}
+
+div.kolko div.clear {
+  clear: both;
+  height: 0px;
+}
+
+div.kolko img {
+  border: 0px;
+}
+
+div.kolko table {
+  background-color: transparent;
+}
+
+div.kolko td {
+  vertical-align: top;
+}
+
+div.kolko h2, div.kolko h3 {
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', verdana, arial, sans-serif;
+  font-weight: bold;
+}
+
+div.kolko h1 {
+	color: #3d3d3d;
+	font-family: helvetica, arial;
+	font-size: 36px;
+	font-weight: bold;
+	margin: 15px 0px;
+}
+
+div.kolko .bigger_butt {
+	margin-bottom: 40px;
+}
+
+div.kolko h2 {
+  /*font-size: medium;*/
+font-size: 24px; color: #4d4d4d; font-family: helvetica, arial;
+font-weight: normal;
+margin: 10px 0 8px 0;
+}
+
+div.kolko h3 {
+  font-size: small
+}
+
+/*p,body {
+	font-size: 15px; color: #3d3d3d; font-family: helvetica, arial;
+}*/
+
+
+/*********** News styles ************/
+
+div.kolko .news_shifted {margin-left: 90px;}
+div.kolko .news, div.kolko .news_shifted {}
+div.kolko .news_time {position: absolute; color: #888; font-size: 11px;
+            font-family: georgia, times, times new roman, serif;}
+div.kolko h2.news {/*color: #3d3d3d;*/ margin-top: 10px; font-size: 25px; margin-bottom: 8px;}
+div.kolko div.news {
+	clear: both;
+	font-family: georgia, times new roman, serif;
+	font-size: 13px;
+	color: #000;
+	line-height: 18px;
+	margin-bottom: 30px;
+}
+
+
+/************ account **************/
+
+div.kolko #login_info {
+	color: #aaa;
+	font-size: 10px;	
+	padding-left: 4px;	
+}
+
+div.kolko #login_info a, div.kolko #login_info a:visited {
+	color: #999;
+	
+}
+
+div.kolko #rpx_embed {
+	/*border: 3px solid #eaeaea;*/
+	background-color: #fff;
+}
+
+/*********** blog ****************/
+
+div.kolko #comments {
+	width: 950px;
+	margin-left: 20px;
+}
+div.kolko #comments td, div.kolko #comments ul, div.kolko #comments ol {
+	margin: 0;
+	padding: 0;
+	
+}
+
+div.kolko #comments #comment_section_headers {
+	color: #444055;
+	font-size: 36px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+div.kolko #comments #comment_section_headers div#hr {
+	margin-bottom: 1px;
+	height:2px;
+	color: #ccc;
+	background-color: #ccc;
+	border: none;
+	width: 868px;
+}
+
+div.kolko #comments #comment_section_headers #comment_header {
+}
+
+div.kolko #comments #comment_section_headers #summary_header {
+	padding-left: 478px;
+}
+
+div.kolko .comment .submit_comment {
+	display:none;
+}
+
+div.kolko #comments ul.thread.add_border {
+	border-left: 1px solid #DAD6DB;
+}
+
+div.kolko #comments ul.thread {
+	margin-top: 15px;
+	position: static;
+}
+
+
+div.kolko #comments ul.thread {
+	margin-left: 20px;
+}
+
+div.kolko #comments ul.thread .tic {
+	display: none;
+}
+
+div.kolko #comments ul.thread .reply .tic,
+div.kolko #comments ul.thread ul.thread .tic {
+	display: block;
+	position: relative;
+	top: 10px;
+	left: -8px;
+	height: 0px;
+}
+
+div.kolko #comments ul.thread ul.thread .reply .tic,
+div.kolko #comments ul.thread .reply .tic {
+	left: -8px;	
+	top: -8px;
+	padding-right: 5px;
+}
+
+div.kolko .comment table.comment_table {
+	width: 100%;
+	position: relative;
+	margin: -2px 0 0px -15px; 
+}
+
+div.kolko .comment {
+	list-style:none none outside;
+	min-height: 0px;
+	width: 950px;
+	margin-top: 20px;
+}
+
+
+
+div.kolko .big_text {
+	font-size: 24px;
+	letter-spacing: -1px;
+	
+}
+div.kolko img.discuss_function {
+}
+
+
+div.kolko div.reply {
+	text-decoration: underline;
+	margin-left: 20px;
+	position: relative;
+	top: 8px;
+}
+
+div.kolko div.reply:hover {
+	color: #111;
+}
+
+div.kolko div.reply li {
+	margin-right: 5px;
+}
+
+div.kolko div.reply li.text {
+	margin-top: 0px;
+	padding-left: 5px;
+}
+
+div.kolko a.cancel,
+div.kolko div.reply {
+	cursor:pointer;
+}
+div.kolko .comment .count {
+	display:none;
+}
+
+div.kolko #comment_form {
+	margin-top: 25px;
+	/*border-top: 3px solid #eaeaea;*/
+	padding: 5px 5px;
+}
+
+div.kolko .commenter_pic {
+	position: absolute;
+	top: 17px;
+	left: -80px;
+	width: 80px;
+	max-height: 110px;
+}
+
+
+div.kolko tr.comment_body .comment_text {
+
+}
+
+div.kolko .comment_ops {
+	color: #757575;
+	font-weight: bold;
+	width: 50%;
+}
+div.kolko .comment_ops .comment_form_container {
+	width: 100%;
+	padding: 15px;
+}
+
+div.kolko .comment_form_container {
+	width: 65%;
+
+}
+div.kolko .comment_form_container ul{
+	padding-left: 0;
+}
+
+div.kolko .comment_form_table {
+	width: 100%;
+
+}
+
+div.kolko .comment_form_table li {
+	padding-bottom: 5px;
+}
+
+div.kolko form textarea {
+    width: 98%;
+    height: 10em;
+    font-size: 115%;
+    padding: 3px 5px;
+    letter-spacing:-1px;
+    line-height:normal;
+}
+
+div.kolko textarea:focus {
+	border: 1px solid #392952;
+}
+
+
+div.kolko .submit_comment table {
+	width: 100%;
+}
+
+div.kolko .post_photo_block a:hover {
+	text-decoration: none;
+}
+div.kolko .blog_participants {
+	width: 150px;
+	margin: 20px 0 0 0;
+	display: block;
+}
+
+div.kolko .blog_participants ul {
+	padding: 4px 4px;
+	display: inline;
+}
+div.kolko .blog_participants .participants_lead{
+	margin-bottom: 5px;
+	color: #AAAAAA;
+	font-size: 16px;
+}
+
+div.kolko .blog_participants .commenting_pic {
+	max-width: 40px;
+	overflow: hidden;
+	list-style: none;
+	float: left;
+	margin: 0px 1px 0 0;
+}
+
+div.kolko .post_list .blog_participants .commenting_pic {
+	height: 30px;
+}
+
+div.kolko img.small_profile {
+	height: 30px;
+}
+
+div.kolko img.medium_profile {
+	width: 60px;
+	margin: 0px 10px 4px 0px;
+	max-height: 110px;
+}
+
+div.kolko .commenter_name {
+	color: #777;
+	font-size: 75%;
+	padding-bottom: 5px;
+}
+
+div.kolko .c-header {
+	margin-top: 5px;
+}
+
+div.kolko #new_comment_prompt {
+	color: #333;
+	font-size: 140%;
+	
+}
+
+
+div.kolko .post_detail {
+	margin: 15px 0 0 0;
+}
+div.kolko .post_detail .body {
+	max-width: 500px;
+	margin: 0px 15px;
+		border-top: 3px solid #eaeaea;
+
+}
+
+div.kolko td.blog_title {
+	padding-left: 25px;
+	max-width: 375px;
+	border-top: 3px solid #eaeaea;
+}
+
+div.kolko .person_name {
+	font-weight:bold;
+	color: #222;
+	font-size: 155%;
+}
+div.kolko .cl {clear:both}
+
+div.kolko .blog_details .inline_tag_list,
+div.kolko .blog_details .date{
+	float:right;	
+}
+
+div.kolko a.no-link {
+	color: inherit;
+}
+
+div.kolko .blog_post_item {
+	padding-bottom: 15px;
+	border-bottom: 3px solid #ccc;
+	margin-top: 15px;
+}
+
+div.kolko table.post_block {
+	width: 100%;
+}
+
+div.kolko td.post_photo_block {
+	width: 220px;
+}
+
+div.kolko td.post_detail_block >h1{
+	width: 500px;
+}
+
+div.kolko div.post_item {
+	padding: 0 10px 10px 10px;
+	margin-bottom: 20px;
+	border-bottom: 1px dotted #ccc;
+}
+
+div.kolko div.post_item.full {
+	border-bottom: 1px solid transparent;
+}
+
+div.kolko a.readmore {
+	font-size: 150%;
+}
+
+div.kolko .commentcnt {
+	/*font-size: 100%;*/
+	/*vertical-align: top;*/
+	position: absolute;
+	left: 550px;
+}
+
+div.kolko .rpx_embed_new_comment{
+	display:none;
+}
+
+div.kolko .submit_comment .commenting_pic .medium_profile {
+	margin-top: 10px;
+}
+
+
+div.kolko #informed_consent {
+	width: 255px;
+	font-size: 85%;
+	padding: 5px;
+	text-align:justify;
+	line-height:1.3;
+	position:absolute;
+	top: 25px;
+	left: 650px;	
+	color: #aaa;
+}
+
+div.kolko .comment #loginlink {
+	margin-top: 5px;
+	font-size: 18px;	
+}
+
+div.kolko #loginlink {
+	font-size: 30px;	
+	padding-left: 15px;
+}
+
+
+div.kolko #loginlink.top {
+	font-size: 10px;	
+	padding-left: 4px;
+}
+
+div.kolko #loginlink a:visited,
+div.kolko #loginlink a:hover,
+div.kolko #loginlink a {
+	color: #777;
+}
+
+div.kolko #loginlink.top a span .loginword{
+	color: #444055;
+	font-weight: bold;
+}
+
+div.kolko #loginlink.top a:visited,
+div.kolko #loginlink.top a:hover,
+div.kolko #loginlink.top a {
+	color: #aaa;
+}
+
+div.kolko #loginlink a:visited span.loginword,
+div.kolko #loginlink a:hover span.loginword,
+div.kolko #loginlink a span.loginword {
+	color: #888;	
+	font-weight: bold;
+}
+
+div.kolko div.blog_title, div.kolko div.post_detail {
+	font-family: helvetica,arial;
+}
+
+div.kolko .comment_text ol, div.kolko .comment_text ul {
+	list-style-position:inside;
+}
+
+div.kolko .edit_comment {
+	margin-bottom: 20px;
+}
+
+div.kolko .twitter-share-button {
+	position: relative;
+	left: 0px;
+	top: 2px;
+	cursor: pointer;
+}
+
+div.kolko .facebook-share-button {
+	position: relative;
+	left: 0px;
+	top: 3px;
+}
+div.kolko .twitter-share-button,
+div.kolko .facebook-share-button {
+	opacity: .6;
+	margin-top: 3px;
+}
+
+div.kolko .twitter-share-button:hover,
+div.kolko .facebook-share-button:hover {
+	opacity: .9;
+	cursor: pointer;
+}
+
+
+
+div.kolko .blogpost_body {
+	font-size: 10pt;
+}
+
+div.kolko a.twitter_follow {
+	font-weight: bold;
+	color: #888888;
+}
+
+div.kolko a.twitter_follow:hover {
+	text-decoration: underline;
+}
+div.kolko a.twitter_follow {
+	color: #33ccfe;
+}
+
+div.kolko .header_footer {
+	color: #aaa;
+	font-size: 10px;	
+}
+
+div.kolko .header_footer li {
+	padding-top: 3px;
+}
+
+div.kolko .header_footer .reflect_value_prop {
+	float: right;
+	padding-right: 83px;
+}
+
+div.kolko .twtr-hd, div.kolko .twtr-ft {
+	display: none;
+}
+
+div.kolko .twtr-widget .twtr-bd {
+	padding: 0;
+}
+
+div.kolko #right_content_column .twtr-widget .twtr-tweet .twtr-tweet-text a.twtr-timestamp,
+div.kolko #right_content_column .twtr-widget .twtr-tweet .twtr-tweet-text a.twtr-reply {
+	color: #aaa !important;
+}
+div.kolko .twtr-widget .twtr-tweet .twtr-tweet-wrap {
+	padding-left: 0;
+}
+
+div.kolko #right_content_column .twtr-widget {
+	font-family: 'Lucida Sans Unicode','Lucida Grande',verdana,arial,sans-serif !important;
+}
+
+div.kolko .blog_nav {
+	padding-left: 20px;
+	margin-bottom: -10px;
+}
+
+div.kolko .blog_nav .next {
+	position: absolute;
+	left: 132px;
+	padding-left: 13px;
+}
+
+div.kolko .blog_nav a.previous {
+   padding-right: 13px; 
+	padding-left: 15px;
+}
+
+div.kolko .other_posts {
+	margin: 0px;
+	color: #AAAAAA;
+}
+
+div.kolko .other_posts a, div.kolko .other_posts a:visited {
+	color: #AAAAAA;
+	font-size: 16px;
+}

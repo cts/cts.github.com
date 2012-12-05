@@ -1,0 +1,11 @@
+span: professional title
+span: lab
+span: school
+span: officeAddress
+span: twitter
+span: email
+div:  news
+div:  bio
+div:  research
+div:  blurb
+div:  blurbText

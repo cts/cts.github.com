@@ -5,16 +5,27 @@
   with: word-cloud-thing;
 }
 
-.wordcloud .big {
-   value: big;
+.wordcloud .big-words {
+   value: big-words;
 }
 
-.wordcloud .medium {
-   value: medium;
+.wordcloud .big-color {
+  value: big-color;
 }
 
-.wordcloud .small {
-  value: small;
+.wordcloud .medium-words {
+   value: medium-words;
+}
+.wordcloud .medium-color {
+  value: medium-color;
+}
+
+.wordcloud .small-words {
+  value: small-words;
+}
+
+.wordcloud .small-color {
+  value: small-color;
 }
 
 .wordcloud .properties {

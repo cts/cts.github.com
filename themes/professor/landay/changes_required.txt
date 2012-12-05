@@ -1,0 +1,5 @@
+span jobtitle
+span affiliation
+div email
+span school
+span lab acronym
