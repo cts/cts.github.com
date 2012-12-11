@@ -1,4 +1,4 @@
-div.karger div#bookmarks { 
+div.karger div.bookmarks { 
   if-exist: bookmarks;  
 }
 
