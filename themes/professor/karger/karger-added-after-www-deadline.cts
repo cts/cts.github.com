@@ -1,6 +1,5 @@
-div.karger #bookmarks { 
+div.karger div#bookmarks { 
   if-exist: bookmarks;  
-  value: bookmarks;
 }
 
 div.karger .url {
