@@ -36,26 +36,6 @@ regions of the page should be bound to your data.</p>
   </li>
 </ul>
 
-## Example
-
-Here is an example you can download and use.
-
-<div class="row" style="margin-top: 20px; margin-bottom:20px">
-  <div class="span8 well">
-    <div class="row">
-      <div class="span4">
-        <h3>Download</h3>
-        <p>TODO: add download link</p>
-      </div>
-      <div class="span4">
-        <h3>Contribute</h3>
-        <a href="http://github.com/cts/static-blog-starter" class="btn btn-success">Source on GitHub</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 <script>
 $(function() {
