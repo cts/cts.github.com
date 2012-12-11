@@ -44,7 +44,12 @@ programming skills necessary.</p>
     <a class="caption" href="/widgets/choropleth/">Choropleth</a>
   </div>
 
-
+  <div class="widget">
+    <a class="image" href="/widgets/word-cloud/">
+      <img src="/images/widgets/wordcloud.png" />
+    </a>
+    <a class="caption" href="/widgets/word-cloud/">Word Cloud</a>
+  </div>
 
 </div>
 
