@@ -26,7 +26,7 @@ Add the CTS library, D3 library, and widget link to your web page:
 
     <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
     <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://www.treesheets.org/widgets/barchart/barchart.cts"></script>
+    <script type="text/cts" src="http://people.csail.mit.edu/eob/cts/widgets/barchart.cts"></script>
 
 It's best to add this to the `HEAD` element, but anywhere will work.
 

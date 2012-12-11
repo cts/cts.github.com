@@ -17,7 +17,7 @@ Add the CTS library, D3 library, and widget link to your web page:
 
     <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
     <script type="text/javascript" src="http://www.treesheets.org/hotlink/cts.js"></script>
-    <script type="text/cts" src="http://www.treesheets.org/widgets/choropleth/choropleth.cts"></script>
+    <script type="text/cts" src="http://people.csail.mit.edu/eob/cts/widgets/choropleth.cts"></script>
     <link rel="stylesheet" href="http://www.treesheets.org/widgets/choropleth/choropleth.css" type="text/css" media="screen" />
 
 These must be added to the `HEAD` element.
