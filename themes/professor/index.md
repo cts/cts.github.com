@@ -12,6 +12,6 @@ tagline:
 
 <script>
 $(function() {
-  SelectPage("PageThemes");
+  SelectPage("PageThemes", "PageThemesProfessor");
 });
 </script>

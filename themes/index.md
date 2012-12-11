@@ -22,3 +22,8 @@ your site.
 For now, here is the [Professor example](professor/explore.html) used to
 generate the figure in the paper. 
 
+<script>
+$(function() {
+  SelectPage("PageThemes");
+});
+</script>
