@@ -43,7 +43,7 @@ scheme.
 ## 3. That's it!
 
 When you render the page, you'll your text appear as a word cloud. See the
-(example page)[example.html] for a more involved example with small, medium,
+[example page](example.html) for a more involved example with small, medium,
 and large buckets.
 
 ### Credits
