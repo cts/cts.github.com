@@ -58,11 +58,11 @@ document.getElementById('frame').onload = function() {
   var e = doc.createElement('script');
   e.setAttribute('type', 'text/cts');
 
-var bodyClause = "body { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#body; }";
-  var headClause = "head { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#head; }";
+  //var bodyClause = "body { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#body; }";
+  //var headClause = "head { data: .; template-proxy: http://localhost:9999/fragment; template: http://localhost:8000/themes/professor/" + themeDir + "/index.html#head; }";
 
-  //var bodyClause = "body { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#body; }";
-  //var headClause = "head { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#head; }";
+  var bodyClause = "body { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#body; }";
+  var headClause = "head { data: .; template-proxy: http://people.csail.mit.edu/eob/cts-util/fragment-proxy.php; template: http://www.treesheets.org/themes/professor/" + themeDir + "/index.html#head; }";
 
   e.innerHTML = bodyClause; //+ headClause;    
   
