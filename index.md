@@ -25,8 +25,8 @@ tagline:
     CSS, it cannot be separated from content HTML. This makes web documents
     harder to create, maintain, and reuse.</p>
 
-    <p>Template langauges address symptoms of this problem, but not the root.
-    <i>We need a platform-level language to support encapsulation and resuse of
+    <p>Template languages address symptoms of this problem, but not the root.
+    <i>We need a platform-level language to support encapsulation and reuse of
     HTML structure just like we have one for HTML style.</i></p>
     
   </div>
@@ -40,7 +40,7 @@ tagline:
 
 <div class="row">
   <div class="span9">
-    <h2>Enabling Content Resue</h2>
+    <h2>Enabling Content Reuse</h2>
   </div>
 </div>
 
@@ -57,7 +57,7 @@ tagline:
 
   <p>When used to map just fragments of a page, CTS can enable rich widget
   invocation from just a simple HTML table or list. This provides a generic
-  platform on which widget authors can offer functionality without requireing
+  platform on which widget authors can offer functionality without requiring
   knowledge of Javascript.</p>
 </div>
 </div>
