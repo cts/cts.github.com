@@ -6,7 +6,7 @@ tagline:
 {% include JB/setup %}
 
 <p class="intro">CTS helps you write your <i>content</i> in simple HTML pages
-and then project that content into your blog tempalte at run-time.</p>
+and then project that content into your blog template at run-time.</p>
 
 ## Introduction
 

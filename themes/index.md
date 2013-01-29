@@ -16,7 +16,7 @@ Using a theme requires placing three links in your `HEAD` element:
 *  A theme CSS sheet
 *  A theme CTS sheet
 
-We're working on building up a collection of themes you can reaily apply to
+We're working on building up a collection of themes you can readily apply to
 your site.
 
 For now, here is the [Professor example](professor/explore.html) used to
