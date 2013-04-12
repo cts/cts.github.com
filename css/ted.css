@@ -60,6 +60,8 @@ div#leftCol {
   border-right: 1px solid #aaa;
   background-image: url(/images/grid_noise.png);
   min-height: 100%;
+  margin-left: 0 !important;
+  padding-left: 20px;
 }
 
 div#rightCol {
