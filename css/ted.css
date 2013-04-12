@@ -1,6 +1,12 @@
 body {
   padding-bottom: 40px;
+  height: 100%;
 }
+
+html {
+  height: 100%;
+}
+
 .sidebar-nav {
   padding: 9px 0;
 }
@@ -53,6 +59,7 @@ div#leftCol {
   padding-top: 20px;
   border-right: 1px solid #aaa;
   background-image: url(/images/grid_noise.png);
+  min-height: 100%;
 }
 
 div#rightCol {
