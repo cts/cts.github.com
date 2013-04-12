@@ -42,8 +42,9 @@ div.sidebar-nav ul.nav-list li.nav-header {
   color: #565656;
 }
 
-div.sidebar-nav {
+div#leftCol {
   border-right: 1px solid #aaa;
+  background-image: url(/images/grid_noise.png);
 }
 
 li.nav-subheader {
