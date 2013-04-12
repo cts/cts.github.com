@@ -7,6 +7,15 @@ section: dscrape
 ---
 {% include JB/setup %}
 
+<p align="center">
+  <img src="/images/dscrape-twitter-example.png" alt="DScrape Example" />
+</p>
+
+DScrape is a declarative web scraping toolkit based on Cascading Tree Sheets.
+Given a tree sheet that maps a web page onto an implicit JSON structure,
+DScrape will produce that structure for you and output it in a variety of
+formats.
+
 <div class="row" style="margin-top: 20px; margin-bottom:20px">
   <div class="span8 well">
     <div class="row">
@@ -20,15 +29,6 @@ section: dscrape
     <a href="http://github.com/webcats/dscrape" class="btn btn-success">DScrape on GitHub</a>
   </div>
 </div></div></div>
-
-DScrape is a declarative web scraping toolkit based on Cascading Tree Sheets.
-Given a tree sheet that maps a web page onto an implicit JSON structure,
-DScrape will produce that structure for you and output it in a variety of
-formats.
-
-<p align="center">
-  <img src="/images/dscrape-twitter-example.png" alt="DScrape Example" />
-</p>
 
 ## Scraper Repository
 
