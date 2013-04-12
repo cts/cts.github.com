@@ -37,15 +37,19 @@ repository for a URL match and use the pre-written scraper if available.
 
 For example, to scrape Reddit, simply say:
 
+<pre>
 <code>
 dscrape http://www.reddit.com
 </code>
+</pre>
 
 Or to scrape a person's Twitter profile, you might say:
 
+<pre>
 <code>
 dscrape http://www.twitter.com/edwardbenson
 </code>
+</pre>
 
 Since a Reddit scraper and Twitter Profile scraper already exists in the
 repository, DScape will download and use the appropriate tree sheets for you. 
