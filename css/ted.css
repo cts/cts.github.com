@@ -57,10 +57,13 @@ div.sidebar-nav ul.nav-list li.nav-header {
 div#leftCol {
   padding-top: 20px;
   border-right: 1px solid #aaa;
-  background-image: url(/images/grid_noise.png);
+  background-image: url(/images/light_wool.png);
   min-height: 100%;
   margin-left: 0 !important;
   padding-left: 20px;
+  box-shadow: 4px 0 2px -2px rgba(0,0,0,0.4);
+  -moz-box-shadow: 4px 0 2px -2px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 4px 0 2px -2px rgba(0,0,0,0.4);
 }
 
 div#rightCol {
