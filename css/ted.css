@@ -187,7 +187,7 @@ h2 {
 } 
 
 .menu-primary ul li div {
-  border-left: 6px solid #fff;
+  border-left: none;
 } 
 
 .menu-primary ul li div.selected {
