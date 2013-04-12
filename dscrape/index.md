@@ -26,7 +26,7 @@ Given a tree sheet that maps a web page onto an implicit JSON structure,
 DScrape will produce that structure for you and output it in a variety of
 formats.
 
-![DScrape Example](/images/dscrape-example.png)
+![DScrape Example](/images/dscrape-twitter-example.png)
 
 ## Scraper Repository
 
