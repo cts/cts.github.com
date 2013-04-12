@@ -42,6 +42,10 @@ div.sidebar-nav ul.nav-list li.nav-header {
   color: #565656;
 }
 
+div.sidebar-nav {
+  border-right: 1px solid #aaa;
+}
+
 li.nav-subheader {
   font-style: italic;
 }
