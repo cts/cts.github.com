@@ -30,15 +30,15 @@ formats.
   </div>
 </div></div></div>
 
-# Scraper Repository
+# Using with a Registered Tree Sheet
 
-The [DScrape Github repository](http://www.github.com/cts/dscrape) also
-maintains a list of pre-written tree sheets you can use for scraping. If you
-only provide a URL to DScrape (and no tree sheet), it will search this scraper
-repository for a URL match and use the pre-written scraper if available.
+The [DScrape Github repository](http://www.github.com/cts/dscrape) maintains a
+list of pre-written tree sheets you can use for scraping. If you only provide a
+URL to DScrape (and no tree sheet), it will search this scraper repository for
+a URL match and use the pre-written scraper if available.
 
 Here's a list of scrapers already written for you to use along with example
-invocations:
+invocations. Please consider <a href="#contribute">contributing your own</a>!
 
 * Reddit (and subreddits) article listings ([scraper link](https://github.com/cts/dscrape/blob/master/examples/reddit.cts))
     
@@ -52,8 +52,26 @@ invocations:
 
      <pre>dscrape http://www.twitter.com/edwardbenson</pre>
 
-## Contributing a Scraper
+# Using with your own Tree Sheet
 
+To use DScrape with your own tree sheet, provide a reference to the tree sheet
+after the URL. This reference can either be:
+
+* **A file on your local drive**
+
+    <pre>dscrape http://www.reddit.com ~/treesheets/reddit.cts</pre>
+
+* **A URL**
+
+    <pre>dscrape http://www.reddit.com http://example.org/reddit.cts</pre>
+
+* **A Github URL**. DScrape supports a special shorthand for files hosted in Github. Create a URL of the form `github://user/repository/path/to/file`, such as:
+
+    <pre>dscrape http://www.reddit.com github://cts/dscrape/examples/reddit.cts</pre>
+
+# Contributing a Scraper
+
+<a name="contribute"></a>
 To contribute a scraper to our repository, fork it on Github and add your tree
 sheet to the `/examples` folder. You will also need to add an entry for your
 scraper in the `/examples/directory.json` file. Then submit a pull request and
