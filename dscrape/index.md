@@ -48,15 +48,15 @@ invocations:
 
 * Reddit (and subreddits) article listings ([scraper link](https://github.com/cts/dscrape/blob/master/examples/reddit.cts))
     
-    dscrape http://www.reddit.com
+     dscrape http://www.reddit.com
 
 * Kickstarter project pages ([scraper link](https://github.com/cts/dscrape/blob/master/examples/kickstarter.cts))
 
-    dscrape http://www.kickstarter.com/projects/1068932801/new-york-london
+     dscrape http://www.kickstarter.com/projects/1068932801/new-york-london
 
 * Twitter profile and latest tweets ([scraper link](https://github.com/cts/dscrape/blob/master/examples/twitter-profile.cts))
 
-    dscrape http://www.twitter.com/edwardbenson
+     dscrape http://www.twitter.com/edwardbenson
 
 ## Contributing a Scraper
 
