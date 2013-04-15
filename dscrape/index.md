@@ -30,7 +30,7 @@ formats.
   </div>
 </div></div></div>
 
-# Using with a Registered Tree Sheet
+# Using DScrape with a Registered Tree Sheet
 
 The [DScrape Github repository](http://www.github.com/cts/dscrape) maintains a
 list of pre-written tree sheets you can use for scraping. If you only provide a
@@ -52,7 +52,7 @@ invocations. Please consider <a href="#contribute">contributing your own</a>!
 
      <pre>dscrape http://www.twitter.com/edwardbenson</pre>
 
-# Using with your own Tree Sheet
+# Using DScrape with your own Tree Sheet
 
 To use DScrape with your own tree sheet, provide a reference to the tree sheet
 after the URL. This reference can either be:
