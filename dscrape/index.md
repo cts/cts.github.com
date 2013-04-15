@@ -30,7 +30,7 @@ formats.
   </div>
 </div></div></div>
 
-## Scraper Repository
+# Scraper Repository
 
 The [DScrape Github repository](http://www.github.com/cts/dscrape) also
 maintains a list of pre-written tree sheets you can use for scraping. If you
@@ -40,17 +40,13 @@ repository for a URL match and use the pre-written scraper if available.
 For example, to scrape Reddit, simply say:
 
 <pre>
-<code>
 dscrape http://www.reddit.com
-</code>
 </pre>
 
 Or to scrape a person's Twitter profile, you might say:
 
 <pre>
-<code>
 dscrape http://www.twitter.com/edwardbenson
-</code>
 </pre>
 
 Since a Reddit scraper and Twitter Profile scraper already exists in the
