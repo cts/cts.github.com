@@ -40,15 +40,15 @@ a URL match and use the pre-written scraper if available.
 Here's a list of scrapers already written for you to use along with example
 invocations. Please consider <a href="#contribute">contributing your own</a>!
 
-* Reddit (and subreddits) article listings ([scraper link](https://github.com/cts/dscrape/blob/master/examples/reddit.cts))
+* **Reddit** (and subreddits) article listings ([scraper link](https://github.com/cts/dscrape/blob/master/examples/reddit.cts))
     
      <pre>dscrape http://www.reddit.com</pre>
 
-* Kickstarter project pages ([scraper link](https://github.com/cts/dscrape/blob/master/examples/kickstarter.cts))
+* **Kickstarter** project pages ([scraper link](https://github.com/cts/dscrape/blob/master/examples/kickstarter.cts))
 
      <pre>dscrape http://www.kickstarter.com/projects/1068932801/new-york-london</pre>
 
-* Twitter profile and latest tweets ([scraper link](https://github.com/cts/dscrape/blob/master/examples/twitter-profile.cts))
+* **Twitter** profile and latest tweets ([scraper link](https://github.com/cts/dscrape/blob/master/examples/twitter-profile.cts))
 
      <pre>dscrape http://www.twitter.com/edwardbenson</pre>
 
@@ -69,9 +69,8 @@ after the URL. This reference can either be:
 
     <pre>dscrape http://www.reddit.com github://cts/dscrape/examples/reddit.cts</pre>
 
-# Contributing a Scraper
+# <a id="contribute"></a Contributing a Scraper
 
-<a name="contribute"></a>
 To contribute a scraper to our repository, fork it on Github and add your tree
 sheet to the `/examples` folder. You will also need to add an entry for your
 scraper in the `/examples/directory.json` file. Then submit a pull request and
