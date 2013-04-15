@@ -46,11 +46,11 @@ invocations:
 
 * Kickstarter project pages ([scraper link](https://github.com/cts/dscrape/blob/master/examples/kickstarter.cts))
 
-     dscrape http://www.kickstarter.com/projects/1068932801/new-york-london
+     <pre>dscrape http://www.kickstarter.com/projects/1068932801/new-york-london</pre>
 
 * Twitter profile and latest tweets ([scraper link](https://github.com/cts/dscrape/blob/master/examples/twitter-profile.cts))
 
-     dscrape http://www.twitter.com/edwardbenson
+     <pre>dscrape http://www.twitter.com/edwardbenson</pre>
 
 ## Contributing a Scraper
 
