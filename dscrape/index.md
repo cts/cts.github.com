@@ -20,7 +20,7 @@ formats.
   <div class="span8 well">
     <div class="row">
   <div class="span4">
-    <h3>Download and Use</h3>
+    <h3>Installing</h3>
     <p><i>Install DScrape using the <a href="http://npmjs.org/">Node Package Manager</a></i>:</p>
     <code style="margin-left: 15px">npm install dscrape</code>
   </div>
