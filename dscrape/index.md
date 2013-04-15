@@ -69,7 +69,7 @@ after the URL. This reference can either be:
 
     <pre>dscrape http://www.reddit.com github://cts/dscrape/examples/reddit.cts</pre>
 
-# <a id="contribute"></a> Contributing a Scraper
+# <a id="contribute" /> Contributing a Scraper
 
 To contribute a scraper to our repository, fork it on Github and add your tree
 sheet to the `/examples` folder. You will also need to add an entry for your
