@@ -26,13 +26,13 @@ formats.
   </div>
   <div class="span4">
     <h3>Contribute</h3>
-    <a href="http://github.com/webcats/dscrape" class="btn btn-success">DScrape on GitHub</a>
+    <a href="http://github.com/cts/dscrape" class="btn btn-success">DScrape on GitHub</a>
   </div>
 </div></div></div>
 
 # Using DScrape with a Registered Tree Sheet
 
-The [DScrape Github repository](http://www.github.com/cts/dscrape) maintains a
+The [DScrape GitHub repository](http://www.github.com/cts/dscrape) maintains a
 list of pre-written tree sheets you can use for scraping. If you only provide a
 URL to DScrape (and no tree sheet), it will search this scraper repository for
 a URL match and use the pre-written scraper if available.
@@ -65,13 +65,13 @@ after the URL. This reference can either be:
 
     <pre>dscrape http://www.reddit.com http://example.org/reddit.cts</pre>
 
-* **A Github URL**. DScrape supports a special shorthand for files hosted in Github. Create a URL of the form `github://user/repository/path/to/file`, such as:
+* **A GitHub URL**. DScrape supports a special shorthand for files hosted in GitHub. Create a URL of the form `github://user/repository/path/to/file`, such as:
 
     <pre>dscrape http://www.reddit.com github://cts/dscrape/examples/reddit.cts</pre>
 
 # <a id="contribute"> </a> Contributing a Scraper
 
-To contribute a scraper to our repository, fork it on Github and add your tree
+To contribute a scraper to our repository, fork it on GitHub and add your tree
 sheet to the `/examples` folder. You will also need to add an entry for your
 scraper in the `/examples/directory.json` file. Then submit a pull request and
 we will review and incorporate it.
