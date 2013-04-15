@@ -37,18 +37,12 @@ maintains a list of pre-written tree sheets you can use for scraping. If you
 only provide a URL to DScrape (and no tree sheet), it will search this scraper
 repository for a URL match and use the pre-written scraper if available.
 
-For example, to scrape Reddit, simply say `dscrape http://www.reddit.com` or to
-scrape a person's Twitter profile, you might can say `dscrape
-http://www.twitter.com/edwardbenson`. Since a Reddit scraper and Twitter
-Profile scraper already exists in the repository, DScape will download and use
-the appropriate tree sheets for you.
-
 Here's a list of scrapers already written for you to use along with example
 invocations:
 
 * Reddit (and subreddits) article listings ([scraper link](https://github.com/cts/dscrape/blob/master/examples/reddit.cts))
     
-     dscrape http://www.reddit.com
+     <pre>dscrape http://www.reddit.com</pre>
 
 * Kickstarter project pages ([scraper link](https://github.com/cts/dscrape/blob/master/examples/kickstarter.cts))
 
