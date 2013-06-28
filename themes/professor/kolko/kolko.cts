@@ -11,4 +11,3 @@ div.kolko div.publicationsContainer { if-exist: publications; }
 div.kolko span.nick { value: labAcronym; }
 div.kolko div.projects div { repeat: projects; }
 div.kolko div.projects div a { value: name; value(@href): url; }
-
