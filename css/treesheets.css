@@ -1,0 +1,154 @@
+.topper {
+  background-color: #202020;
+}
+
+body {
+}
+
+ /* Custom container */
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Base class
+------------------------- */
+
+.headstrip {
+  margin: 0;
+  padding: 0;
+  margin-top: -268px;
+  position: relative;
+  background-color: transparent;
+}
+
+.headstrip h1 {
+  background-image: url('../images/cts-header-big.png');
+  background-repeat: no-repeat;
+  height: 268px;
+  width: 962px;
+  text-indent: -99999px;
+  margin: 0;
+  margin-left: 60px;
+  padding: 0;
+}
+
+.headstrip h2 {
+  text-indent: -9999px;
+}
+
+.headstrip .row, .headstrip .span7, .headstrip .masthead, .headstrip .topper, .headstrip .container-narrow {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+table.headbacker {
+  z-index: 0;
+  width: 100%;
+  position: absolute:
+  padding: 0;
+  margin: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table.headbacker td.left {
+  background-image: url('../images/cts-header-color-left.png');
+  width: 50%;
+  height: 240px;
+}
+table.headbacker td.right {
+  background-image: url('../images/cts-header-color-right.png');
+  width: 50%;
+}
+
+table.headbacker td.bottomright {
+  height: 17px;
+  background-image: url('../images/cts-header-color-right.png');
+  width: 50%;
+}
+
+table.headbacker-mini {
+  z-index: 0;
+  width: 100%;
+  position: absolute:
+  padding: 0;
+  margin: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table.headbacker-mini td {
+  padding: 0;
+  margin: 0;
+}
+
+table.headbacker-mini td.left {
+  background-image: url('../images/cts-header-color-left.png');
+  width: 50%;
+  height: 56px;
+}
+table.headbacker-mini td.right {
+  background-image: url('../images/cts-header-color-right.png');
+  width: 50%;
+}
+
+table.headbacker-mini td.bottomleft {
+  height: 8px;
+  background-image: url('../images/cts-header-color-left.png');
+  width: 50%;
+}
+
+
+
+.headstrip-mini {
+  margin: 0;
+  padding: 0;
+  margin-top: -66px;
+  position: relative;
+  background-color: transparent;
+}
+
+.headstrip-mini h3 {
+  background-image: url('../images/cts-header-small.png');
+  background-repeat: no-repeat;
+  height: 66px;
+  width: 921px;
+  text-indent: -99999px;
+  margin: 0;
+  margin-left: 60px;
+  padding: 0;
+}
+
+
+
+
+div.cartoon {
+  margin-bottom: 20px;
+}
+
+div.jumbo {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+a.main-button {
+  text-align: middle;
+  border: 1px solid black;
+  background-color: #eee;
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  clear: both;
+  float: none;
+}
