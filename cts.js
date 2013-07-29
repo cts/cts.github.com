@@ -4558,7 +4558,7 @@ CTS.Fn.extend(Forrest.prototype, {
     var ctsNode = tree.getCtsNode(node);
     if (ctsNode == null) {
       // Get the parent
-      var p = $($(node).parent());
+      var p = CTS.$(CTS.$(node).parent());
       var ctsParent = tree.getCtsNode(p);
       if (ctsParent == null) {
         CTS.Log.Error("Node inserted into yet unmapped region of tree");
