@@ -4,7 +4,7 @@ title: CTS UI
 group: primary
 ---
 
-<p>Temporary info page for CTS-UI.</p>
+Temporary info page for CTS-UI.
 
-<p>In the meantime, check out the (development page)[development.html].
+In the meantime, check out the [development page](development.html).
 

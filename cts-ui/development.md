@@ -6,7 +6,7 @@ group: primary
 
 ## Cloning and Building CTS-UI
 
-CTS-UI is hosted at (cts/cts-ui)[http://github.com/cts/cts-ui] on GitHub.
+CTS-UI is hosted at [cts/cts-ui](http://github.com/cts/cts-ui) on GitHub.
 
 Next install all the required NPM packages by running `npm install` in the local directory.
 
@@ -18,7 +18,7 @@ To test while you develop, run the development server included in the project ro
 
      python dev-server.py
 
-This will open up an HTTP server on port 8000 with (CORS headers)[http://enable-cors.org/] enabled.
+This will open up an HTTP server on port 8000 with [CORS headers](http://enable-cors.org/) enabled.
 
 ## Using the Development Bookmarklet
 
