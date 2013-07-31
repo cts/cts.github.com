@@ -26,5 +26,5 @@ This will open up an HTTP server on port 9000 with [CORS headers](http://enable-
 
 Next, drag the button below onto your toolbar. **With the development server running**, you should be able to click this button to load the CTS on any website. *Note that https sites will still refuse to load it*: 
 
-<p><a class="btn btn-success" href="javascript:var s=document.createElement('script');s.setAttribute('src','http://localhost:9000/release/cts.js');document.getElementsByTagName('body')[0].appendChild(s);">CTS (Dev)</a>
+<p><a class="btn btn-success" href="javascript:var s=document.createElement('script');s.setAttribute('src','http://localhost:9000/release/cts.js');document.getElementsByTagName('body')[0].appendChild(s);">CTS (Dev)</a></p>
 

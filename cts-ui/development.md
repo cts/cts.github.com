@@ -24,5 +24,4 @@ This will open up an HTTP server on port 8000 with [CORS headers](http://enable-
 
 Next, drag the button below onto your toolbar. **With the development server running**, you should be able to click this button to load the CTS-UI sidebar on any website. *Note that https sites will still refuse to load it*: 
 
-<p><a class="btn btn-success" href="javascript:var s=document.createElement('script');s.setAttribute('src','http://localhost:8000/release/cts-ui.js');document.getElementsByTagName('body')[0].appendChild(s);">CTS-UI (Dev)</a>
-
+<p><a class="btn btn-success" href="javascript:var s=document.createElement('script');s.setAttribute('src','http://localhost:8000/release/cts-ui.js');document.getElementsByTagName('body')[0].appendChild(s);">CTS-UI (Dev)</a></p>
