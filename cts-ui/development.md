@@ -6,7 +6,7 @@ group: primary
 
 ## Cloning and Building CTS-UI
 
-CTS-UI is hosted at (cts/cts-ui)["http://github.com/cts/cts-ui] on GitHub.
+CTS-UI is hosted at (cts/cts-ui)[http://github.com/cts/cts-ui] on GitHub.
 
 Next install all the required NPM packages by running `npm install` in the local directory.
 
