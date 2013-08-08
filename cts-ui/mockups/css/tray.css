@@ -1,0 +1,44 @@
+/*
+.tray {
+  background-color: red !important; 
+  padding-bottom: 10px;
+}
+.templates-tray { background-color: blue !important; }
+.theminator { background-color: green !important; }
+.theminator { margin-bottom: 10px !important; }
+*/
+
+/* TRAY:
+ * <div class="tray">
+ *   <div class="tray-contents"></div>
+ *   <div class="expand-tray"></div>
+ * </div>
+ */
+
+.cts-ui .cts-ui-tray {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width:337px;
+  /*left:-300px;*/
+}
+
+.cts-ui .cts-ui-tray .cts-ui-tray-contents {
+  border-right: 1px solid black;
+  width: 300px;
+  background-image: url('http://localhost:8000/css/img/light_wool.png');
+  height: 100%;
+}
+
+.cts-ui .cts-ui-tray .cts-ui-expand-tray {
+    position:absolute;
+    top:25%;
+    left:301px;
+}
+
+.cts-ui .cts-ui-tray .cts-ui-expand-tray-button {
+    cursor: hand;
+    cursor: pointer;
+}
+
