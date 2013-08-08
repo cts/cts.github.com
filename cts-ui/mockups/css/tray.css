@@ -27,7 +27,6 @@
 .cts-ui .cts-ui-tray .cts-ui-tray-contents {
   border-right: 1px solid black;
   width: 300px;
-  background-image: url('http://localhost:8000/css/img/light_wool.png');
   height: 100%;
 }
 
