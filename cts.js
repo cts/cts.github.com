@@ -35,15 +35,17 @@ CTS.autoloadCheck = function() {
   // since we're executing, and scripts are loaded sequentially
   for (var i = scripts.length - 1; i >= 0; i++) {
     var script = scripts[i];
-    if ((typeof script.src != 'undefined') &&
-        (script.src != null) && 
-        ((script.src.indexOf('cts.js') != -1) ||
-         (script.src.indexOf('cts.min.js') != -1))) {
-      var param = CTS.Utilities.getUrlParameter('autoload', script.src)
-      if (param == 'false') {
-        return false;
-      } else {
-        return true;
+    if (typeof script != 'undefined') {
+      if ((typeof script.src != 'undefined') &&
+          (script.src != null) && 
+          ((script.src.indexOf('cts.js') != -1) ||
+           (script.src.indexOf('cts.min.js') != -1))) {
+        var param = CTS.Utilities.getUrlParameter('autoload', script.src)
+        if (param == 'false') {
+          return false;
+        } else {
+          return true;
+        }
       }
     }
   }
@@ -3076,7 +3078,7 @@ CTS.Fn.extend(CTS.Utilities, {
     }
   },
 
-  fetchString: function(params, successFn, errorFn) {
+  fetchString: function(params) {
     var deferred = Q.defer();
     var xhr = CTS.$.ajax({
       url: params.url,
@@ -3167,7 +3169,6 @@ CTS.Node.Base = {
 
   getRelations: function() {
     if (! this.checkedForInlineRealization) {
-      CTS.Log.Info("Checking for inline relizations");
       for (var i = 0; i < this.inlineRelationSpecs.length; i++) {
         var spec = this.inlineRelationSpecs[i];
         console.log("Found spec", spec);
@@ -3210,9 +3211,16 @@ CTS.Node.Base = {
     var self = this;
 
     CTS.Parser.parseInlineSpecs(specStr, self, self.tree.forrest, true).then(
-      function(forrestSpec) {
-        self.addedMyInlineRelationsToForrest = true;
-        self.inlineRelationSpecs = forrestSpec.relationSpecs;
+      function(forrestSpecs) {
+        console.log("Just got forrestSpecs", forrestSpecs);
+        Fn.each(forrestSpecs, function(forrestSpec) {
+          CTS.Log.Info("Parsed forrest spec", forrestSpec);
+          self.addedMyInlineRelationsToForrest = true;
+          if (typeof forrestSpec.relationSpecs != 'undefined') {
+            self.inlineRelationSpecs = forrestSpec.relationSpecs;
+            CTS.Log.Info("adding inline relation specs", self.inlineRelationSpecs);
+          }
+        });
         deferred.resolve();
       },
       function(reason) {
@@ -4509,6 +4517,8 @@ CTS.Fn.extend(CTS.Relation.Graft.prototype, CTS.Relation.Base, {
     var opp = this.opposite(toward);
 
     CTS.Log.Info("Graft from", opp.tree.name, "to", toward.tree.name);
+    CTS.Log.Info("Opp", opp.value.html());
+    CTS.Log.Info("To", toward.value.html());
 
     if (opp != null) {
 
@@ -4520,9 +4530,16 @@ CTS.Fn.extend(CTS.Relation.Graft.prototype, CTS.Relation.Base, {
       var replacements = [];
       for (var i = 0; i < opp.children.length; i++) {
         var child = opp.children[i].clone();
+
         // TODO(eob): This is a subtle bug. It means that you can't graft-map anything outside
         // the toward node that is being grafted.
-        child.pruneRelations(toward)
+        //child.pruneRelations(toward)
+        // TODO(eob): We were pruning before because of geometric duplication of relations
+        // when graft happened multiple times, and took out the pruneRelations above because it
+        // also removed relations from grafts of grafts (i.e., when one theme includes components of
+        // a common libray). So.. need to make sure that the fix to _subclass_begin_clone in Node (where
+        // nonzero starting .relations[] is cleared) fixes the original reason we were pruning)
+
         child._processIncoming();
         replacements.push(child);
       }
@@ -4725,6 +4742,9 @@ var Forrest = CTS.Forrest = function(opts) {
 
   this.opts = opts || {};
 
+  this._defaultTreeReady = Q.defer();
+  this.defaultTreeReady = this._defaultTreeReady.promise;
+
   if (typeof opts.engine != 'undefined') {
     this.engine = opts.engine;
     // Default tree was realized.
@@ -4771,8 +4791,7 @@ CTS.Fn.extend(Forrest.prototype, {
     this.addTreeSpec(pageBody);
     this.realizeTree(pageBody).then(
      function(tree) {
-
-       // NOW CTS IS READY AND LOADED
+       self._defaultTreeReady.resolve();
        CTS.status._defaultTreeReady.resolve();
        deferred.resolve();
      },
@@ -4821,37 +4840,43 @@ CTS.Fn.extend(Forrest.prototype, {
     var i, j;
 
     // Load all the relation specs
-    for (j = 0; j < forrestSpec.relationSpecs.length; j++) {
-      self.addRelationSpec(forrestSpec.relationSpecs[j]);
+    if (typeof forrestSpec.relationSpecs != 'undefined') {
+      for (j = 0; j < forrestSpec.relationSpecs.length; j++) {
+        self.addRelationSpec(forrestSpec.relationSpecs[j]);
+      }
     }
     // Load all the dependency specs
-    for (dep in forrestSpec.dependencySpecs) {
-      forrestSpec.dependencySpecs[dep].load();
+    if (typeof forrestSpec.dependencySpecs != 'undefined') {
+      for (dep in forrestSpec.dependencySpecs) {
+        forrestSpec.dependencySpecs[dep].load();
+      }
     }
 
     // Load AND REALIZE all the tree specs
-    for (i = 0; i < forrestSpec.treeSpecs.length; i++) {
-      (function(treeSpec) {
-        var treeSpec = forrestSpec.treeSpecs[i];
-        self.addTreeSpec(treeSpec);
-        var next = Q.defer();
-        last.then(
-          function() {
-            self.realizeTree(treeSpec).then(
-              function() {
-                next.resolve();
-              },
-              function(reason) {
-                next.reject(reason);
-              }
-            );
-          },
-          function(reason) {
-            next.reject(reason);
-          }
-        );
-        last = next.promise;
-      })(forrestSpec.treeSpecs[i])
+    if (typeof forrestSpec.treeSpecs != 'undefined') {
+      for (i = 0; i < forrestSpec.treeSpecs.length; i++) {
+        (function(treeSpec) {
+          var treeSpec = forrestSpec.treeSpecs[i];
+          self.addTreeSpec(treeSpec);
+          var next = Q.defer();
+          last.then(
+            function() {
+              self.realizeTree(treeSpec).then(
+                function() {
+                  next.resolve();
+                },
+                function(reason) {
+                  next.reject(reason);
+                }
+              );
+            },
+            function(reason) {
+              next.reject(reason);
+            }
+          );
+          last = next.promise;
+        })(forrestSpec.treeSpecs[i])
+      }
     }
 
     initial.resolve();
@@ -4907,7 +4932,7 @@ CTS.Fn.extend(Forrest.prototype, {
   realizeTree: function(treeSpec) {
     var deferred = Q.defer();
     var self = this;
-    if ((treeSpec.url !== null) && (treeSpec.url.indexOf("alias(") == 0) && (treeSpec.url[treeSpec.url.length - 1] == ")")) {
+    if ((treeSpec.url !== null) && (typeof treeSpec.url == "string") && (treeSpec.url.indexOf("alias(") == 0) && (treeSpec.url[treeSpec.url.length - 1] == ")")) {
       var alias = treeSpec.url.substring(6, treeSpec.url.length - 1);
       if (typeof self.trees[alias] != 'undefined') {
         self.trees[treeSpec.name] = self.trees[alias];
@@ -5009,6 +5034,18 @@ CTS.Fn.extend(Forrest.prototype, {
 
     var nodes1 = this.trees[s1.treeName].nodesForSelectionSpec(s1);
     var nodes2 = this.trees[s2.treeName].nodesForSelectionSpec(s2);
+
+    if (nodes1.length == 0) {
+      CTS.Log.Warn("Can not realize RelationSpec because selection is empty", s1);
+      debugger;
+      return;
+    }
+    if (nodes2.length == 0) {
+      CTS.Log.Warn("Can not realize RelationSpec because selection is empty", s2);
+      debugger;
+      return;
+    }
+
 
     for (var i = 0; i < nodes1.length; i++) {
       for (var j = 0; j < nodes2.length; j++) {
@@ -5229,8 +5266,10 @@ DependencySpec.prototype.load = function() {
       script.setAttribute('type', 'text/javascript');
       script.setAttribute('src', this.url);
       document.getElementsByTagName('head')[0].appendChild(script);
+    } else if (this.kind == 'cts') {
+      // Ignore
     } else {
-      CTS.Log.Error("DependencySpec: Unsure how to load", this.kind, this.url);
+      CTS.Log.Error("DependencySpec: Unsure how to load: ", this.kind, this.url);
     }
   } else {
     CTS.Log.Warn("DependencySpec: Not loading already loaded", this.kind, this.url);
@@ -5312,7 +5351,7 @@ CTS.Factory = {
       );
       return deferred.promise;
     } else {
-      return CTS.Factory.TreeWithJquery(node, forrest, spec);
+      return CTS.Factory.TreeWithJquery(spec.url, forrest, spec);
     }
   },
 
@@ -5537,34 +5576,54 @@ CTS.Parser.Cts = {
     var deferred = Q.defer();
     // First parse out the spec. The user should be using "this" to refer
     // to the current node.
-    var spec = CTS.Parser.Cts.parseForrestSpec(str);
-    // We have to zip through here to find any instances of 'this' and replace
-    // it with the tree that we're working with.
-    if (typeof spec.relationSpecs != "undefined") {
-      for (var i = 0; i < spec.relationSpecs.length; i++) {
-        var rs = spec.relationSpecs[i];
-        var s1 = rs.selectionSpec1;
-        var s2 = rs.selectionSpec2;
-        if (s1.selectorString.trim() == "this") {
-          s1.inline = true;
-          s1.inlineObject = node;
-        }
-        if (s2.selectorString.trim() == "this") {
-          s2.inline = true;
-          s2.inlineObject = node;
-        }
+
+    CTS.Parser.Cts.parseForrestSpec(str).then(
+      function(specs) {
+        // We have to zip through here to find any instances of 'this' and replace
+        // it with the tree that we're working with.
+        var promises = Fn.map(specs, function(spec) {
+          if (typeof spec.relationSpecs != "undefined") {
+            for (var i = 0; i < spec.relationSpecs.length; i++) {
+              var rs = spec.relationSpecs[i];
+              var s1 = rs.selectionSpec1;
+              var s2 = rs.selectionSpec2;
+              if (s1.selectorString.trim() == "this") {
+                s1.inline = true;
+                s1.inlineObject = node;
+              }
+              if (s2.selectorString.trim() == "this") {
+                s2.inline = true;
+                s2.inlineObject = node;
+              }
+            }
+          }
+          return intoForrest.addSpec(spec);
+        });
+    
+        Q.all(promises).then(
+          // Specs here is ref to result from parseForrestSpec
+          function() {
+            deferred.resolve(specs);
+          },
+          function(reason) {
+            deferred.reject(reason);
+          }
+        );
+      },
+      function(reason) {
+        deferred.reject(reason);
       }
-    }
-    intoForrest.addSpec(spec).then(function() {
-      deferred.resolve(spec);
-    }, function(reason) {
-      deferred.reject(reason);
-    });
+    );
+
     return deferred.promise;
   },
 
   parseForrestSpec: function(str) {
+    var deferred = Q.defer();
     var json = null;
+    var remoteLoads = [];
+    var self = this;
+
     try {
       json = CTS.Parser.CtsImpl.parse(str.trim());
     } catch (e) {
@@ -5575,6 +5634,7 @@ CTS.Parser.Cts = {
     json.css = [];
     json.js = [];
     var i;
+    var forrestSpecs = [];
     var f = new ForrestSpec();
     if (typeof json.headers != 'undefined') {
       for (i = 0; i < json.headers.length; i++) {
@@ -5584,6 +5644,9 @@ CTS.Parser.Cts = {
           f.treeSpecs.push(new TreeSpec('html', h[0], h[1]));
         } else if (kind == 'css') {
           f.dependencySpecs.push(new DependencySpec('css', h[0]));
+        } else if (kind == 'cts') {
+          f.dependencySpecs.push(new DependencySpec('cts', h[0]));
+          remoteLoads.push(CTS.Utilities.fetchString({url: h[0]}));
         } else if (kind == 'js') {
           f.dependencySpecs.push(new DependencySpec('js', h[0]));
         } else {
@@ -5592,7 +5655,33 @@ CTS.Parser.Cts = {
       }
     }
     f.relationSpecs = json.relations;
-    return f;
+    forrestSpecs.push(f);
+    
+    Q.all(remoteLoads).then(
+      function(results) {
+        // Results here contains MORE cts strings
+        var parsePromises = Fn.map(results, function(result) {
+          return self.parseForrestSpec(result);
+        });
+        Q.all(parsePromises).then(
+          function(moreSpecs) {
+            for (var i = 0; i < moreSpecs.length; i++) {
+              for (var j = 0; j < moreSpecs[i].length; j++) {
+                forrestSpecs.push(moreSpecs[i][j]);
+              }
+            }
+            deferred.resolve(forrestSpecs);
+          },
+          function(reason) {
+            deferred.reject(reason);
+          }
+        );
+      },
+      function(reason) {
+        deferred.reject(reason);
+      }
+    );
+    return deferred.promise;
   }
 
 };
@@ -6072,11 +6161,23 @@ CTS.Parser.Html = new (function(){
 // Engine
 // ==========================================================================
 
-// Constructor
-// -----------
+/*
+ * Available options:
+ * 
+ * - autoLoadSpecs (default: true) - Should we autload specs from
+ *   script and link elements
+ * - forrestSpecs - optional array of forrest specs to load
+ *
+ */
+
+
 var Engine = CTS.Engine = function(opts, args) {
   var defaults;
   this.opts = opts || {};
+
+  if (typeof this.opts.autoLoadSpecs == 'undefined') {
+    this.opts.autoLoadSpecs = true;
+  }
 
   this._booted = Q.defer();
   this.booted = this._booted.promise;
@@ -6165,49 +6266,91 @@ CTS.Fn.extend(Engine.prototype, Events, {
   loadCts: function() {
     var promises = [];
     var self = this;
-    Fn.each(CTS.Utilities.getTreesheetLinks(), function(block) {
+
+    function addSpecs(specs) {
+      var promises = Fn.map(specs, function(spec) {
+        return self.forrest.addSpec(spec);
+      });
+      return Q.all(promises);
+    };
+
+    // tuple = [raw, kind]
+    function parseAndAddSpec(rawData, kind, fromUrl) {
       var deferred = Q.defer();
-      if (block.type == 'link') {
-        CTS.Utilities.fetchString(block).then(
-          function(content) { 
-            var spec = CTS.Parser.parseForrestSpec(content, block.format);
-            var i;
-            for (i = 0; i < spec.treeSpecs.length; i++) {
-              spec.treeSpecs[i].loadedFrom = block.url;
-            }
-            for (i = 0; i < spec.dependencySpecs.length; i++) {
-              spec.dependencySpecs[i].loadedFrom = block.url;
-            }
-            self.forrest.addSpec(spec).then(
-              function() {
-                deferred.resolve(); 
-              },
-              function(reason) {
-                deferred.reject(reason);
+
+      CTS.Parser.parseForrestSpec(rawData, kind).then(
+        function(specs) {
+          console.log("Got specs", specs);
+          if (fromUrl != 'undefined') {
+            Fn.each(specs, function(spec) {
+              for (i = 0; i < spec.treeSpecs.length; i++) {
+                spec.treeSpecs[i].loadedFrom = fromUrl;
               }
-            );
-          },
-          function(reason) {
-            CTS.Log.Error("Couldn't fetch string.");
-            deferred.reject(reason);
+              for (i = 0; i < spec.dependencySpecs.length; i++) {
+                spec.dependencySpecs[i].loadedFrom = fromUrl;
+              }
+            });
           }
-        );
-      } else if (block.type == 'block') {
-        var spec = CTS.Parser.parseForrestSpec(block.content, block.format);
-        self.forrest.addSpec(spec).then(
-          function() {
-            deferred.resolve();
-          },
-          function(reason) {
-            deferred.reject(reason);
-          }
-        );
-      }
-      if (typeof promises =='undefined') {
-        CTS.Log.Error("PUSH UNDEF");
-      }
-      promises.push(deferred.promise);
-    }, this);
+          addSpecs(specs).then(
+            function() {
+              deferred.resolve();
+            },
+            function(reason) {
+              deferred.reject(reason);
+            }
+          );
+        },
+        function(reason) {
+          deferred.reject(reason);
+        }
+      );
+      return deferred.promise;
+    };
+
+    // Possibly add specs from the OPTS hash passed to Engine.
+    if ((typeof self.opts.forrestSpecs != 'undefined') && (self.opts.forrestSpecs.length > 0)) {
+      promises.push(addSpecs(self.opts.forrestSpecs));
+    }
+
+    if ((typeof self.opts.autoLoadSpecs != 'undefined') && (self.opts.autoLoadSpecs === true)) {
+      Fn.each(CTS.Utilities.getTreesheetLinks(), function(block) {
+        var deferred = Q.defer();
+        if (block.type == 'link') {
+          CTS.Utilities.fetchString(block).then(
+            function(content) {
+              var url = block.url;
+              parseAndAddSpec(content, block.format, url).then(
+                function() {
+                  deferred.resolve();
+                },
+                function(reason) {
+                  CTS.Log.Error("Could not parse and add spec", content, block);
+                  deferred.resolve();
+                }
+              );
+            },
+            function(reason) {
+              CTS.Log.Error("Could not fetch CTS link:", block);
+              deferred.resolve();
+            });
+        } else if (block.type == 'block') {
+          var url = window.location;
+          parseAndAddSpec(block.content, block.format, url).then(
+            function() {
+              deferred.resolve();
+            },
+            function(reason) {
+              CTS.Log.Error("Could not parse and add spec", content, block);
+              deferred.resolve();
+            }
+          );
+        } else {
+          CTS.Log.Error("Could not load CTS: did not understand block type", block.block, block);
+          deferred.resolve();
+        }
+        promises.push(deferred.promise);
+      });
+    }
     return Q.all(promises);
   },
 
