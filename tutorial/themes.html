@@ -1,0 +1,259 @@
+---
+layout: page
+title: Using CTS with Jekyll
+group: primary
+---
+<style type="text/css">
+    .treeview {
+      float: left;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+    .treeview:hover input ~ label:before,
+    .treeview.hover input ~ label:before {
+      opacity: 1.0;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      -ms-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+    }
+    .treeview ul {
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -ms-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        list-style: none;
+        padding-left: 1em;
+    }
+    .treeview ul li span {
+        -webkit-transition-property: color;
+        -moz-transition-property: color;
+        -ms-transition-property: color;
+        -o-transition-property: color;
+        transition-property: color;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -ms-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+    }
+    .treeview ul li span:hover {
+        color: rgba(221, 17, 68, 1);
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -ms-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+    .treeview input {
+        display: none;
+    }
+    .treeview input:checked ~ ul {
+        display: none;
+    }
+    .treeview input ~ label {
+        cursor: pointer;
+    }
+    .treeview input ~ label:before {
+        content:'';
+        width: 0;
+        height: 0;
+        position: absolute;
+        margin-left: -1em;
+        margin-top: 0.4em;
+        border-width: 4px;
+        border-style: solid;
+        border-top-color: transparent;
+        border-right-color: rgba(255, 255, 255, 0.5);
+        border-bottom-color: rgba(255, 255, 255, 0.5);
+        border-left-color: transparent;
+        opacity: 0.0;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -ms-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -ms-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+    }
+    .treeview input:checked ~ label:before {
+        margin-left: -0.8em;
+        border-width: 5px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: rgba(255, 255, 255, 0.5);
+    }
+</style>
+<p>Whether you are already powering your blog with Jekyll, want to swtich your blog to Jekyll, or are creating your first blog, it's easy to get started with using CTS in Jekyll! When we're done, you'll be able to:</p>
+<div>
+    <div class="pull-left">
+        <h2>1. Initialize a new blog with 1 four-word command</h2>
+        <img src="#" />
+    </div>
+    <div class="pull-left">
+        <h2>2. Manage your content without having to worry about structure and styling</h2>
+        <img src="#" />
+    </div>
+    <div class="pull-left">
+        <h2>3. Use Wordpress themes without using Wordpress</h2>
+        <img src="#" />
+    </div>
+    <div class="pull-left">
+        <h2>4. Browse, preview, and install themes on your blog without changing a line of code</h2>
+        <img src="#" />
+    </div>
+</div>
+<p>If you've never used Jekyll before, you can read up about it
+    <a href="http://jekyllrb.com/">here</a>. Try going to the documentation and using the
+    <a href="http://jekyllrb.com/docs/home/">getting started guide</a>.
+    <br>Jekyll uses a language called Liquid -find the docmentation
+    <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">here</a>.</p>
+<p>Now that you've gotten Jekyll all installed, let's start setting up CTS.</p>
+<p>Open up your terminal, go to the directory where you have your Jekyll blog or you want to set one up, and run:</p>
+<pre>
+    <code>
+        npm install cts
+    </code>
+</pre>
+<p>Now you'll be able run CTS commands from the terminal. If you run just <code>cts</code> you should see a help screen.</p>
+<p>We need to set up some files and folders now -this is different based on if your directory is already a Jekyll blog directory or not (if it's not, it should be empty!).</p>
+<div class="accordion" id="setup-options">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#setup-options" href="#setup-options-one">
+                If you've already got a Jekyll environment in this directory:
+            </a>
+        </div>
+        <div id="setup-options-one" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <p>You're going to run:</p>
+                <pre>
+                    <code>
+                        cts setup jekyll
+                    </code>
+                </pre>
+                <p>Don't worry about your files!  We won't overwrite any of them. If we're adding a file with the same name (we probably will), we'll just rename yours to <i>whatever-backup.ext</i>. This command is going to add some files to the root directory, and to the <i>_includes</i>, <i>_layouts</i>, and <i>_plugins</i> folders. It'll also change your <i>_config.yml</i> file, but just by one line: check the bottom of the file, and it'll say <code>theme: mog</code>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#setup-options" href="#setup-options-two">
+                If you're starting new and fresh:
+            </a>
+        </div>
+        <div id="setup-options-two" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <p>You're going to run:</p>
+                <pre>
+                    <code>
+                        cts setup jekyll --new
+                    </code>
+                </pre>
+                <p>This command is going to start setting up the directory structure for you.  It's going to look a lot like the directory structure that the <a href="http://jekyllrb.com/docs/structure/">Jekyll getting started guide</a> showed you: a <i>_layouts</i>, <i>_includes</i>, and <i>_plugins</i> folder, some dummy content in the <i>_posts</i> folder, a place to store <i>images</i>, an <i>index.html</i>, a few CTS files, and a <i>_config.yml</i> file.
+                </p>
+                <p>You have to have a <i>config.yml</i> file if you want this to be a Jekyll environment! Read more about it <a href="http://jekyllrb.com/docs/configuration/">here</a>. Right now there's just one line of code in it: <code>theme: mog</code>. Later you can add new properties, but this is all you need right now.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<p>All your files are in place now. Let's talk through what was added. Run your mouse over a file or folder for more specific information about it. Files that are dummy content, made for new Jekyll environments, are marked with the icon <i class="icon-tags"></i>.</p>
+<div>
+    <div class="pull-left treeview hover well">
+        <ul>
+            <li>
+                <input type="checkbox" id="includes">
+                <label for="includes">
+                    <span>_includes</span>
+                </label>
+                <ul>
+                    <li><span>default.html</span></li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="layouts">
+                <label for="layouts">
+                    <span>_layouts</span>
+                </label>
+                <ul>
+                    <li><span>list.html</span></li>
+                    <li><span>page.html</span></li>
+                    <li><span>post.html</span></li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="plugins">
+                <label for="plugins">
+                    <span>_plugins</span>
+                </label>
+                <ul>
+                    <li><span>_list_gen.rb</span></li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="posts">
+                <label for="posts">
+                    <span>_posts<i class="icon-tags"></i></span>
+                </label>
+                <ul>
+                    <li><span>2008-09-05-elements.html<i class="icon-tags"></i></span></li>
+                    <li><span>2008-10-17-worth-a-thousand-words.html<i class="icon-tags"></i></span></li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="images">
+                <label for="images">
+                    <span>images<i class="icon-tags"></i></span>
+                </label>
+                <ul>
+                    <li><span>boat.jpg<i class="icon-tags"></i></span></li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="mockups">
+                <label for="mockups">
+                    <span>mockups</span>
+                </label>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="mog">
+                        <label for="mog">
+                            <span>mog</span>
+                        </label>
+                        <ul>
+                            <li><span>default.html</span></li>
+                            <li><span>index.cts</span></li>
+                            <li><span>index.html</span></li>
+                            <li><span>list.html</span></li>
+                            <li><span>mog.cts</span></li>
+                            <li><span>page.html</span></li>
+                            <li><span>post.html</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><span>_config.yml</span></li>
+            <li><span>default.cts</span></li>
+            <li><span>index.cts</span></li>
+            <li><span>index.html</span></li>
+            <li><span>list.cts</span></li>
+            <li><span>page.cts</span></li>
+            <li><span>post.cts</span></li>
+        </ul>
+    </div>
+    <div class="pull-left">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+</div>
