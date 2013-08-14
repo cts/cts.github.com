@@ -3725,7 +3725,7 @@ CTS.Fn.extend(CTS.Node.Html.prototype, CTS.Node.Base, CTS.Events, {
     }
     for (var i = 0; i < this.children.length; i++) {
       if (typeof this.children[i] == 'undefined') {
-        debugger;
+        CTS.Log.Error("Undefined child");
       }
       this.children[i].find(selector, ret);
     }
@@ -5037,12 +5037,10 @@ CTS.Fn.extend(Forrest.prototype, {
 
     if (nodes1.length == 0) {
       CTS.Log.Warn("Can not realize RelationSpec because selection is empty", s1);
-      debugger;
       return;
     }
     if (nodes2.length == 0) {
       CTS.Log.Warn("Can not realize RelationSpec because selection is empty", s2);
-      debugger;
       return;
     }
 
@@ -5395,11 +5393,11 @@ CTS.Parser = {
     }
   },
 
-  parseForrestSpec: function(str, kind) {
+  parseForrestSpec: function(str, kind, fromUrl) {
     if (kind == 'json') {
-      return CTS.Parser.Json.parseForrestSpec(str);
+      return CTS.Parser.Json.parseForrestSpec(str, fromUrl);
     } else if (kind == 'string') {
-      return CTS.Parser.Cts.parseForrestSpec(str);
+      return CTS.Parser.Cts.parseForrestSpec(str, fromUrl);
     } else {
       var deferred = Q.defer();
       deferred.reject("I don't understand the CTS Format:" + kind);
@@ -5407,11 +5405,11 @@ CTS.Parser = {
     }
   },
 
-  parse: function(obj, kind) {
+  parse: function(obj, kind, fromUrl) {
     if (typeof kind == 'undefined') {
       kind = 'string';
     }
-    return CTS.Parser.parseForrestSpec(obj, kind);
+    return CTS.Parser.parseForrestSpec(obj, kind, fromUrl);
   },
 
   /* Inline specs can take the form:
@@ -5618,7 +5616,7 @@ CTS.Parser.Cts = {
     return deferred.promise;
   },
 
-  parseForrestSpec: function(str) {
+  parseForrestSpec: function(str, fromLocation) {
     var deferred = Q.defer();
     var json = null;
     var remoteLoads = [];
@@ -5646,7 +5644,17 @@ CTS.Parser.Cts = {
           f.dependencySpecs.push(new DependencySpec('css', h[0]));
         } else if (kind == 'cts') {
           f.dependencySpecs.push(new DependencySpec('cts', h[0]));
-          remoteLoads.push(CTS.Utilities.fetchString({url: h[0]}));
+          var url = h[0];
+          if (typeof fromLocation != 'undefined') {
+            url = CTS.Utilities.fixRelativeUrl(url, fromLocation);
+          }
+          remoteLoads.push(
+            CTS.Utilities.fetchString({url: url}).then(
+              function(str) {
+                return self.parseForrestSpec(str, url);
+              }
+            )
+          );
         } else if (kind == 'js') {
           f.dependencySpecs.push(new DependencySpec('js', h[0]));
         } else {
@@ -5658,24 +5666,24 @@ CTS.Parser.Cts = {
     forrestSpecs.push(f);
     
     Q.all(remoteLoads).then(
-      function(results) {
+      function(moreSpecs) {
         // Results here contains MORE cts strings
-        var parsePromises = Fn.map(results, function(result) {
-          return self.parseForrestSpec(result);
-        });
-        Q.all(parsePromises).then(
-          function(moreSpecs) {
+        //var parsePromises = Fn.map(results, function(result) {
+        //  return self.parseForrestSpec(result);
+        //});
+//        Q.all(parsePromises).then(
+//          function(moreSpecs) {
             for (var i = 0; i < moreSpecs.length; i++) {
               for (var j = 0; j < moreSpecs[i].length; j++) {
                 forrestSpecs.push(moreSpecs[i][j]);
               }
             }
             deferred.resolve(forrestSpecs);
-          },
-          function(reason) {
-            deferred.reject(reason);
-          }
-        );
+//          },
+//          function(reason) {
+//            deferred.reject(reason);
+//          }
+//        );
       },
       function(reason) {
         deferred.reject(reason);
@@ -6278,7 +6286,7 @@ CTS.Fn.extend(Engine.prototype, Events, {
     function parseAndAddSpec(rawData, kind, fromUrl) {
       var deferred = Q.defer();
 
-      CTS.Parser.parseForrestSpec(rawData, kind).then(
+      CTS.Parser.parseForrestSpec(rawData, kind, fromUrl).then(
         function(specs) {
           console.log("Got specs", specs);
           if (fromUrl != 'undefined') {
@@ -6386,7 +6394,14 @@ CTS.ensureJqueryThenMaybeAutoload = function() {
     CTS.status._libraryLoaded.resolve();
   } else {
     var s = document.createElement('script');
-    s.setAttribute('src', '//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js');
+    var jquery = '//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js';
+    var proto = '';
+    if ((typeof window != 'undefined') && 
+        (typeof window.location != 'undefined') &&
+        (window.location.protocol == 'file:')) {
+      proto = 'http:';
+    }
+    s.setAttribute('src', proto + jquery);
     s.setAttribute('type', 'text/javascript');
     s.onload = function() {
       CTS.$ = jQuery.noConflict();
