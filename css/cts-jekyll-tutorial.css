@@ -1,0 +1,84 @@
+
+
+
+.directory-explanations {
+    list-style:none;
+}
+
+
+.directory-explanations li {
+    border-radius: 5px;
+    padding:5px;
+    background-color: rgba(0, 85, 128, .2);
+    margin-bottom: 3px;
+    cursor:pointer;
+}
+
+.directory-explanations li:hover {
+    background-color: rgba(0, 85, 128, .5);
+}
+
+.fileListing ul li.folder {
+    list-style-image: url("../../images/tutorial/open-folder-icon.png");
+}
+
+.fileListing ul li:not(.folder) {
+    list-style-image: url("../../images/tutorial/file-icon.png");
+}
+
+.fileListing li {
+    margin-bottom:3px;
+    border-radius:3px;
+    line-height:12px;
+    padding-left:3px;
+    padding-bottom:2px;
+}
+
+.fileListing ul li.folder > ul > li:first-child {
+    margin-top:3px;
+}
+
+.reason {
+    width:40%;
+}
+.reasons {
+    text-align:center;
+}
+
+.container.tutorialPage {
+    width:90%;
+    margin-right:0px;
+}
+
+img.border-image {
+    border: 1px black solid;
+}
+
+.dummy.badge {
+    padding: 0px 3px 0px 3px;
+    cursor: default;
+}
+a {
+    cursor:pointer;
+}
+
+div[class="tooltip-inner"] {
+    max-width: 150px;
+}
+.fileListing a, .fileListing a:hover {
+    color:#000000;
+    text-decoration:none;
+}
+
+.carousel-image {
+    width: 600px;
+    height:412px;;
+}
+.bottom-pager {
+    text-align:center;
+}
+
+#reasonsCarousel {
+    width:600px;
+}
+
