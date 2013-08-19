@@ -38,9 +38,7 @@
     margin-top:3px;
 }
 
-.reason {
-    width:40%;
-}
+
 .reasons {
     text-align:center;
 }
@@ -52,6 +50,7 @@
 
 img.border-image {
     border: 1px black solid;
+    margin-left:0px;
 }
 
 .dummy.badge {
@@ -76,9 +75,14 @@ div[class="tooltip-inner"] {
 }
 .bottom-pager {
     text-align:center;
+    font-weight:bold;
 }
 
 #reasonsCarousel {
     width:600px;
 }
 
+.span-image {
+    width:100%;
+    height:auto;
+}
