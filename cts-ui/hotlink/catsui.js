@@ -12177,6 +12177,13 @@ var CATSUI = {};
 
   window.CATSUI.sidebar = new window.CATSUI.Sidebar();
 
+  var head = document.getElementsByTagName('head')[0];
+  var s = document.createElement('link');
+  s.setAttribute('rel', 'stylesheet');
+  s.setAttribute('type', 'text/css');
+  s.setAttribute('href', 'http://treesheets.org/cts-ui/hotlink/ctsui.css');
+  head.appendChild(s);
+
   $ = jQueryHcss;
 
   __t('CATSUI').Util = (function() {
