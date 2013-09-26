@@ -12181,7 +12181,7 @@ var CATSUI = {};
   var s = document.createElement('link');
   s.setAttribute('rel', 'stylesheet');
   s.setAttribute('type', 'text/css');
-  s.setAttribute('href', 'http://treesheets.org/cts-ui/hotlink/ctsui.css');
+  s.setAttribute('href', 'http://treesheets.org/cts-ui/hotlink/catsui.css');
   head.appendChild(s);
 
   $ = jQueryHcss;
