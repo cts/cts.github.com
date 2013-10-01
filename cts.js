@@ -1,6 +1,5 @@
 // Save a reference to the global object. `this` is `window` in a browser.
 var root = this;
-
 var CTS;
 
 if (typeof exports !== 'undefined') {
@@ -33,7 +32,7 @@ CTS.autoloadCheck = function() {
   var scripts = document.getElementsByTagName('script');
   // Do it backwards because this should be the LAST script
   // since we're executing, and scripts are loaded sequentially
-  for (var i = scripts.length - 1; i >= 0; i++) {
+  for (var i = scripts.length - 1; i >= 0; i--) {
     var script = scripts[i];
     if (typeof script != 'undefined') {
       if ((typeof script.src != 'undefined') &&
@@ -3485,6 +3484,9 @@ CTS.Node.Base = {
   },
 
   _processIncomingRelations: function(relations, name, once) {
+    if (relations.length > 0) {
+      alert("Node has " + relations.length + " incoming");
+    }
     for (var i = 0; i < relations.length; i++) {
       if (relations[i].name == name) {
         if (relations[i].node1.equals(this)) {
@@ -4263,7 +4265,7 @@ CTS.Fn.extend(CTS.Relation.Is.prototype, CTS.Relation.Base, {
   execute: function(toward) {
     var from = this.opposite(toward);
     var content = from.getValue(this.optsFor(from));
-    CTS.Log.Info("From", from.tree.name, from.getValue(), "Overwriting", toward.tree.name, toward.getValue());
+    //CTS.Log.Info("From", from.tree.name, from.getValue(), "Overwriting", toward.tree.name, toward.getValue());
     toward.setValue(content, this.optsFor(toward));
     toward.trigger('received-is', {
       target: toward,
@@ -4315,6 +4317,7 @@ CTS.Fn.extend(CTS.Relation.Are.prototype, CTS.Relation.Base, {
   },
 
   execute: function(toward) {
+    CTS.Debugging.DumpStack();
     this._Are_AlignCardinalities(toward);
     toward.trigger('received-are', {
       target: toward,
@@ -4338,7 +4341,9 @@ CTS.Fn.extend(CTS.Relation.Are.prototype, CTS.Relation.Base, {
     var other = this.opposite(toward);
     var otherIterables = this._Are_GetIterables(other);
     var myIterables = this._Are_GetIterables(toward);
- 
+    CTS.Log.Info("Before Align");
+    CTS.Debugging.DumpTree(toward);
+
     if (myIterables.length > 0) {
       while (myIterables.length > 1) {
         var bye = myIterables.pop();
@@ -4362,6 +4367,8 @@ CTS.Fn.extend(CTS.Relation.Are.prototype, CTS.Relation.Base, {
         myIterables[0].pruneRelations(otherIterables[0], other);
       }
     }
+    CTS.Log.Info("After Align");
+    CTS.Debugging.DumpTree(toward);
   },
 
   _Are_GetIterables: function(node) {
@@ -4516,9 +4523,9 @@ CTS.Fn.extend(CTS.Relation.Graft.prototype, CTS.Relation.Base, {
 
     var opp = this.opposite(toward);
 
-    CTS.Log.Info("Graft from", opp.tree.name, "to", toward.tree.name);
-    CTS.Log.Info("Opp", opp.value.html());
-    CTS.Log.Info("To", toward.value.html());
+    //CTS.Log.Info("Graft from", opp.tree.name, "to", toward.tree.name);
+    //CTS.Log.Info("Opp", opp.value.html());
+    // CTS.Log.Info("To", toward.value.html());
 
     if (opp != null) {
 
@@ -4613,8 +4620,8 @@ CTS.Fn.extend(CTS.Tree.Html.prototype, CTS.Tree.Base, {
     this.root = node;
     this._nodeLookup[root.ctsId] = root;
     this.root.setProvenance(this);
-    // Listen for DOMNodeInserted events in the DOM tree, and spread
-    // propagation of that event into the CTS tree
+    
+    // Propagate insertion events from HTML -> CTS Node
     var self = this;
     this.root.value.on("DOMNodeInserted", function(evt) {
       self.root.trigger("DOMNodeInserted", evt);
@@ -5168,7 +5175,6 @@ CTS.Fn.extend(SelectionSpec.prototype, {
       selector = new DomSelector(parts[2]);
     } 
 
-    console.log("s", selector);
     if (selector !== null) {
       selector.treeName = parts[0];
       selector.treeType = parts[1];
@@ -5377,11 +5383,60 @@ CTS.Factory = {
 }
 
 CTS.Parser = {
-  parseInlineSpecs: function(str, node, intoForrest, realizeTrees) {
-    var tup = CTS.Parser._typeAndBodyForInline(str);
+  /* Helper function which wraps parseForrestSpec. 
+   *
+   * Args:
+   *   - spec: the spec to parse
+   *   - kind: the format which encodes the spec
+   *   - fromUrl: the url which loaded the spec
+   */
+  parse: function(spec, format, fromUrl) {
+    if (typeof kind == 'undefined') {
+      kind = 'string';
+    }
+    return CTS.Parser.parseForrestSpec(spec, format, fromUrl);
+  },
+
+  /* Parses a forrest (externally linked) CTS sheet.
+   * 
+   * Args:
+   *  - spec: the spec to parse
+   *  - format: the format which encodes the spec
+   *  - fromUrl: the url which loaded the spec
+   *
+   * Returns:
+   *  Promise for a ForrestSpec object
+   */
+  parseForrestSpec: function(spec, format, fromUrl) {
+    if (format == 'json') {
+      return CTS.Parser.Json.parseForrestSpec(spec, fromUrl);
+    } else if (format == 'string') {
+      return CTS.Parser.Cts.parseForrestSpec(spec, fromUrl);
+    } else {
+      var deferred = Q.defer();
+      deferred.reject("I don't understand the CTS Format:" + format);
+      return deferred.promise;
+    }
+  },
+
+
+  /* Parses an inline (in a DOM Note attribute) CTS sheet.
+   *
+   * Args:
+   *   - spec: the spec to parse
+   *   - node: the CTS node on which the spec was inlined
+   *   - intoForrest: the forrest into which to add this inline spec
+   *   - realizeTrees: (bool) should any unrealized trees referenced within
+   *                   be automatically realized before promise is resolved?
+   *
+   * Returns:
+   *   Promise for a ForrestSpec object.
+   */
+  parseInlineSpecs: function(spec, node, intoForrest, realizeTrees) {
+    var tup = CTS.Parser._typeAndBodyForInline(spec);
     var kind = tup[0];
     var body = tup[1];
-    var spec = null;
+    
     if (kind == 'json') {
       return CTS.Parser.Json.parseInlineSpecs(body, node, intoForrest, realizeTrees);
     } else if (kind == 'string') {
@@ -5393,32 +5448,16 @@ CTS.Parser = {
     }
   },
 
-  parseForrestSpec: function(str, kind, fromUrl) {
-    if (kind == 'json') {
-      return CTS.Parser.Json.parseForrestSpec(str, fromUrl);
-    } else if (kind == 'string') {
-      return CTS.Parser.Cts.parseForrestSpec(str, fromUrl);
-    } else {
-      var deferred = Q.defer();
-      deferred.reject("I don't understand the CTS Format:" + kind);
-      return deferred.promise;
-    }
-  },
-
-  parse: function(obj, kind, fromUrl) {
-    if (typeof kind == 'undefined') {
-      kind = 'string';
-    }
-    return CTS.Parser.parseForrestSpec(obj, kind, fromUrl);
-  },
-
-  /* Inline specs can take the form:
-   *  1.  <syntax>:<cts string>
-   *  2.  <cts string>
+  /* Helper: separates inline spec into FORMAT and BODY.
    *
-   * Syntax may be one of {string, json}
+   * Args:
+   *  - str: The string encoding of a CTS spec.
    *
-   * If no syntax is specified, string will be assumed.
+   *  str may be either <format>:<cts spec> or <cts spec>
+   *  <format> may be either 'json' or 'str'
+   *
+   * Returns:
+   *  Tuple of [format, specBody]
    */
   _typeAndBodyForInline: function(str) {
     var res = /^([a-zA-Z]+):(.*)$/.exec(str);
@@ -6216,6 +6255,7 @@ CTS.Fn.extend(Engine.prototype, Events, {
   },
 
   boot: function() {
+    console.log("CTS engine booting...");
     var self = this;
     if (typeof self.booting != 'undefined') {
       CTS.Error("Already booted / booting");
@@ -6381,6 +6421,10 @@ CTS.status = {
 
 CTS.status.libraryLoaded = CTS.status._libraryLoaded.promise;
 CTS.status.defaultTreeReady = CTS.status._defaultTreeReady.promise;
+CTS.status.defaultTreeReady.then(
+  function() { CTS._ready.resolve() },
+  function(reason) { CTS._ready.reject(reason); }
+);
 
 CTS.ensureJqueryThenMaybeAutoload = function() {
   if (typeof root.jQuery != 'undefined') {
@@ -6393,6 +6437,7 @@ CTS.ensureJqueryThenMaybeAutoload = function() {
     CTS.maybeAutoload();
     CTS.status._libraryLoaded.resolve();
   } else {
+    console.log("CTS Loading jQuery...");
     var s = document.createElement('script');
     var jquery = '//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js';
     var proto = '';
@@ -6413,6 +6458,7 @@ CTS.ensureJqueryThenMaybeAutoload = function() {
 };
 
 CTS.maybeAutoload = function() {
+  console.log("CTS Autoload check...");
   if (typeof CTS.shouldAutoload == 'undefined') {
     CTS.shouldAutoload = CTS.autoloadCheck();
   }
@@ -6430,7 +6476,6 @@ CTS.maybeAutoload = function() {
 };
 
 CTS.ensureJqueryThenMaybeAutoload();
-
 
 
 CTS.Xtras = {};
