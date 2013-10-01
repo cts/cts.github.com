@@ -1,7 +1,7 @@
 layout: page
+title: How to Write a Treesheet
+header: Pages
 ---
-
-# How to Write a Treesheet
 
 A treesheet is a set of relations between objects around the web. A relation can be thought of as an link between one piece of web content and another.
 
