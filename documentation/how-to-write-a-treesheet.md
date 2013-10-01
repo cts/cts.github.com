@@ -136,8 +136,28 @@ Valid relation type are:
 *  `:if-exist`
 *  `:if-nexist`
 
+## Attaching CTS to a Page
+
+Treesheets can be attached to a page in three ways:
+
+### Linked from the Head
+
+    <link rel="treesheet" type="text/cts" href="filename.cts" />
+
+### In a Style element
+
+    <style type="text/cts">
+    </style>
+
+### Inline in an attribute
+
+    <div data-cts="this :is theme | .title"></div>
+
+When you inline CTS into the `data-cts` attribute, the `this` keyword
+represents the element on which the CTS is inlined.
+
 <script>
 $(function() {
-  SelectPage("PageDocs", "PageDocsHow");
+  SelectPage("PageDocs");
 });
 </script>
