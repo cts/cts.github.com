@@ -1,6 +1,9 @@
+---
 layout: page
 title: How to Write a Treesheet
 header: Pages
+expandPage: PageDocs
+selectPage: PageDocsSyntax
 ---
 
 A treesheet is a set of relations between objects around the web. A relation can be thought of as an link between one piece of web content and another.
@@ -133,3 +136,8 @@ Valid relation type are:
 *  `:if-exist`
 *  `:if-nexist`
 
+<script>
+$(function() {
+  SelectPage("PageDocs", "PageDocsHow");
+});
+</script>
